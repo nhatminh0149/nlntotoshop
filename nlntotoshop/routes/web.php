@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// route Danh mục Loại Sản phẩm
+Route::resource('/admin/danhsachloaisanpham', 'LoaiSanPhamController');
+
+// route Danh mục Loại Sản phẩm
+Route::resource('/admin/danhsachsanpham', 'SanPhamController');
+
+// route Danh mục Loại Sản phẩm
+Route::resource('/admin/danhsachnhacungcap', 'NhaCungCapController');
