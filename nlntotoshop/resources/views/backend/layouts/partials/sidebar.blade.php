@@ -62,12 +62,12 @@
                 <ul>
                     <li><a href="{{ route('danhsachnhacungcap.index') }}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp; Nhà cung cấp</a></li>
                     <li><a href="{{ route('danhsachloaisanpham.index') }}"><i class="fa fa-align-right" aria-hidden="true"></i>&nbsp; Loại sản phẩm</a></li>
-                    <li><a href="{{ route('danhsachsanpham.index') }}"><i class="fa fa-male" aria-hidden="true"></i>&nbsp; Kích cỡ sản phẩm</a></li>
+                    <li><a href="{{ route('danhsachkichcosanpham.index') }}"><i class="fa fa-male" aria-hidden="true"></i>&nbsp; Kích cỡ sản phẩm</a></li>
                     <li><a href="{{ route('danhsachsanpham.index') }}"><i class="fa fa-shopping-bag" aria-hidden="true"></i>&nbsp; Sản phẩm</a></li>
-                    <li><a href="?page=hinhsanpham_danhsach"><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp; Hình ảnh</a></li>
-                    <li><a href="?page=khachhang_danhsach"><i class="fa fa-users" aria-hidden="true"></i>&nbsp; Khách hàng</a></li>
-                    <li><a href="?page=dondathang_danhsach"><i class="fa fa-truck" aria-hidden="true"></i>&nbsp; Hình thức vận chuyển</a></li>
-                    <li><a href="?page=dondathang_danhsach"><i class="fa fa-wpforms" aria-hidden="true"></i>&nbsp; Đơn đặt hàng</a></li>
+                    <!-- <li><a href="?page=hinhsanpham_danhsach"><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp; Hình ảnh</a></li> -->
+                    <li><a href="{{ route('danhsachkhachhang.index') }}"><i class="fa fa-users" aria-hidden="true"></i>&nbsp; Khách hàng</a></li>
+                    <li><a href="{{ route('danhsachhinhthucvanchuyen.index') }}"><i class="fa fa-truck" aria-hidden="true"></i>&nbsp; Hình thức vận chuyển</a></li>
+                    <li><a href="{{ route('danhsachdondathang.index') }}"><i class="fa fa-wpforms" aria-hidden="true"></i>&nbsp; Đơn đặt hàng</a></li>
                 </ul>
                 </div>
             </div>

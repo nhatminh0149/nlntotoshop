@@ -31,7 +31,7 @@ Danh sách sản phẩm
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Mã</th>
+            <th>Mã SP</th>
             <th>Tên sản phẩm</th>
             <th>Hình ảnh</th>
             <th>Loại</th>

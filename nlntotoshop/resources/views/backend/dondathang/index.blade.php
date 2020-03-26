@@ -3,7 +3,7 @@
 
 {{-- Thay thế nội dung vào Placeholder `title` của view `backend.layouts.index` --}}
 @section('title')
-Danh sách loại sản phẩm
+Danh sách đơn đặt hàng
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `content` của view `backend.layouts.index` --}}
@@ -27,36 +27,35 @@ Danh sách loại sản phẩm
 - Đường dẫn URL là đường dẫn được tạo ra bằng route có tên `danhsachsanpham.create`
 - Sẽ có dạng http://tenmiencuaban.com/admin/danhsachsanpham/create
 -->
-<h4 style="background: #0c0805; color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">DANH SÁCH LOẠI SẢN PHẨM</h4>
+<h4 style="background: #0c0805; color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">DANH SÁCH ĐƠN ĐẶT HÀNG</h4>
 <!-- Tạo table hiển thị danh sách các sản phẩm -->
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Mã loại</th>
-            <th>Tên loại</th>
-            <th>Tên NCC</th>
-            <th>Chức năng</th>
+            <th>Mã ĐĐH</th>
+            <th>Tài khoản KH</th>
+            <th>Ngày lập</th>
+            <th>Nơi giao</th>
+            <th>SĐT</th>
+            <th>Tổng tiền</th>
+            <th>Trạng thái xử lý</th>
+            <th>Hành động</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($danhsachloaisanpham as $lsp)
+        @foreach($danhsachdondathang as $ddh)
             <tr>
-                <td>{{ $lsp->l_ma }}</td>
-                <td>{{ $lsp->l_ten }}</td>
-                <td>{{ $lsp->nhacungcap->ncc_ten }}</td>
-                <td>
-                    <a href="{{ route('danhsachloaisanpham.edit', ['id' => $lsp->lsp_ma]) }}" class="btn btn-outline-dark pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>
-                    <form method="post" action="{{ route('danhsachloaisanpham.destroy', ['id' => $lsp->lsp_ma]) }}" class="pull-left">
-                        <!-- Khi gởi Request Xóa dữ liệu, Laravel Framework mặc định chỉ chấp nhận thực thi nếu có gởi kèm field `_method=DELETE` -->
-                        <input type="hidden" name="_method" value="DELETE" />
-                        {{ csrf_field() }}
-                        &nbsp;<button type="submit" class="btn btn-outline-dark"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>
-                    </form>
-                </td>
+                <td>{{ $ddh->ddh_ma }}</td>
+                <td></td>
+                <td>{{ $ddh->ddh_thoiGianDatHang }}</td>
+                <td>{{ $ddh->ddh_diaChiGiaoHang }}</td>
+                <td>{{ $ddh->ddh_dienThoai }}</td>
+                <td></td>
+                <td>{{ $ddh->ddh_trangThai }}</td>
+                <td></td>
             </tr>
         @endforeach
     </tbody>
 </table>
-<a href="{{ route('danhsachloaisanpham.create') }}" class="btn btn-outline-dark"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Thêm mới loại sản phẩm</a><br><br>
-{{ $danhsachloaisanpham->links() }}
+{{ $danhsachdondathang->links() }}
 @endsection

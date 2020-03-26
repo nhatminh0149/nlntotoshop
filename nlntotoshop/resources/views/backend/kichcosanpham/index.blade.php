@@ -3,7 +3,7 @@
 
 {{-- Thay thế nội dung vào Placeholder `title` của view `backend.layouts.index` --}}
 @section('title')
-Danh sách loại sản phẩm
+Danh sách kích cỡ sản phẩm
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `content` của view `backend.layouts.index` --}}
@@ -27,26 +27,24 @@ Danh sách loại sản phẩm
 - Đường dẫn URL là đường dẫn được tạo ra bằng route có tên `danhsachsanpham.create`
 - Sẽ có dạng http://tenmiencuaban.com/admin/danhsachsanpham/create
 -->
-<h4 style="background: #0c0805; color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">DANH SÁCH LOẠI SẢN PHẨM</h4>
+<h4 style="background: #0c0805; color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">DANH SÁCH KÍCH CỠ SẢN PHẨM</h4>
 <!-- Tạo table hiển thị danh sách các sản phẩm -->
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Mã loại</th>
-            <th>Tên loại</th>
-            <th>Tên NCC</th>
+            <th>Mã KCSP</th>
+            <th>Tên kích cỡ</th>
             <th>Chức năng</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($danhsachloaisanpham as $lsp)
+        @foreach($danhsachkichcosanpham as $kcsp)
             <tr>
-                <td>{{ $lsp->l_ma }}</td>
-                <td>{{ $lsp->l_ten }}</td>
-                <td>{{ $lsp->nhacungcap->ncc_ten }}</td>
+                <td>{{ $kcsp->kcsp_ma }}</td>
+                <td>{{ $kcsp->kcsp_ten }}</td>
                 <td>
-                    <a href="{{ route('danhsachloaisanpham.edit', ['id' => $lsp->lsp_ma]) }}" class="btn btn-outline-dark pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>
-                    <form method="post" action="{{ route('danhsachloaisanpham.destroy', ['id' => $lsp->lsp_ma]) }}" class="pull-left">
+                    <a href="{{ route('danhsachkichcosanpham.edit', ['id' => $kcsp->kcsp_ma]) }}" class="btn btn-outline-dark pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>
+                    <form method="post" action="{{ route('danhsachkichcosanpham.destroy', ['id' => $kcsp->kcsp_ma]) }}" class="pull-left">
                         <!-- Khi gởi Request Xóa dữ liệu, Laravel Framework mặc định chỉ chấp nhận thực thi nếu có gởi kèm field `_method=DELETE` -->
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
@@ -57,6 +55,6 @@ Danh sách loại sản phẩm
         @endforeach
     </tbody>
 </table>
-<a href="{{ route('danhsachloaisanpham.create') }}" class="btn btn-outline-dark"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Thêm mới loại sản phẩm</a><br><br>
-{{ $danhsachloaisanpham->links() }}
+<a href="{{ route('danhsachkichcosanpham.create') }}" class="btn btn-outline-dark"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Thêm mới kích cỡ sản phẩm</a><br><br>
+{{ $danhsachkichcosanpham->links() }}
 @endsection
