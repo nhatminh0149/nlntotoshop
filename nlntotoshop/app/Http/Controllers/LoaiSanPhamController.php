@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LoaiSanPham;
+use App\NhaCungCap;
+use Session;
 
 class LoaiSanPhamController extends Controller
 {
@@ -11,7 +13,7 @@ class LoaiSanPhamController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ //View hien thi ds 
     public function index()
     {
         // Sử dụng Eloquent Model để truy vấn dữ liệu
@@ -29,10 +31,11 @@ class LoaiSanPhamController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ //view hien thi trang tao
     public function create()
     {
-        //
+        $ds_nhacungcap = NhaCungCap::all();
+        return view('backend.loaisanpham.create')->with('danhsachnhacungcap', $ds_nhacungcap);
     }
 
     /**
@@ -40,10 +43,21 @@ class LoaiSanPhamController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     */ //them dl moi vap bang dl
     public function store(Request $request)
     {
-        //
+        $l = new LoaiSanPham();
+        $l->l_ma = $request->l_ma;
+        $l->l_ten = $request->l_ten;
+        $l->l_ngaytaoMoi = $request->l_ngaytaoMoi;
+        $l->l_ngaycapNhat = $request->l_ngaycapNhat;
+        $l->ncc_ma = $request->ncc_ma;
+
+        $l->save();
+
+        Session::flash('alert-info', 'Thêm mới thành công');
+        
+        return redirect()->route('danhsachloaisanpham.index');
     }
 
     /**
@@ -62,10 +76,12 @@ class LoaiSanPhamController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     */ //hien thi trang cap nhat
     public function edit($id)
     {
-        //
+        $loaisanpham = LoaiSanPham::where("l_ma", $id)->first();
+        $ds_nhacungcap = NhaCungCap::all();
+        return view('backend.loaisanpham.edit')->with('l', $loaisanpham)->with('danhsachnhacungcap', $ds_nhacungcap);
     }
 
     /**
@@ -74,10 +90,21 @@ class LoaiSanPhamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     */ //tim doi tuong dua vao khoa chinh va cap nhat bang dl
     public function update(Request $request, $id)
     {
-        //
+        $l = LoaiSanPham::where("l_ma",  $id)->first();;
+        $l->l_ma = $request->l_ma;
+        $l->l_ten = $request->l_ten;
+        $l->l_ngaytaoMoi = $request->l_ngaytaoMoi;
+        $l->l_ngaycapNhat = $request->l_ngaycapNhat;
+        $l->ncc_ma = $request->ncc_ma;
+        
+        $l->save();
+
+        Session::flash('alert-info', 'Cập nhật thành công');
+        
+        return redirect()->route('danhsachloaisanpham.index');
     }
 
     /**
@@ -88,6 +115,9 @@ class LoaiSanPhamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $l = LoaiSanPham::where("l_ma",  $id)->first();
+        $l->delete();
+        Session::flash('alert-info', 'Xóa loại sản phẩm thành công');
+        return redirect()->route('danhsachloaisanpham.index');
     }
 }

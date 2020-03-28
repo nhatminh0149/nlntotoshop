@@ -19,7 +19,6 @@ class LoaiSanPhamTableSeeder extends Seeder
             'l_ten' => "Áo Nam",
             'l_ngaytaoMoi' => $today->format('Y-m-d H:i:s'),
             'l_ngaycapNhat' => $today->format('Y-m-d H:i:s'),
-            'l_trangThai' => '2',
             'ncc_ma' => '1',
         ]);
         array_push($list, [
@@ -27,7 +26,6 @@ class LoaiSanPhamTableSeeder extends Seeder
             'l_ten' => "Quần Nam",
             'l_ngaytaoMoi' => $today->format('Y-m-d H:i:s'),
             'l_ngaycapNhat' => $today->format('Y-m-d H:i:s'),
-            'l_trangThai' => '2',
             'ncc_ma' => '2',
         ]);
         array_push($list, [
@@ -35,7 +33,6 @@ class LoaiSanPhamTableSeeder extends Seeder
             'l_ten' => "Áo Nữ",
             'l_ngaytaoMoi' => $today->format('Y-m-d H:i:s'),
             'l_ngaycapNhat' => $today->format('Y-m-d H:i:s'),
-            'l_trangThai' => '2',
             'ncc_ma' => '3',
         ]);
         array_push($list, [
@@ -43,7 +40,6 @@ class LoaiSanPhamTableSeeder extends Seeder
             'l_ten' => "Quần Nữ",
             'l_ngaytaoMoi' => $today->format('Y-m-d H:i:s'),
             'l_ngaycapNhat' => $today->format('Y-m-d H:i:s'),
-            'l_trangThai' => '2',
             'ncc_ma' => '1',
         ]);
         array_push($list, [
@@ -51,7 +47,6 @@ class LoaiSanPhamTableSeeder extends Seeder
             'l_ten' => "Đồ Đôi",
             'l_ngaytaoMoi' => $today->format('Y-m-d H:i:s'),
             'l_ngaycapNhat' => $today->format('Y-m-d H:i:s'),
-            'l_trangThai' => '2',
             'ncc_ma' => '2',
         ]);
         DB::table('loaisanpham')->insert($list);

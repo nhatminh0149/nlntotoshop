@@ -9,7 +9,7 @@ class LoaiSanPham extends Model
     const     CREATED_AT    = 'l_ngaytaoMoi';
     const     UPDATED_AT    = 'l_ngaycapNhat';
     protected $table        = 'loaisanpham';
-    protected $fillable     = ['l_ten', 'l_ngaytaoMoi', 'l_ngaycapNhat', 'l_trangThai'];
+    protected $fillable     = ['l_ten', 'l_ngaytaoMoi', 'l_ngaycapNhat', 'ncc_ma'];
     protected $guarded      = ['l_ma'];
     protected $primaryKey   = 'l_ma';
     protected $dates        = ['l_ngaytaoMoi', 'l_ngaycapNhat'];

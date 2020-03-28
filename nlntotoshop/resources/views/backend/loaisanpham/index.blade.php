@@ -39,14 +39,14 @@ Danh sách loại sản phẩm
         </tr>
     </thead>
     <tbody>
-        @foreach($danhsachloaisanpham as $lsp)
+        @foreach($danhsachloaisanpham as $l)
             <tr>
-                <td>{{ $lsp->l_ma }}</td>
-                <td>{{ $lsp->l_ten }}</td>
-                <td>{{ $lsp->nhacungcap->ncc_ten }}</td>
+                <td>{{ $l->l_ma }}</td>
+                <td>{{ $l->l_ten }}</td>
+                <td>{{ $l->nhacungcap->ncc_ten }}</td>
                 <td>
-                    <a href="{{ route('danhsachloaisanpham.edit', ['id' => $lsp->lsp_ma]) }}" class="btn btn-outline-dark pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>
-                    <form method="post" action="{{ route('danhsachloaisanpham.destroy', ['id' => $lsp->lsp_ma]) }}" class="pull-left">
+                    <a href="{{ route('danhsachloaisanpham.edit', ['id' => $l->l_ma]) }}" class="btn btn-outline-dark pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>
+                    <form method="post" action="{{ route('danhsachloaisanpham.destroy', ['id' => $l->l_ma]) }}" class="pull-left">
                         <!-- Khi gởi Request Xóa dữ liệu, Laravel Framework mặc định chỉ chấp nhận thực thi nếu có gởi kèm field `_method=DELETE` -->
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}

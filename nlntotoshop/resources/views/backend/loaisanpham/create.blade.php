@@ -1,18 +1,18 @@
 @extends('backend.layouts.master')
 
-    @section('title')
+@section('title')
     Thêm mới loại sản phẩm
-    @endsection
+@endsection
 
-    @section('custom-css')
+@section('custom-css')
     <!-- Các css dành cho thư viện bootstrap-fileinput -->
     <link href="{{ asset('vendor/bootstrap-fileinput/css/fileinput.css') }}" media="all" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
     <link href="{{ asset('vendor/bootstrap-fileinput/themes/explorer-fas/theme.css') }}" media="all" rel="stylesheet" type="text/css"/>
-    @endsection
+@endsection
     
 
-    @section('main-content')
+@section('content')
 
     <!-- show lỗi sai lên màn hình nếu có -->
     @if ($errors->any())
@@ -25,7 +25,8 @@
         </div>
     @endif
     
-    <form method="post" action="{{ route('danhsachloai.store') }}" enctype="multipart/form-data">
+    <h4 style="text-align: center;">THÊM MỚI LOẠI SẢN PHẨM</h4>
+    <form id="themLoaiSanPham" name="themLoaiSanPham" method="post" action="{{ route('danhsachloaisanpham.store') }}">
         {{ csrf_field() }}
        
         <div class="form-group">
@@ -41,25 +42,69 @@
             <label for="l_ngaycapNhat">Ngày cập nhật</label>
             <input type="date" class="form-control" id="l_ngaycapNhat" name="l_ngaycapNhat" value="{{ old('l_ngaycapNhat') }}" data-mask-datetime>
         </div>
-        <select name="l_trangThai" class="form-control">
-            <option value="1" {{ old('l_trangThai') == 1 ? "selected" : "" }}>Khóa</option>
-            <option value="2" {{ old('l_trangThai') == 2 ? "selected" : "" }}>Khả dụng</option>
-        </select>
+
+        <div class="form-group">
+            <label for="ncc_ma">Nhà cung cấp</label>
+            <select name="ncc_ma" class="form-control">
+                @foreach($danhsachnhacungcap as $ncc)
+                    @if(old('ncc_ma') == $ncc->ncc_ma)
+                    <option value="{{ $ncc->ncc_ma }}" selected>{{ $ncc->ncc_ten }}</option>
+                    @else
+                    <option value="{{ $ncc->ncc_ma }}">{{ $ncc->ncc_ten }}</option>
+                    @endif
+                @endforeach
+            </select>
+        </div>
         
         <button type="submit" class="btn btn-primary">Lưu</button>
     </form>
-    @endsection
-    @section('custom-scripts')
-    
-    <!-- Các script dành cho thư viện Mặt nạ nhập liệu InputMask -->
-    <script src="{{ asset('theme/adminlte/plugins/input-mask/jquery.inputmask.js') }}"></script>
-    <script src="{{ asset('theme/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
-    <script src="{{ asset('theme/adminlte/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+@endsection
+@section('custom-scripts')
     <script>
-    $(document).ready(function(){
-        
-    });
+        $(document).ready(function () {
+            $("#themLoaiSanPham").validate({
+                rules: {
+                    l_ten: {
+                        required: true,
+                    },   
+                },
+                messages: {
+                    l_ten: {
+                        required: "Vui lòng nhập Tên Loại sản phẩm",
+                    },
+                },
+                errorElement: "em",
+                errorPlacement: function (error, element) {
+                    // Thêm class `invalid-feedback` cho field đang có lỗi
+                    error.addClass("invalid-feedback");
+                    if (element.prop("type") === "checkbox") {
+                        error.insertAfter(element.parent("label"));
+                    } else {
+                        error.insertAfter(element);
+                    }
+                    // Thêm icon "Kiểm tra không Hợp lệ"
+                    if (!element.next("span")[0]) {
+                        $("<span class='glyphicon glyphicon-remove form-control-feedback'></span>")
+                            .insertAfter(element);
+                    }
+                },
+                success: function (label, element) {
+                    // Thêm icon "Kiểm tra Hợp lệ"
+                    if (!$(element).next("span")[0]) {
+                        $("<span class='glyphicon glyphicon-ok form-control-feedback'></span>")
+                            .insertAfter($(element));
+                    }
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass("is-invalid").removeClass("is-valid");
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).addClass("is-valid").removeClass("is-invalid");
+                }
+            });
+        });
     </script>
-    @endsection
+
+@endsection
 
                         <!-- folder storage sinh ra nhờ thực hiện lệnh php artisan storage:link -->

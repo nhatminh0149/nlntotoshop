@@ -18,7 +18,6 @@ class CreateLoaisanphamTable extends Migration
             $table->string('l_ten', 100)->unique()->comment('Tên loại sản phẩm');
             $table->timestamp('l_ngaytaoMoi')->nullable()->comment('Time tạo loại sản phẩm');
             $table->timestamp('l_ngaycapNhat')->nullable()->comment('Time cập nhật loại sản phẩm');
-            $table->tinyInteger('l_trangThai')->default('2')->comment('Trạng thái:1-khóa, 2-khả dụng');
             $table->unsignedTinyInteger('ncc_ma');
 
             $table->foreign('ncc_ma')->references('ncc_ma')->on('nhacungcap') ->onDelete('CASCADE')->onUpdate('CASCADE');

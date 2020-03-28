@@ -24,7 +24,12 @@ Route::get('/admin/danhsachnhacungcap/create', 'NhaCungCapController@create')->n
 // Route::put('/admin/danhsachnhacungcap/update/{id}', 'NhaCungCapController@update')->name('danhsachnhacungcap.update');
 
 Route::resource('/admin/danhsachnhacungcap', 'NhaCungCapController');
+
 // route Danh mục Loại Sản phẩm
+Route::get('/admin/danhsachloaisanpham/index', 'LoaiSanPhamController@index')->name('danhsachloaisanpham.index');
+Route::get('/admin/danhsachloaisanpham/create', 'LoaiSanPhamController@create')->name('danhsachloaisanpham.create');
+Route::post('/admin/danhsachloaisanpham/store', 'LoaiSanPhamController@store')->name('danhsachloaisanpham.store');
+Route::get('/admin/danhsachloaisanpham/edit{id}', 'LoaiSanPhamController@edit')->name('danhsachloaisanpham.edit');
 Route::resource('/admin/danhsachloaisanpham', 'LoaiSanPhamController');
 
 // route Danh mục Sản phẩm
