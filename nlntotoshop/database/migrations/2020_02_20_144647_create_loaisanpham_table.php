@@ -16,8 +16,6 @@ class CreateLoaisanphamTable extends Migration
         Schema::create('loaisanpham', function (Blueprint $table) {
             $table->unsignedTinyInteger('l_ma')->autoIncrement()->comment('Ma loai san pham');
             $table->string('l_ten', 100)->unique()->comment('Tên loại sản phẩm');
-            $table->timestamp('l_ngaytaoMoi')->nullable()->comment('Time tạo loại sản phẩm');
-            $table->timestamp('l_ngaycapNhat')->nullable()->comment('Time cập nhật loại sản phẩm');
             $table->unsignedTinyInteger('ncc_ma');
 
             $table->foreign('ncc_ma')->references('ncc_ma')->on('nhacungcap') ->onDelete('CASCADE')->onUpdate('CASCADE');

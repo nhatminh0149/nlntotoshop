@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    @if ($errors->any())
+    <!-- @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
                 @foreach ($errors->all() as $error)
@@ -21,10 +21,10 @@
                 @endforeach
             </ul>
         </div>
-    @endif
+    @endif -->
 
     <h4 style="text-align: center;">CẬP NHẬT NHÀ CUNG CẤP</h4>
-    <form id="xoaNhaCungCap" name="xoaNhaCungCap" method="post" action="{{ route('danhsachnhacungcap.update', ['id' => $ncc->ncc_ma]) }}">
+    <form id="luuNhaCungCap" name="luuNhaCungCap" method="post" action="{{ route('danhsachnhacungcap.update', ['id' => $ncc->ncc_ma]) }}">
         <input type="hidden" name="_method" value="PUT" />
         {{ csrf_field() }}
         <div class="form-group">
@@ -46,24 +46,15 @@
             <label for="ncc_dienThoai">Điện thoại</label>
             <input type="text" class="form-control" id="ncc_dienThoai" name="ncc_dienThoai" value="{{ old('ncc_dienThoai', $ncc->ncc_dienThoai) }}">
         </div>
-        
-        <div class="form-group">
-            <label for="ncc_taoMoi">Ngày tạo mới</label>
-            <input type="date" class="form-control" id="ncc_taoMoi" name="ncc_taoMoi" value="{{ old('ncc_taoMoi', $ncc->ncc_taoMoi) }}" data-mask-datetime>
-        </div>
-        <div class="form-group">
-            <label for="ncc_capNhat">Ngày cập nhật</label>
-            <input type="date" class="form-control" id="ncc_capNhat" name="ncc_capNhat" value="{{ old('ncc_capNhat', $ncc->ncc_capNhat) }}" data-mask-datetime>
-        </div>
 
-        <button type="submit" class="btn btn-primary">Lưu</button>
+        <button type="submit" class="btn btn-outline-dark"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Cập nhật</button>
     </form>
 @endsection
 
 @section('custom-scripts')
     <script>
         $(document).ready(function () {
-            $("#xoaNhaCungCap").validate({
+            $("#luuNhaCungCap").validate({
                 rules: {
                     ncc_ten: {
                         required: true,
@@ -75,15 +66,15 @@
                         required: true,
                         minlength: 10,
                         maxlength: 11,
-                        digits: true
+                        digits: true,
                     },
                 },
                 messages: {
                     ncc_ten: {
-                        required: "Vui lòng nhập Tên Nhà cung cấp",
+                        required: "Vui lòng nhập Tên nhà cung cấp",
                     },
                     ncc_diaChi: {
-                        required: "Vui lòng nhập Địa chỉ Nhà cung cấp",
+                        required: "Vui lòng nhập Địa chỉ hà cung cấp",
                     },
                     ncc_dienThoai: {
                         required: "Vui lòng nhập Số điện thoại Nhà cung cấp",

@@ -15,7 +15,7 @@ class CreateKichcospTable extends Migration
     {
         Schema::create('kichcosp', function (Blueprint $table) {
             $table->unsignedTinyInteger('kcsp_ma')->autoIncrement()->comment('Ma kich co sp');
-            $table->string('kcsp_ten');
+            $table->string('kcsp_ten')->unique();
         });
     }
 

@@ -33,6 +33,7 @@ Danh sách sản phẩm
         <tr>
             <th>Mã SP</th>
             <th>Tên sản phẩm</th>
+            <th>Giá</th>
             <th>Hình ảnh</th>
             <th>Loại</th>
             <th>Chức năng</th>
@@ -46,6 +47,7 @@ Danh sách sản phẩm
             <tr>
                 <td>{{ $sp->sp_ma }}</td>
                 <td>{{ $sp->sp_ten }}</td>
+                <td>{{ $sp->sp_gia }}</td>
                 <td style="text-align: center;"><img src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" class="img-list" style="width: 70px; height: 90px;"/></td>
                 <td>{{ $sp->loaisanpham->l_ten }}</td>
                 <td>

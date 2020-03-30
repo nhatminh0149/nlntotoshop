@@ -32,11 +32,15 @@ Route::post('/admin/danhsachloaisanpham/store', 'LoaiSanPhamController@store')->
 Route::get('/admin/danhsachloaisanpham/edit{id}', 'LoaiSanPhamController@edit')->name('danhsachloaisanpham.edit');
 Route::resource('/admin/danhsachloaisanpham', 'LoaiSanPhamController');
 
-// route Danh mục Sản phẩm
-Route::resource('/admin/danhsachsanpham', 'SanPhamController');
-
-// route Danh mục Loại kích cỡ sản phẩm
+// route Danh mục Kích cỡ sản phẩm
+Route::get('/admin/danhsachkichcosanpham/index', 'KichCoSanPhamController@index')->name('danhsachkichcosanpham.index');
+Route::get('/admin/danhsachkichcosanpham/create', 'KichCoSanPhamController@create')->name('danhsachkichcosanpham.create');
 Route::resource('/admin/danhsachkichcosanpham', 'KichCoSanPhamController');
+
+// route Danh mục Sản phẩm
+Route::get('/admin/danhsachsanpham/index', 'SanPhamController@index')->name('danhsachsanpham.index');
+Route::get('/admin/danhsachsanpham/create', 'SanPhamController@create')->name('danhsachsanpham.create');
+Route::resource('/admin/danhsachsanpham', 'SanPhamController');
 
 // route Danh mục Khách hàng
 Route::resource('/admin/danhsachkhachhang', 'KhachHangController');

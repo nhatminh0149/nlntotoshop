@@ -46,16 +46,23 @@ class LoaiSanPhamController extends Controller
      */ //them dl moi vap bang dl
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'l_ten' => 'required|unique:loaisanpham,l_ten',
+        ],[
+            'l_ten.required' => "Tên loại sản phẩm không được để trống",
+            'l_ten.unique' => "Tên loại sản phẩm này đã có trong CSDL", 
+        ]);
+
         $l = new LoaiSanPham();
         $l->l_ma = $request->l_ma;
         $l->l_ten = $request->l_ten;
-        $l->l_ngaytaoMoi = $request->l_ngaytaoMoi;
-        $l->l_ngaycapNhat = $request->l_ngaycapNhat;
+        // $l->l_ngaytaoMoi = $request->l_ngaytaoMoi;
+        // $l->l_ngaycapNhat = $request->l_ngaycapNhat;
         $l->ncc_ma = $request->ncc_ma;
 
         $l->save();
 
-        Session::flash('alert-info', 'Thêm mới thành công');
+        Session::flash('alert-warning', 'Thêm mới thành công');
         
         return redirect()->route('danhsachloaisanpham.index');
     }
@@ -96,8 +103,8 @@ class LoaiSanPhamController extends Controller
         $l = LoaiSanPham::where("l_ma",  $id)->first();;
         $l->l_ma = $request->l_ma;
         $l->l_ten = $request->l_ten;
-        $l->l_ngaytaoMoi = $request->l_ngaytaoMoi;
-        $l->l_ngaycapNhat = $request->l_ngaycapNhat;
+        // $l->l_ngaytaoMoi = $request->l_ngaytaoMoi;
+        // $l->l_ngaycapNhat = $request->l_ngaycapNhat;
         $l->ncc_ma = $request->ncc_ma;
         
         $l->save();
@@ -117,7 +124,7 @@ class LoaiSanPhamController extends Controller
     {
         $l = LoaiSanPham::where("l_ma",  $id)->first();
         $l->delete();
-        Session::flash('alert-info', 'Xóa loại sản phẩm thành công');
+        Session::flash('alert-danger', 'Xóa loại sản phẩm thành công');
         return redirect()->route('danhsachloaisanpham.index');
     }
 }

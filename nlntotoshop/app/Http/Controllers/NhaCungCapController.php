@@ -37,20 +37,31 @@ class NhaCungCapController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */ //THÊM DL MỚI VÀO BẢNG DỮ LIỆU
+     */ //THÊM DL MỚI VÀO BẢNG DỮ LIỆU, Action store() thường dùng để thực thi câu lệnh INSERT dữ liệu vào database.
     public function store(Request $request)
     { // post 
+        $this->validate($request, [
+            'ncc_ten' => 'required|unique:nhacungcap,ncc_ten',
+            'ncc_diaChi' => 'required',
+            'ncc_dienThoai' => 'required|unique:nhacungcap,ncc_dienThoai|digits:10',
+        ],[
+            'ncc_ten.required' => "Tên nhà cung cấp không được để trống",
+            'ncc_ten.unique' => "Tên nhà cung cấp này đã có trong CSDL",
+            'ncc_diaChi.required' => "Địa chỉ nhà cung cấp không được để trống",
+            'ncc_dienThoai.required' => "SĐT nhà cung cấp không được để trống",
+            'ncc_dienThoai.unique' => "SĐT nhà cung cấp này đã có trong CSDL",
+            'ncc_dienThoai.digits' => "SĐT nhà cung cấp phải ở dạng số 10 kí tự",   
+        ]);
+
         $ncc = new NhaCungCap();
         $ncc->ncc_ma = $request->ncc_ma;
         $ncc->ncc_ten = $request->ncc_ten;
         $ncc->ncc_diaChi = $request->ncc_diaChi;
         $ncc->ncc_dienThoai = $request->ncc_dienThoai;
-        $ncc->ncc_taoMoi = $request->ncc_taoMoi;
-        $ncc->ncc_capNhat = $request->ncc_capNhat;
 
         $ncc->save();
 
-        Session::flash('alert-info', 'Thêm mới thành công');
+        Session::flash('alert-warning', 'Thêm mới thành công');
         
         return redirect()->route('danhsachnhacungcap.index');
     }
@@ -72,6 +83,7 @@ class NhaCungCapController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */ //HIỂN THỊ TRANG CẬP NHẬT ĐỐI TƯỢNG DL DỰA VÀO KHÓA CHÍNH
+     //Action edit($id) thường dùng để hiển thị màn hình bao gồm form và các ô nhập liệu (input).
     public function edit($id)
     {//get
         $nhacungcap = NhaCungCap::where("ncc_ma",  $id)->first();;
@@ -90,13 +102,12 @@ class NhaCungCapController extends Controller
      */ //TÌM ĐỐI TƯỢNG DL DỰA VÀO KHÓA CHÍNH VÀ CẬP NHẬT DL VÀO BẢNG DL
     public function update(Request $request, $id)
     {//put/patch
+
         $ncc = NhaCungCap::where("ncc_ma",  $id)->first();;
         $ncc->ncc_ma = $request->ncc_ma;
         $ncc->ncc_ten = $request->ncc_ten;
         $ncc->ncc_diaChi = $request->ncc_diaChi;
         $ncc->ncc_dienThoai = $request->ncc_dienThoai;
-        $ncc->ncc_taoMoi = $request->ncc_taoMoi;
-        $ncc->ncc_capNhat = $request->ncc_capNhat;
         
         $ncc->save();
 
@@ -117,7 +128,7 @@ class NhaCungCapController extends Controller
     
         $ncc->delete();
 
-        Session::flash('alert-info', 'Xóa Nhà cung cấp thành công');
+        Session::flash('alert-danger', 'Xóa nhà cung cấp thành công');
         
         return redirect()->route('danhsachnhacungcap.index');
     }

@@ -17,36 +17,26 @@ class LoaiSanPhamTableSeeder extends Seeder
         array_push($list, [
             'l_ma' => 1,
             'l_ten' => "Áo Nam",
-            'l_ngaytaoMoi' => $today->format('Y-m-d H:i:s'),
-            'l_ngaycapNhat' => $today->format('Y-m-d H:i:s'),
             'ncc_ma' => '1',
         ]);
         array_push($list, [
             'l_ma' => 2,
             'l_ten' => "Quần Nam",
-            'l_ngaytaoMoi' => $today->format('Y-m-d H:i:s'),
-            'l_ngaycapNhat' => $today->format('Y-m-d H:i:s'),
             'ncc_ma' => '2',
         ]);
         array_push($list, [
             'l_ma' => 3,
             'l_ten' => "Áo Nữ",
-            'l_ngaytaoMoi' => $today->format('Y-m-d H:i:s'),
-            'l_ngaycapNhat' => $today->format('Y-m-d H:i:s'),
             'ncc_ma' => '3',
         ]);
         array_push($list, [
             'l_ma' => 4,
             'l_ten' => "Quần Nữ",
-            'l_ngaytaoMoi' => $today->format('Y-m-d H:i:s'),
-            'l_ngaycapNhat' => $today->format('Y-m-d H:i:s'),
             'ncc_ma' => '1',
         ]);
         array_push($list, [
             'l_ma' => 5,
             'l_ten' => "Đồ Đôi",
-            'l_ngaytaoMoi' => $today->format('Y-m-d H:i:s'),
-            'l_ngaycapNhat' => $today->format('Y-m-d H:i:s'),
             'ncc_ma' => '2',
         ]);
         DB::table('loaisanpham')->insert($list);

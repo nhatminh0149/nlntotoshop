@@ -6,14 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class LoaiSanPham extends Model
 {
-    const     CREATED_AT    = 'l_ngaytaoMoi';
-    const     UPDATED_AT    = 'l_ngaycapNhat';
     protected $table        = 'loaisanpham';
-    protected $fillable     = ['l_ten', 'l_ngaytaoMoi', 'l_ngaycapNhat', 'ncc_ma'];
+    protected $fillable     = ['l_ten', 'ncc_ma'];
     protected $guarded      = ['l_ma'];
     protected $primaryKey   = 'l_ma';
-    protected $dates        = ['l_ngaytaoMoi', 'l_ngaycapNhat'];
-    protected $dateFormat   = 'Y-m-d H:i:s';
+    public $timestamps = false; //ko muốn tạo 2 cột created_at và updated _at
 
     public function nhacungcap(){
         return $this->belongsTo('App\NhaCungCap', 'ncc_ma', 'ncc_ma');

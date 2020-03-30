@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder; //bắt buộc tham chiếu lớp Eloquent Builder
 
 class HinhAnh extends Model
 {
@@ -12,6 +13,10 @@ class HinhAnh extends Model
     protected $guarded      = ['sp_ma', 'ha_stt'];
     protected $primaryKey   = ['sp_ma', 'ha_stt'];
     public    $incrementing = false; // id ko dc tu tang vì có 2 khóa chính
+
+
+
+    //cập nhật Model có hai khóa chính. => cần ghi đè 1 số thuộc tính
     /**
      * Set the keys for a save update query.
      *

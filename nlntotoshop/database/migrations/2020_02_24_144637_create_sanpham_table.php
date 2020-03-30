@@ -19,7 +19,7 @@ class CreateSanphamTable extends Migration
             $table->unsignedInteger('sp_gia')->default('0');
             $table->string('sp_hinh');
             $table->text('sp_thongTin');
-            $table->tinyInteger('sp_trangThai')->default('2')->comment('Trạng thái:1, 2');
+            // $table->tinyInteger('sp_trangThai')->default('2')->comment('Trạng thái:1, 2');
             $table->unsignedTinyInteger('l_ma');   
     
             $table->foreign('l_ma')->references('l_ma')->on('loaisanpham') ->onDelete('CASCADE')->onUpdate('CASCADE');
