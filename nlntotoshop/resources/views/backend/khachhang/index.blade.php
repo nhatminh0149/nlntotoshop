@@ -48,7 +48,15 @@ Danh sách khách hàng
                 <td>{{ $kh->kh_ma }}</td>
                 <td>{{ $kh->kh_taiKhoan }}</td>
                 <td>{{ $kh->kh_hoTen }}</td>
-                <td>{{ $kh->kh_gioiTinh }}</td>
+                <td>
+                    @if (($kh->kh_gioiTinh) == 0)
+                       {{ 'Nữ' }}
+                    @elseif (($kh->kh_gioiTinh) == 1) 
+                        {{ 'Nam' }}
+                    @else 
+                        {{ 'Khác' }}
+                    @endif
+                </td>
                 <td>{{ $kh->kh_email }}</td>
                 <td>{{ $kh->kh_dienThoai }}</td>
                 <td>{{ $kh->kh_trangThai }}</td>
@@ -56,9 +64,9 @@ Danh sách khách hàng
                     <a href="{{ route('danhsachkhachhang.edit', ['id' => $kh->kh_ma]) }}" class="btn btn-outline-dark pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>
                     <form method="post" action="{{ route('danhsachkhachhang.destroy', ['id' => $kh->kh_ma]) }}" class="pull-left">
                         <!-- Khi gởi Request Xóa dữ liệu, Laravel Framework mặc định chỉ chấp nhận thực thi nếu có gởi kèm field `_method=DELETE` -->
-                        <input type="hidden" name="_method" value="DELETE" />
+                        <!-- <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
-                        &nbsp;<button type="submit" class="btn btn-outline-dark"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>
+                        &nbsp;<button type="submit" class="btn btn-outline-dark"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button> -->
                     </form>
                 </td>
             </tr>

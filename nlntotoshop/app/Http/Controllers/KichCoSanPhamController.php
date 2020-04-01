@@ -91,6 +91,13 @@ class KichCoSanPhamController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'kcsp_ten' => 'required|unique:kichcosp,kcsp_ten',
+        ],[
+            'kcsp_ten.required' => "Tên kích cỡ sản phẩm không được để trống",
+            'kcsp_ten.unique' => "Tên kích cỡ sản phẩm này đã có trong CSDL", 
+        ]);
+
         $kcsp = KichCoSanPham::where("kcsp_ma",  $id)->first();;
         $kcsp->kcsp_ma = $request->kcsp_ma;
         $kcsp->kcsp_ten = $request->kcsp_ten;
@@ -110,7 +117,7 @@ class KichCoSanPhamController extends Controller
      */
     public function destroy($id)
     {
-        $kcsp = kichcosp::where("KichCoSanPham",  $id)->first();
+        $kcsp = KichCoSanPham::where("kcsp_ma",  $id)->first();
     
         $kcsp->delete();
 

@@ -48,7 +48,7 @@ Danh sách hình thức vận chuyển
                 <td>{{ $htvc->htvc_dienGiai }}</td>
                 <td>
                     <a href="{{ route('danhsachhinhthucvanchuyen.edit', ['id' => $htvc->htvc_ma]) }}" class="btn btn-outline-dark pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>
-                    <form method="post" action="{{ route('danhsachkhachhang.destroy', ['id' => $htvc->htvc_ma]) }}" class="pull-left">
+                    <form method="post" action="{{ route('danhsachhinhthucvanchuyen.destroy', ['id' => $htvc->htvc_ma]) }}" class="pull-left">
                         <!-- Khi gởi Request Xóa dữ liệu, Laravel Framework mặc định chỉ chấp nhận thực thi nếu có gởi kèm field `_method=DELETE` -->
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
@@ -59,6 +59,6 @@ Danh sách hình thức vận chuyển
         @endforeach
     </tbody>
 </table>
-<a href="{{ route('danhsachhinhthucvanchuyen.create') }}" class="btn btn-outline-dark"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Thêm mới khách hàng</a><br><br>
+<a href="{{ route('danhsachhinhthucvanchuyen.create') }}" class="btn btn-outline-dark"><i class="fa fa-plus-square" aria-hidden="true"></i>&nbsp;Thêm mới hình thức vận chuyển</a><br><br>
 {{ $danhsachhinhthucvanchuyen->links() }}
 @endsection

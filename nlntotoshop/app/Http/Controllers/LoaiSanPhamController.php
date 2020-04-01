@@ -100,7 +100,13 @@ class LoaiSanPhamController extends Controller
      */ //tim doi tuong dua vao khoa chinh va cap nhat bang dl
     public function update(Request $request, $id)
     {
-        $l = LoaiSanPham::where("l_ma",  $id)->first();;
+        $this->validate($request, [
+            'l_ten' => 'required',
+        ],[
+            'l_ten.required' => "Tên loại sản phẩm không được để trống",
+        ]);
+        
+        $l = LoaiSanPham::where("l_ma",  $id)->first();
         $l->l_ma = $request->l_ma;
         $l->l_ten = $request->l_ten;
         // $l->l_ngaytaoMoi = $request->l_ngaytaoMoi;

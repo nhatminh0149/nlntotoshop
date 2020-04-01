@@ -34,6 +34,11 @@
         <div class="form-group">
             <label for="kcsp_ten">Tên</label>
             <input type="text" class="form-control" id="kcsp_ten" name="kcsp_ten" value="{{ old('kcsp_ten', $kcsp->kcsp_ten) }}">
+                @if($errors->has("kcsp_ten"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("kcsp_ten")}}
+                    </div>                 
+                @endif
         </div>
 
         <button type="submit" class="btn btn-outline-dark"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Cập nhật</button>
@@ -41,7 +46,7 @@
 @endsection
 
 @section('custom-scripts')
-    <script>
+    <!-- <script>
         $(document).ready(function () {
             $("#luuKichCoSanPham").validate({
                 rules: {
@@ -84,6 +89,6 @@
                 }
             });
         });
-    </script>
+    </script> -->
 
 @endsection

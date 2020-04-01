@@ -21,7 +21,7 @@ class KhachHangTableSeeder extends Seeder
             'kh_email'     => 'minhb1606911@student.ctu.edu.vn',
             'kh_diaChi'    => '12, đường 3/2, Phường Xuân Khánh, Quận Ninh Kiều, TP Cần Thơ',
             'kh_dienThoai' => '0919589765',
-            'kh_trangThai' => 2 // Khả dụng  
+            'kh_trangThai' => 1 // Chưa kích hoạt 
             ],     
             [
             'kh_ma'        => '2',
@@ -32,7 +32,7 @@ class KhachHangTableSeeder extends Seeder
             'kh_email'     => 'queanhst98@gmail.com',
             'kh_diaChi'    => '98, đường 30/4, Phường Xuân Khánh, Quận Ninh Kiều, TP Cần Thơ',
             'kh_dienThoai' => '0909000777',
-            'kh_trangThai' => 2 // Khả dụng  
+            'kh_trangThai' => 1 // Chưa kích hoạt  
             ],     
             [
             'kh_ma'        => '3',
@@ -43,7 +43,7 @@ class KhachHangTableSeeder extends Seeder
             'kh_email'     => 'didi@gmail.com',
             'kh_diaChi'    => 'Hẻm 56, đường 3/2, Phường Xuân Khánh, Quận Ninh Kiều, TP Cần Thơ',
             'kh_dienThoai' => '0989222333',
-            'kh_trangThai' => 2 // Khả dụng  
+            'kh_trangThai' => 1 // Chưa kích hoạt  
             ],     
         ];
         DB::table('khachhang')->insert($list);

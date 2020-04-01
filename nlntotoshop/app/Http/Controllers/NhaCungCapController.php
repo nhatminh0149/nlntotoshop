@@ -103,6 +103,19 @@ class NhaCungCapController extends Controller
     public function update(Request $request, $id)
     {//put/patch
 
+        $this->validate($request, [
+            'ncc_ten' => 'required',
+            'ncc_diaChi' => 'required',
+            'ncc_dienThoai' => 'required|digits:10',
+        ],[
+            'ncc_ten.required' => "Tên nhà cung cấp không được để trống",
+            // 'ncc_ten.unique' => "Tên nhà cung cấp này đã có trong CSDL",
+            'ncc_diaChi.required' => "Địa chỉ nhà cung cấp không được để trống",
+            'ncc_dienThoai.required' => "SĐT nhà cung cấp không được để trống",
+            // 'ncc_dienThoai.unique' => "SĐT nhà cung cấp này đã có trong CSDL",
+            'ncc_dienThoai.digits' => "SĐT nhà cung cấp phải ở dạng số 10 kí tự",   
+        ]);
+
         $ncc = NhaCungCap::where("ncc_ma",  $id)->first();;
         $ncc->ncc_ma = $request->ncc_ma;
         $ncc->ncc_ten = $request->ncc_ten;

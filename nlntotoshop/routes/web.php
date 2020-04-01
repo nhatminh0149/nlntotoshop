@@ -43,9 +43,13 @@ Route::get('/admin/danhsachsanpham/create', 'SanPhamController@create')->name('d
 Route::resource('/admin/danhsachsanpham', 'SanPhamController');
 
 // route Danh mục Khách hàng
+Route::get('/admin/danhsachkhachhang/index', 'KhachHangController@index')->name('danhsachkhachhang.index');
+Route::get('/admin/danhsachkhachhang/create', 'KhachHangController@create')->name('danhsachkhachhang.create');
 Route::resource('/admin/danhsachkhachhang', 'KhachHangController');
 
 // route Danh mục Hình thức vận chuyển
+Route::get('/admin/danhsachhinhthucvanchuyen/index', 'HinhThucVanChuyenController@index')->name('danhsachhinhthucvanchuyen.index');
+Route::get('/admin/danhsachhinhthucvanchuyen/create', 'HinhThucVanChuyenController@create')->name('danhsachhinhthucvanchuyen.create');
 Route::resource('/admin/danhsachhinhthucvanchuyen', 'HinhThucVanChuyenController');
 
 // route Danh mục Đơn đặt hàng

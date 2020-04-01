@@ -35,16 +35,31 @@
         <div class="form-group">
             <label for="ncc_ten">Tên nhà cung cấp</label>
             <input type="text" class="form-control" id="ncc_ten" name="ncc_ten" value="{{ old('ncc_ten', $ncc->ncc_ten) }}">
+                @if($errors->has("ncc_ten"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("ncc_ten")}}
+                    </div>                 
+                @endif
         </div>
 
         <div class="form-group">
             <label for="ncc_diaChi">Địa chỉ</label>
             <input type="text" class="form-control" id="ncc_diaChi" name="ncc_diaChi" value="{{ old('ncc_diaChi', $ncc->ncc_diaChi) }}">
+                @if($errors->has("ncc_diaChi"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("ncc_diaChi")}}
+                    </div>                 
+                @endif
         </div>
 
         <div class="form-group">
             <label for="ncc_dienThoai">Điện thoại</label>
             <input type="text" class="form-control" id="ncc_dienThoai" name="ncc_dienThoai" value="{{ old('ncc_dienThoai', $ncc->ncc_dienThoai) }}">
+                @if($errors->has("ncc_dienThoai"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("ncc_dienThoai")}}
+                    </div>                 
+                @endif
         </div>
 
         <button type="submit" class="btn btn-outline-dark"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;&nbsp;Cập nhật</button>
@@ -52,7 +67,7 @@
 @endsection
 
 @section('custom-scripts')
-    <script>
+    <!-- <script>
         $(document).ready(function () {
             $("#luuNhaCungCap").validate({
                 rules: {
@@ -74,7 +89,7 @@
                         required: "Vui lòng nhập Tên nhà cung cấp",
                     },
                     ncc_diaChi: {
-                        required: "Vui lòng nhập Địa chỉ hà cung cấp",
+                        required: "Vui lòng nhập Địa chỉ nhà cung cấp",
                     },
                     ncc_dienThoai: {
                         required: "Vui lòng nhập Số điện thoại Nhà cung cấp",
@@ -113,6 +128,6 @@
                 }
             });
         });
-    </script>
+    </script> -->
 
 @endsection

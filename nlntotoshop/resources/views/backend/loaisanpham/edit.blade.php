@@ -35,6 +35,11 @@
         <div class="form-group">
             <label for="l_ten">Tên loại</label>
             <input type="text" class="form-control" id="l_ten" name="l_ten" value="{{ old('l_ten', $l->l_ten) }}">
+                @if($errors->has("l_ten"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("l_ten")}}
+                    </div>                 
+                @endif
         </div>
 
         <div class="form-group">
@@ -55,7 +60,7 @@
 @endsection
 
 @section('custom-scripts')
-    <script>
+    <!-- <script>
         $(document).ready(function () {
             $("#luuLoaiSanPham").validate({
                 rules: {
@@ -98,5 +103,5 @@
                 }
             });
         });
-    </script>
+    </script> -->
 @endsection

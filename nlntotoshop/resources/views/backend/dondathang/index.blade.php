@@ -46,16 +46,15 @@ Danh sách đơn đặt hàng
         @foreach($danhsachdondathang as $ddh)
             <tr>
                 <td>{{ $ddh->ddh_ma }}</td>
-                <td></td>
+                <td>{{ $ddh->kh_taiKhoan }}</td>
                 <td>{{ $ddh->ddh_thoiGianDatHang }}</td>
                 <td>{{ $ddh->ddh_diaChiGiaoHang }}</td>
                 <td>{{ $ddh->ddh_dienThoai }}</td>
+                <td>{{ $ddh->TongThanhTien }}</td>
                 <td></td>
-                <td>{{ $ddh->ddh_trangThai }}</td>
                 <td></td>
             </tr>
         @endforeach
     </tbody>
 </table>
-{{ $danhsachdondathang->links() }}
 @endsection

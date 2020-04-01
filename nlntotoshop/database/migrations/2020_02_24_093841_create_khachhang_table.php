@@ -22,7 +22,7 @@ class CreateKhachhangTable extends Migration
             $table->string('kh_email', 100);
             $table->string('kh_diaChi', 250)->nullable()->default('NULL');
             $table->string('kh_dienThoai', 11)->nullable()->default('NULL');
-            $table->unsignedTinyInteger('kh_trangThai')->default('3')->comment('1-khóa, 2-khả dụng, 3-chưa kích hoạt');
+            $table->unsignedTinyInteger('kh_trangThai')->default('2')->comment('1-Chưa kích hoạt, 2-Đã kích hoạt');
             
             $table->unique(['kh_taiKhoan']);
         });

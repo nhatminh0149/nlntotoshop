@@ -5,6 +5,7 @@ Thêm mới sản phẩm
 @section('custom-css')
 <!-- Các css dành cho thư viện bootstrap-fileinput -->
 <link href="{{ asset('vendor/bootstrap-fileinput/css/fileinput.css') }}" media="all" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" crossorigin="anonymous">
 <link rel="stylesheet" href="{{ asset('vendor/font-awesome-4.7.0/css/font-awesome.min.css') }}">
 <link href="{{ asset('vendor/bootstrap-fileinput/themes/explorer-fas/theme.css') }}" media="all" rel="stylesheet" type="text/css"/>
 @endsection
@@ -38,23 +39,43 @@ Thêm mới sản phẩm
         <div class="form-group">
             <label for="sp_ten">Tên sản phẩm</label>
             <input type="text" class="form-control" id="sp_ten" name="sp_ten" value="{{ old('sp_ten') }}">
+                @if($errors->has("sp_ten"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("sp_ten")}}
+                    </div>                 
+                @endif
         </div>
 
         <div class="form-group">
-            <label for="sp_gia">Giá</label>
+            <label for="sp_gia">Giá sản phẩm</label>
             <input type="number" class="form-control" id="sp_gia" name="sp_gia" value="{{ old('sp_gia') }}">
+                @if($errors->has("sp_gia"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("sp_gia")}}
+                    </div>                 
+                @endif
         </div>
 
         <div class="form-group">
-            <div class="file-loading">
-                <label>Hình đại diện</label>
+            <label for="sp_hinh">Hình đại diện</label>
+            <div class="file-loading"> 
                 <input id="sp_hinh" type="file" name="sp_hinh">
             </div>
+                @if($errors->has("sp_hinh"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("sp_hinh")}}
+                    </div>                 
+                @endif
         </div>
 
         <div class="form-group">
             <label for="sp_thongTin">Thông tin</label>
             <input type="text" class="form-control" id="sp_thongTin" name="sp_thongTin" value="{{ old('sp_thongTin') }}">
+                @if($errors->has("sp_thongTin"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("sp_thongTin")}}
+                    </div>                 
+                @endif
         </div>
 
         <!-- <select name="sp_trangThai" class="form-control">
@@ -63,8 +84,8 @@ Thêm mới sản phẩm
         </select> -->
 
         <div class="form-group">
+            <label>Hình ảnh liên quan sản phẩm</label>
             <div class="file-loading">
-                <label>Hình ảnh liên quan sản phẩm</label>
                 <input id="sp_hinhanhlienquan" type="file" name="sp_hinhanhlienquan[]" multiple>
             </div>
         </div>
@@ -86,7 +107,7 @@ Thêm mới sản phẩm
                 theme: 'fas',
                 showUpload: false,
                 showCaption: false,
-                browseClass: "btn btn-primary btn-md",
+                browseClass: "btn btn-outline-primary btn-md",
                 fileType: "any",
                 previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
                 overwriteInitial: false
@@ -95,7 +116,7 @@ Thêm mới sản phẩm
                 theme: 'fas',
                 showUpload: false,
                 showCaption: false,
-                browseClass: "btn btn-primary btn-md",
+                browseClass: "btn btn-outline-primary btn-md",
                 fileType: "any",
                 previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
                 overwriteInitial: false,
