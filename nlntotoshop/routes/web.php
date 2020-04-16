@@ -53,4 +53,24 @@ Route::get('/admin/danhsachhinhthucvanchuyen/create', 'HinhThucVanChuyenControll
 Route::resource('/admin/danhsachhinhthucvanchuyen', 'HinhThucVanChuyenController');
 
 // route Danh mục Đơn đặt hàng
+Route::get('/admin/danhsachdondathang/index', 'DonDatHangController@index')->name('danhsachdondathang.index');
+Route::get('/admin/danhsachdondathang/edit{id}', 'DonDatHangController@edit')->name('danhsachdondathang.edit');
 Route::resource('/admin/danhsachdondathang', 'DonDatHangController');
+
+
+// Route::get('/', function (){
+//     return view('frontend/index');
+// });
+
+
+//Thực hiện tạo giao diện trang chủ Frontend
+Route::get('/', 'FrontendController@index')->name('frontend.home');
+
+//Tạo trang danh sách Sản phẩm (product)
+Route::get('/san-pham', 'FrontendController@product')->name('frontend.product');
+
+//Tạo trang danh sách Sản phẩm (product) theo loại
+Route::get('/loai-san-pham/{type}', 'FrontendController@getLoaiSp')->name('loaisanpham');
+
+//Tạo trang Chi tiết Sản phẩm (product-detail)
+Route::get('/san-pham/{id}', 'FrontendController@productDetail')->name('frontend.productDetail');

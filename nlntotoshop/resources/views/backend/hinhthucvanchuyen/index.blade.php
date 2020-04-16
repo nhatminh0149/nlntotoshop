@@ -44,7 +44,7 @@ Danh sách hình thức vận chuyển
             <tr>
                 <td>{{ $htvc->htvc_ma }}</td>
                 <td>{{ $htvc->htvc_ten }}</td>
-                <td>{{ $htvc->htvc_chiPhi }}</td>
+                <td>{{ number_format($htvc->htvc_chiPhi, 0, ',' , ',') }} VNĐ</td>
                 <td>{{ $htvc->htvc_dienGiai }}</td>
                 <td>
                     <a href="{{ route('danhsachhinhthucvanchuyen.edit', ['id' => $htvc->htvc_ma]) }}" class="btn btn-outline-dark pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>

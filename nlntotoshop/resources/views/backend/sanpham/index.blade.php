@@ -47,7 +47,7 @@ Danh sách sản phẩm
             <tr>
                 <td>{{ $sp->sp_ma }}</td>
                 <td>{{ $sp->sp_ten }}</td>
-                <td>{{ $sp->sp_gia }}</td>
+                <td>{{ number_format($sp->sp_gia, 0, ',' , ',') }} VNĐ</td>
                 <td style="text-align: center;"><img src="{{ asset('storage/photos/' . $sp->sp_hinh) }}" class="img-list" style="width: 70px; height: 90px;"/></td>
                 <td>{{ $sp->loaisanpham->l_ten }}</td>
                 <td>

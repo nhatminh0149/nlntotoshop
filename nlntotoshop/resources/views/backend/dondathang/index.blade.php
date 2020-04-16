@@ -50,11 +50,28 @@ Danh sách đơn đặt hàng
                 <td>{{ $ddh->ddh_thoiGianDatHang }}</td>
                 <td>{{ $ddh->ddh_diaChiGiaoHang }}</td>
                 <td>{{ $ddh->ddh_dienThoai }}</td>
-                <td>{{ $ddh->TongThanhTien }}</td>
-                <td></td>
-                <td></td>
+                <td>{{ number_format($ddh->TongThanhTien, 0, ',' , ',') }} VNĐ</td>
+                <td> 
+                    @if (($ddh->ddh_trangThai) == 1)
+                        <div class="badge badge-danger">
+                            {{ 'Chưa xử lý' }}
+                       </div>
+                    @else 
+                        <div class="badge badge-info">
+                            {{ 'Đã xử lý' }}
+                        </div>
+                    @endif
+                </td>
+                <td>
+                    @if (($ddh->ddh_trangThai) == 1)
+                        <a href="#" class="btn btn-warning btn-sm">
+                            {{ 'Duyệt' }}
+                       </a>
+                    @endif
+                </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+{{ $danhsachdondathang->links() }}
 @endsection
