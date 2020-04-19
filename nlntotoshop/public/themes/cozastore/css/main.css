@@ -97,7 +97,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   src: url('../fonts/Montserrat/Montserrat-Bold.ttf'); 
 }
 
-@import url("https://fonts.googleapis.com/css?family=Playfair+Display|Noticia+Text|Baloo|Cormorant");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display|Noticia+Text|Baloo|Cormorant|Muli|Quicksand");
 
 
 /*//////////////////////////////////////////////////////////////////
@@ -228,6 +228,8 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .top-bar {
   height: 40px;
   background-color: #222;
+  font-family: Quicksand,sans-serif;
+  font-weight: bold;
 }
 
 /*---------------------------------------------*/
@@ -248,21 +250,21 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*---------------------------------------------*/
 .right-top-bar a {
   /* font-family: Poppins-Regular; */
-  font-family: Arial;
+   font-family: Arial;
   font-size: 12px;
   line-height: 1.8;
 
   height: 100%;
   color: #b2b2b2;
-  border-right: 1px solid rgba(255,255,255,0.3);
+  border-right: 1px solid rgba(255,255,255,0.3); 
 }
 
 .right-top-bar a:first-child {
-  border-left: 1px solid rgba(255,255,255,0.3);
+  border-left: 1px solid rgba(255,255,255,0.3); 
 }
 
 .right-top-bar a:hover {
-  color: #6c7ae0;
+  color: #6c7ae0; 
 }
 
 
@@ -332,7 +334,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  height: 65%;
+  height: 100%;
   margin-right: 55px;
 }
 
@@ -377,8 +379,9 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 .main-menu > li > a {
   /* font-family: Poppins-Medium; */
-  font-family: Verdana;
-  font-size: 14px;
+  font-family: Quicksand,sans-serif;
+  font-weight: bold;
+  font-size: 17px;
   color: #333;
   padding: 5px 0px;
   transition: all 0.4s;
@@ -450,7 +453,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 /*---------------------------------------------*/
 .main-menu > li:hover > a {
   text-decoration: none;
-  color: #6c7ae0;
+  color: #d0a552;
 }
 
 .main-menu > li:hover > .sub-menu {
@@ -515,7 +518,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   min-width: 15px;
   height: 15px;
   padding: 0 3px;
-  background-color: #717fe0;
+  background-color: #c86a0a;
 }
 
 /*---------------------------------------------*/
@@ -589,7 +592,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 .wrap-search-header button:hover {
-  color: #6c7ae0;
+  color: #d0a552;
 }
 
 /*---------------------------------------------*/
@@ -648,8 +651,9 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 /*---------------------------------------------*/
 .main-menu > li.active-menu > a {
-  color: #6c7ae0;
+  color: #d0a552;
 }
+
 
 
 
@@ -1940,29 +1944,41 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart .column-1 {
-  width: 133px;
-  padding-left: 50px;
+  width: 100px;
+  border-right: 1px solid #e6e6e6;
+}
+
+.table-shopping-cart .column-1 img{
+  padding-left: 30px;
+  width: 80px;
+  height: 80px;
 }
 
 .table-shopping-cart .column-2 {
-  width: 220px;
+  width: 120px;
   font-size: 15px;
+  border-right: 1px solid #e6e6e6;;
 }
 
 .table-shopping-cart .column-3 {
   width: 120px;
   font-size: 16px;
+  border-right: 1px solid #e6e6e6;
 }
 
 .table-shopping-cart .column-4 {
-  width: 145px;
-  text-align: right;
+  width: 50px;
+  border-right: 1px solid #e6e6e6;
 }
 
 .table-shopping-cart .column-5 {
-  width: 172px;
-  padding-right: 50px;
-  text-align: right;
+  width: 140px;
+  font-size: 16px;
+  border-right: 1px solid #e6e6e6;
+}
+
+.table-shopping-cart .column-6 {
+  width: 100px;
   font-size: 16px;
 }
 
@@ -2069,7 +2085,7 @@ input.num-product::-webkit-inner-spin-button {
 .block2-btn {
   position: absolute;
   bottom: -50px;
-  left: 50%;
+  left: 45%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
@@ -2198,8 +2214,8 @@ input.num-product::-webkit-inner-spin-button {
 
 .stext-106 {
   /* font-family: Poppins-Regular; */
-  font-family: Verdana;
-  font-size: 15px;
+  font-family: Quicksand,sans-serif;
+  font-size: 16px;
   line-height: 1.2;
 }
 
@@ -3106,7 +3122,7 @@ input.num-product::-webkit-inner-spin-button {
 
 .hov-cl0:hover {color: #fff;}
 .hov-bg0:hover {background-color: #fff;}
-.hov-cl1:hover {color: #717fe0;}
+.hov-cl1:hover {color: #c86a0a;}
 .hov-bg1:hover {background-color: #717fe0;}
 
 /*---------------------------------------------*/
@@ -3197,6 +3213,7 @@ input.num-product::-webkit-inner-spin-button {
 .hov1:hover {
   color: #333;
   border-color: #797979;
+  font-weight: bold;
 }
 
 /*---------------------------------------------*/

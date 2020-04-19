@@ -21,7 +21,7 @@ class CreateChitietdonhangTable extends Migration
             $table->unsignedSmallInteger('ctdh_soLuong')->default('1');
             $table->unsignedInteger('ctdh_donGia')->default('1');
             
-            $table->primary(['ddh_ma', 'sp_ma', 'htvc_ma']);
+            $table->primary(['ddh_ma', 'sp_ma', 'htvc_ma', 'kcsp_ma']);
             $table->foreign('ddh_ma')->references('ddh_ma')->on('dondathang')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->foreign('sp_ma')->references('sp_ma')->on('sanpham')->onDelete('CASCADE')->onUpdate('CASCADE');            
             $table->foreign('htvc_ma')->references('htvc_ma')->on('hinhthucvanchuyen')->onDelete('CASCADE')->onUpdate('CASCADE');

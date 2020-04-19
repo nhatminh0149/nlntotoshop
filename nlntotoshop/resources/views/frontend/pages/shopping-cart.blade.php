@@ -3,7 +3,7 @@
 
 {{-- Thay thế nội dung vào Placeholder `title` của view `frontend.layouts.master` --}}
 @section('title')
-S Ả N P H Ẩ M - P A G E
+Giỏ hàng Totoshop
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `custom-css` của view `frontend.layouts.master` --}}
@@ -13,7 +13,8 @@ S Ả N P H Ẩ M - P A G E
 {{-- Thay thế nội dung vào Placeholder `main-content` của view `frontend.layouts.master` --}}
 @section('main-content')
 
-    @include('frontend.widgets.product-list', [$data = $danhsachsanpham])
+    <!-- Hiển thị giỏ hàng -->
+    <ngcart-cart template-url="{{ asset('vendor/ngCart/template/ngCart/cart.html') }}"></ngcart-cart>
 
 @endsection
 

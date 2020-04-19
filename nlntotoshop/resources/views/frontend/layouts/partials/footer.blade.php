@@ -1,127 +1,173 @@
-<footer class="bg3 p-t-75 p-b-32">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-lg-3 p-b-50">
-                <h4 class="stext-301 cl0 p-b-30">
-                    {{ __('laravelweb.danhmuc') }}
-                </h4>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- Bootstrap CDN -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-                <ul>
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {{ __('laravelweb.traicaynhapkhau') }}
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="{{ asset('vendor/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    
+    <style>
+        /* footer */
+        footer{
+            background: linear-gradient(rgba(23, 23, 24, 0.85), rgba(30, 30, 31, 0.85)),
+                    url('{{ asset('img/banner/banner8.jpg') }}') center no-repeat;
+            background-size: cover;
+            margin-top: 70px;
+        }
+        footer h6{
+            color: #fdda5f;
+            font-family: 'Muli', sans-serif;
+        }
+        footer p{
+            color: #ebe8e3;
+            font-family: 'Muli', sans-serif;
+        }
+        footer i{
+            font-size: 23px;
+            color: #fdda5f;
+            font-family: 'Muli', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Footer -->
+    <footer class="page-footer font-small mdb-color">
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+
+        <!-- Footer links -->
+        <div class="row text-center text-md-left mt-3 pb-3">
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-5 col-sm-6 col-12 mt-5">
+                <h6 class="text-uppercase mb-4 font-weight-bold">CÔNG TY TNHH TOTO VIỆT NAM</h6>
+                <p><i class="fa fa-home mr-3"></i>Số 412 Lê Văn Sỹ. Phường 14, Quận 3, TPHCM.</p>
+                <p> <i class="fa fa-phone mr-3"></i>0938 803 633</p>
+                <p><i class="fa fa-envelope mr-3"></i>sale.online@totoshop.vn</p>
+                <p>Số ĐKKD: 41C8013053. Ngày cấp: 01/12/2010. <br>
+                    Nơi cấp: UBND Quận 3.</p>
+                <div class="text-center text-md-left">
+                    <ul class="list-unstyled list-inline">
+                    <li class="list-inline-item">
+                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <i class="fa fa-facebook-official" aria-hidden="true"></i>
                         </a>
                     </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {{ __('laravelweb.traicaymienBac') }}
+                    <li class="list-inline-item">
+                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <i class="fa fa-twitter-square" aria-hidden="true"></i>
                         </a>
                     </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {{ __('laravelweb.traicaymienTrung') }}
+                    <li class="list-inline-item">
+                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <i class="fa fa-google-plus-official" aria-hidden="true"></i>
                         </a>
                     </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {{ __('laravelweb.traicaymienNam') }}
+                    <li class="list-inline-item">
+                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
                         </a>
                     </li>
-                </ul>
-            </div>
-
-            <div class="col-sm-6 col-lg-3 p-b-50">
-                <h4 class="stext-301 cl0 p-b-30">
-                    {{ __('laravelweb.trogiup') }}
-                </h4>
-
-                <ul>
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {{ __('laravelweb.theodoidonhang') }}
+                    <li class="list-inline-item">
+                        <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
                         </a>
                     </li>
+                    </ul>
+                </div>
 
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {{ __('laravelweb.faqs') }}
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {{ __('laravelweb.hoantra') }}
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {{ __('laravelweb.vanchuyen') }}
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-
-            <div class="col-sm-6 col-lg-3 p-b-50">
-                <h4 class="stext-301 cl0 p-b-30">
-                    {{ __('laravelweb.lienhe') }}
-                </h4>
-
-                <p class="stext-107 cl7 size-201">
-                    {{ __('laravelweb.lienhecuthe') }}
-                </p>
-
-                <div class="p-t-27">
-                    <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-
-                    <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-
-                    <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                        <i class="fa fa-pinterest-p"></i>
-                    </a>
+                <div class="text-center text-md-left">
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item">
+                            <a class="btn-floating btn-sm rgba-white-slight">
+                                <img src="{{ asset('img/logo/bocongthuong.jpg') }}" alt="logo2"  width="150px" height="50px;">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+            <!-- Grid column -->
 
-            <div class="col-sm-6 col-lg-3 p-b-50">
-                <h4 class="stext-301 cl0 p-b-30">
-                    {{ __('laravelweb.bantin') }}
-                </h4>
+            <hr class="w-100 clearfix d-md-none">
 
-                <form>
-                    <div class="wrap-input1 w-full p-b-4">
-                        <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-                        <div class="focus-input1 trans-04"></div>
-                    </div>
+            <!-- Grid column -->
+            <div class="col-md-2 col-sm-6 col-12 mt-5">
+            <h6 class="text-uppercase mb-4 font-weight-bold">THÔNG TIN</h6>
+            <p>Giới thiệu</p>
+            <p>Đối tác</p>
+            <p>Quy định chung</p>
+            <p>Liên hệ công ty</p>
 
-                    <div class="p-t-18">
-                        <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-                            {{ __('laravelweb.dangkybantin') }}
-                        </button>
-                    </div>
-                </form>
             </div>
+
+            <!-- Grid column -->
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-2 col-sm-6 col-12 mt-5">
+            <h6 class="text-uppercase mb-4 font-weight-bold">CHÍNH SÁCH</h6>
+            <p>Chính sách đổi hàng</p>
+            <p>Chính sách bảo hành</p>
+            <p>Chính sách bảo mật</p>
+            </div> 
+            <!-- Grid column -->
+
+
+            <!-- Grid column -->
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-6 col-12 mt-5">
+            <h6 class="text-uppercase mb-4 font-weight-bold">FAQ</h6>
+            <p>Thanh toán và vận chuyển</p>
+            <p>Hướng dẫn chọn size</p>
+            <p>Câu hỏi thường gặp</p>
+            <p>Kiểm tra thông tin đơn hàng</p>
+            </div> 
+            <!-- Grid column -->
+
         </div>
+        <!-- Footer links -->
 
-        <div class="p-t-40">
-            <div class="flex-c-m flex-w p-b-18">
-            </div>
+        <!-- Grid row -->
+        <div class="row d-flex align-items-center">
 
-            <p class="stext-107 cl6 txt-center">
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>
-                    document.write(new Date().getFullYear());
-                </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <!-- Grid column -->
+            <div class="col-md-6 col-lg-8">
 
+            <!--Copyright-->
+            <p class="text-center text-md-left">
+                <p>ToToShop - Thương hiệu thời trang của người Việt được yêu thích nhất của giới trẻ.</p>
             </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-12 col-lg-4 ml-lg-0">
+
+            <!-- Social buttons -->
+            <div class="text-center text-md-left">
+                <p>Copyrights © 2019 by ToToVN</p>
+            </div>
+
+            </div>
+            <!-- Grid column -->
+
         </div>
-    </div>
-</footer>
+        <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+    </footer>
+    <!-- End Footer -->
+</body>
+</html>

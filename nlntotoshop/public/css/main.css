@@ -97,7 +97,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
     src: url('../fonts/Montserrat/Montserrat-Bold.ttf'); 
   }
   
-  @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Noticia+Text|Baloo|Cormorant");
+  @import url("https://fonts.googleapis.com/css?family=Playfair+Display|Noticia+Text|Baloo|Cormorant|Quicksand");
   
   
   /*//////////////////////////////////////////////////////////////////
@@ -1103,7 +1103,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   /*------------------------------------------------------------------
   [ in select ]*/
   .rs1-select2 .select2-container .select2-selection--single .select2-selection__rendered {
-    font-family: Poppins-Regular;
+    font-family: Quicksand,sans-serif;
     font-size: 13px;
     color: #555;
     line-height: 1.2;
@@ -1945,22 +1945,22 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   }
   
   .table-shopping-cart .column-2 {
-    width: 220px;
+    width: 200px;
     font-size: 15px;
   }
   
   .table-shopping-cart .column-3 {
-    width: 120px;
+    width: 50px;
     font-size: 16px;
   }
   
   .table-shopping-cart .column-4 {
-    width: 145px;
+    width: 50px;
     text-align: right;
   }
   
   .table-shopping-cart .column-5 {
-    width: 172px;
+    width: 150px;
     padding-right: 50px;
     text-align: right;
     font-size: 16px;

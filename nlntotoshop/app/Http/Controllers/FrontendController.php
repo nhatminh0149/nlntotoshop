@@ -5,16 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\LoaiSanPham; 
 use App\Sanpham;
-use App\Vanchuyen;
-use App\Khachhang;
-use App\Donhang;
-use App\Thanhtoan;
-use App\Chitietdonhang;
-use Carbon\Carbon;
+use App\KichCoSanPham;
 use DB;
-use Mail;
-use App\Mail\ContactMailer;
-use App\Mail\OrderMailer;
+
 
 class FrontendController extends Controller
 {
@@ -36,15 +29,20 @@ class FrontendController extends Controller
          $danhsachhinhanhlienquan = DB::table('hinhanh')
          ->whereIn('sp_ma', $danhsachsanpham->pluck('sp_ma')->toArray())
          ->get();
+
         // Query danh sách Loại
         $danhsachloai = LoaiSanPham::all();
+
+        // Query danh sách kích cỡ sản phẩm
+        $danhsachkichcosanpham = KichCoSanPham::all();
 
         // Hiển thị view `frontend.index` với dữ liệu truyền vào
         return view('frontend.index')
             ->with('ds_top3_newest_loaisanpham', $ds_top3_newest_loaisanpham)
             ->with('danhsachsanpham', $danhsachsanpham)
             ->with('danhsachhinhanhlienquan', $danhsachhinhanhlienquan)
-            ->with('danhsachloai', $danhsachloai);
+            ->with('danhsachloai', $danhsachloai)
+            ->with('danhsachkichcosanpham', $danhsachkichcosanpham);
     }
     /**
      * Hàm query danh sách sản phẩm theo nhiều điều kiện
@@ -111,11 +109,15 @@ class FrontendController extends Controller
         // Query danh sách Loại
         $danhsachloai = LoaiSanPham::all();
 
+        // Query danh sách kích cỡ sản phẩm
+        $danhsachkichcosanpham = KichCoSanPham::all();
+
         // Hiển thị view `frontend.index` với dữ liệu truyền vào
         return view('frontend.pages.product')
             ->with('danhsachsanpham', $danhsachsanpham)
             ->with('danhsachhinhanhlienquan', $danhsachhinhanhlienquan)
-            ->with('danhsachloai', $danhsachloai);
+            ->with('danhsachloai', $danhsachloai)
+            ->with('danhsachkichcosanpham', $danhsachkichcosanpham);
     }
 
     /**
@@ -133,11 +135,22 @@ class FrontendController extends Controller
         // Query danh sách Loại
         $danhsachloai = LoaiSanPham::all();
 
+        // Query danh sách kích cỡ sản phẩm
+        $danhsachkichcosanpham = KichCoSanPham::all();
+
         return view('frontend.pages.product-detail')
             ->with('sp', $sanpham)
             ->with('danhsachhinhanhlienquan', $danhsachhinhanhlienquan)
-            ->with('danhsachloai', $danhsachloai);
+            ->with('danhsachloai', $danhsachloai)
+            ->with('danhsachkichcosanpham', $danhsachkichcosanpham);
     }
 
+    /**
+     * Action hiển thị giỏ hàng
+     */
+    public function cart(Request $request)
+    {
+        return view('frontend.pages.shopping-cart');
+    }
 
 }

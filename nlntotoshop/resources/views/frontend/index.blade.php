@@ -14,10 +14,7 @@ T O T O S H O P
 @section('main-content')
 <!-- Slider -->
 @include('frontend.widgets.homepage-slider')
-<!-- Banner -->
-@include('frontend.widgets.homepage-banner', [$data = $ds_top3_newest_loaisanpham])
-<!-- Product -->
-@include('frontend.widgets.product-list', [$data = $danhsachsanpham])
+
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `custom-scripts` của view `frontend.layouts.master` --}}

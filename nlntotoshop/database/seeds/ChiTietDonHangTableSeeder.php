@@ -21,46 +21,7 @@ class ChiTietDonHangTableSeeder extends Seeder
                 'ctdh_soLuong'   => '2',
                 'ctdh_donGia'    => '235000',
             ],
-            [
-                'ddh_ma'         => 2,
-                'sp_ma'          => 35,
-                'kcsp_ma'        => 2,
-                'htvc_ma'        => 2,
-                'ctdh_soLuong'   => '2',
-                'ctdh_donGia'    => '880000',
-            ],      
-            [
-                'ddh_ma'         => 3,
-                'sp_ma'          => 35,
-                'kcsp_ma'        => 2,
-                'htvc_ma'        => 2,
-                'ctdh_soLuong'   => '2',
-                'ctdh_donGia'    => '880000',
-            ],      
-            [
-                'ddh_ma'         => 4,
-                'sp_ma'          => 35,
-                'kcsp_ma'        => 2,
-                'htvc_ma'        => 2,
-                'ctdh_soLuong'   => '2',
-                'ctdh_donGia'    => '880000',
-            ],      
-            [
-                'ddh_ma'         => 5,
-                'sp_ma'          => 35,
-                'kcsp_ma'        => 2,
-                'htvc_ma'        => 2,
-                'ctdh_soLuong'   => '2',
-                'ctdh_donGia'    => '880000',
-            ],      
-            [
-                'ddh_ma'         => 6,
-                'sp_ma'          => 35,
-                'kcsp_ma'        => 2,
-                'htvc_ma'        => 2,
-                'ctdh_soLuong'   => '2',
-                'ctdh_donGia'    => '880000',
-            ],      
+               
         ];
         DB::table('chitietdonhang')->insert($list);
     }

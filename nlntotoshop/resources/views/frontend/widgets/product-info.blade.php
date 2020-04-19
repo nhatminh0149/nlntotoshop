@@ -61,7 +61,7 @@
                         </h4>
 
                         <span class="mtext-106 cl2">
-                            {{ $sp->sp_gia }}
+                        {{ number_format($sp->sp_gia, 0, ',' , ',') }} VNĐ
                         </span>
 
                         <p class="stext-102 cl3 p-t-23">
@@ -70,40 +70,29 @@
 
                         <!--  -->
                         <div class="p-t-33">
+
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
-                                    Màu sắc
+                                    Kích cỡ
                                 </div>
-
-                                
+                                <div class="size-204 respon6-next">
+                                    <div class="rs1-select2 bor8 bg0">
+                                        <select class="js-select2" name="time">
+                                            <option>Chọn kích cỡ</option>
+                                            @foreach($danhsachkichcosanpham as $kcsp)
+                                            <option value="{{ $kcsp->kcsp_ma }}">{{ $kcsp->kcsp_ten }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                </div>
                             </div>
-
+                            
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
-                                    <ngcart-addtocart template-url="{{ asset('vendor/ngCart/template/ngCart/addtocart.html') }}" id="{{ $sp->sp_ma }}" name="{{ $sp->sp_ten }}" quantity="1" quantity-max="30" data="{ sp_hinh_url: '{{ asset('storage/photos/' . $sp->sp_hinh) }}' }">Thêm vào giỏ hàng</ngcart-addtocart>
+                                    <ngcart-addtocart template-url="{{ asset('vendor/ngCart/template/ngCart/addtocart.html') }}" id="{{ $sp->sp_ma }}" name="{{ $sp->sp_ten }}" price="{{ $sp->sp_gia }}" quantity="1" quantity-max="30" data="{ sp_hinh_url: '{{ asset('storage/photos/' . $sp->sp_hinh) }}' }">Thêm vào giỏ hàng</ngcart-addtocart>
                                 </div>
                             </div>
-                        </div>
-
-                        <!--  -->
-                        <div class="flex-w flex-m p-l-100 p-t-40 respon7">
-                            <div class="flex-m bor9 p-r-10 m-r-11">
-                                <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </a>
-                            </div>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-
-                            <a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
-                                <i class="fa fa-google-plus"></i>
-                            </a>
                         </div>
                     </div>
                 </div>

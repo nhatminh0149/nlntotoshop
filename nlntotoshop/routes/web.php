@@ -74,3 +74,5 @@ Route::get('/loai-san-pham/{type}', 'FrontendController@getLoaiSp')->name('loais
 
 //Tạo trang Chi tiết Sản phẩm (product-detail)
 Route::get('/san-pham/{id}', 'FrontendController@productDetail')->name('frontend.productDetail');
+
+Route::get('/gio-hang', 'FrontendController@cart')->name('frontend.cart');
