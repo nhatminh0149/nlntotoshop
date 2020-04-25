@@ -20,6 +20,7 @@ class DonDatHangTableSeeder extends Seeder
                 'ddh_diaChiGiaoHang'    => 'số 11, đường 3/2, phường Xuân Khánh, quận Ninh Kiều, TPCT',
                 'ddh_dienThoai'         => '0923444555',
                 'ddh_trangThai'         => 1,
+                'htvc_ma'               => 1,
             ],
             [
                 'ddh_ma'                => 2,
@@ -28,6 +29,7 @@ class DonDatHangTableSeeder extends Seeder
                 'ddh_diaChiGiaoHang'    => 'số 15, đường 3/2, phường Xuân Khánh, quận Ninh Kiều, TPCT',
                 'ddh_dienThoai'         => '0923444666',
                 'ddh_trangThai'         => 1,
+                'htvc_ma'               => 1,
             ],
             [
                 'ddh_ma'                => 3,
@@ -36,6 +38,7 @@ class DonDatHangTableSeeder extends Seeder
                 'ddh_diaChiGiaoHang'    => 'số 15, đường 3/2, phường Xuân Khánh, quận Ninh Kiều, TPCT',
                 'ddh_dienThoai'         => '0923444666',
                 'ddh_trangThai'         => 1,
+                'htvc_ma'               => 1,
             ],
             [
                 'ddh_ma'                => 4,
@@ -44,6 +47,7 @@ class DonDatHangTableSeeder extends Seeder
                 'ddh_diaChiGiaoHang'    => 'số 15, đường 3/2, phường Xuân Khánh, quận Ninh Kiều, TPCT',
                 'ddh_dienThoai'         => '0923444666',
                 'ddh_trangThai'         => 1,
+                'htvc_ma'               => 1,
             ],
             [
                 'ddh_ma'                => 5,
@@ -52,6 +56,7 @@ class DonDatHangTableSeeder extends Seeder
                 'ddh_diaChiGiaoHang'    => 'số 15, đường 3/2, phường Xuân Khánh, quận Ninh Kiều, TPCT',
                 'ddh_dienThoai'         => '0923444666',
                 'ddh_trangThai'         => 1,
+                'htvc_ma'               => 1,
             ],
             [
                 'ddh_ma'                => 6,
@@ -60,6 +65,7 @@ class DonDatHangTableSeeder extends Seeder
                 'ddh_diaChiGiaoHang'    => 'số 15, đường 3/2, phường Xuân Khánh, quận Ninh Kiều, TPCT',
                 'ddh_dienThoai'         => '0923444666',
                 'ddh_trangThai'         => 1,
+                'htvc_ma'               => 1,
             ],
         ];
         DB::table('dondathang')->insert($list);

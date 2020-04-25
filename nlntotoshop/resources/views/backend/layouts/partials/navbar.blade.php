@@ -23,7 +23,7 @@
             </div>
             <div class="right-panel">
             <a>  Xin chào Admin </a>&nbsp;&nbsp;&nbsp;
-            <i class="fa fa-heart" aria-hidden="true"></i> <a href="#" style="color: #e49818; text-decoration: none;">Trang chủ</a>&nbsp;&nbsp;&nbsp;
+            <i class="fa fa-heart" aria-hidden="true"></i> <a href="{{ route('frontend.home') }}" style="color: #e49818; text-decoration: none;">Trang chủ</a>&nbsp;&nbsp;&nbsp;
             <i class="fa fa-sign-out" aria-hidden="true"></i> <a href="#"  style="color: #e49818; text-decoration: none;">Đăng xuất</a>
             </div>
         </div>

@@ -16,7 +16,7 @@ class HinhAnhTableSeeder extends Seeder
             [
                 'sp_ma'          => 1,
                 'ha_stt'        => 1,
-                'ha_ten'        => 'aothunU1ATN020001.jpg',
+                'ha_ten'        => 'aothunB1.jpg',
             ],     
         ];
         DB::table('hinhanh')->insert($list);

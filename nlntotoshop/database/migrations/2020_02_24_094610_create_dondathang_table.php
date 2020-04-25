@@ -20,9 +20,10 @@ class CreateDondathangTable extends Migration
             $table->string('ddh_diaChiGiaoHang', 250);
             $table->string('ddh_dienThoai', 11);
             $table->unsignedTinyInteger('ddh_trangThai')->default('1')->comment('1-chưa xử lý, 2-đã xử lý');
-            
+            $table->unsignedTinyInteger('htvc_ma');
+
             $table->foreign('kh_ma')->references('kh_ma')->on('khachhang')->onDelete('CASCADE')->onUpdate('CASCADE');
-            
+            $table->foreign('htvc_ma')->references('htvc_ma')->on('hinhthucvanchuyen')->onDelete('CASCADE')->onUpdate('CASCADE');
            
         });
     }

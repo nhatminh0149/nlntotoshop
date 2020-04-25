@@ -160,4 +160,6 @@ class KhachHangController extends Controller
     {
         //
     }
+
+    
 }

@@ -12,7 +12,7 @@ class HinhThucVanChuyen extends Model
     protected $primaryKey   = 'htvc_ma';
     public $timestamps = false; //ko muốn tạo 2 cột created_at và updated _at
 
-    public function chitietdonhang(){
-        return $this->hasMany('App\ChiTietDonHang', 'htvc_ma', 'htvc_ma');
+    public function dondathang(){
+        return $this->hasMany('App\DonDatHang', 'htvc_ma', 'htvc_ma');
     }
 }

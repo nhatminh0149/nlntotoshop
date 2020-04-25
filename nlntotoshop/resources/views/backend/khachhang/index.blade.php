@@ -59,7 +59,13 @@ Danh sách khách hàng
                 </td>
                 <td>{{ $kh->kh_email }}</td>
                 <td>{{ $kh->kh_dienThoai }}</td>
-                <td>{{ $kh->kh_trangThai }}</td>
+                <td>
+                    @if (($kh->kh_trangThai) == 0)
+                        {{ 'Chưa kích hoạt' }}
+                    @elseif (($kh->kh_trangThai) == 1) 
+                            {{ 'Kích hoạt' }}
+                    @endif
+                </td>
                 <td>
                     <a href="{{ route('danhsachkhachhang.edit', ['id' => $kh->kh_ma]) }}" class="btn btn-outline-dark pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>
                     <form method="post" action="{{ route('danhsachkhachhang.destroy', ['id' => $kh->kh_ma]) }}" class="pull-left">

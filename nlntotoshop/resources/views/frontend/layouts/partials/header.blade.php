@@ -43,8 +43,8 @@
                     </div>
 
                     <div class="col-md-4 col-sm-12 col-12 mt-2 text-center">
-                            <a href="#" class="btnToto"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;Đăng ký</a>&nbsp;
-                            <a href="#" class="btnToto"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Đăng nhập</a>
+                            <a href="{{ route('frontend.register') }}" class="btnToto"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;Đăng ký</a>&nbsp;
+                            <a href="{{ route('frontend.login') }}" class="btnToto"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Đăng nhập</a>
                     </div>
                 </div>
 
@@ -70,12 +70,12 @@
                             </li>
 
                             <li class="{{ Request::is('gioi-thieu') ? 'active-menu' : '' }}">
-                                <a href="#">Giới thiệu</a>
+                                <a href="{{ route('frontend.about') }}">Giới thiệu</a>
                             </li>
 
 
                             <li class="{{ Request::is('lien-he') ? 'active-menu' : '' }}">
-                                <a href="#">Liên hệ</a>
+                                <a href="{{ route('frontend.contact') }}">Liên hệ</a>
                             </li>
                         </ul>
                     </div>

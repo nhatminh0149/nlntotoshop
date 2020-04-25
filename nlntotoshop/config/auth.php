@@ -66,9 +66,15 @@ return [
     */
 
     'providers' => [
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\User::class,
+        // ],
+
+        // Thay thế việc Xác thực tài khoản bằng model `khachhang`
         'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
+            'driver' => 'custom',
+            'model' => App\KhachHang::class,
         ],
 
         // 'users' => [

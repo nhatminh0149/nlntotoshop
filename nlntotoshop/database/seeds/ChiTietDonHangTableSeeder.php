@@ -16,12 +16,9 @@ class ChiTietDonHangTableSeeder extends Seeder
             [
                 'ddh_ma'         => 1,
                 'sp_ma'          => 1,
-                'kcsp_ma'        => 1,
-                'htvc_ma'        => 1,
                 'ctdh_soLuong'   => '2',
                 'ctdh_donGia'    => '235000',
-            ],
-               
+            ],      
         ];
         DB::table('chitietdonhang')->insert($list);
     }

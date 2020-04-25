@@ -32,10 +32,7 @@ Route::post('/admin/danhsachloaisanpham/store', 'LoaiSanPhamController@store')->
 Route::get('/admin/danhsachloaisanpham/edit{id}', 'LoaiSanPhamController@edit')->name('danhsachloaisanpham.edit');
 Route::resource('/admin/danhsachloaisanpham', 'LoaiSanPhamController');
 
-// route Danh mục Kích cỡ sản phẩm
-Route::get('/admin/danhsachkichcosanpham/index', 'KichCoSanPhamController@index')->name('danhsachkichcosanpham.index');
-Route::get('/admin/danhsachkichcosanpham/create', 'KichCoSanPhamController@create')->name('danhsachkichcosanpham.create');
-Route::resource('/admin/danhsachkichcosanpham', 'KichCoSanPhamController');
+
 
 // route Danh mục Sản phẩm
 Route::get('/admin/danhsachsanpham/index', 'SanPhamController@index')->name('danhsachsanpham.index');
@@ -62,9 +59,21 @@ Route::resource('/admin/danhsachdondathang', 'DonDatHangController');
 //     return view('frontend/index');
 // });
 
+// Gọi hàm đăng ký các route dành cho Quản lý Xác thực tài khoản (Đăng nhập, Đăng xuất, Đăng ký)
+// các route trong file `vendor\laravel\framework\src\Illuminate\Routing\Router.php`, hàm auth()
+// Auth::routes();
 
 //Thực hiện tạo giao diện trang chủ Frontend
 Route::get('/', 'FrontendController@index')->name('frontend.home');
+
+//Thực hiện tạo giao diện About - giới thiệu
+Route::get('/gioi-thieu', 'FrontendController@about')->name('frontend.about');
+
+//Thực hiện tạo giao diện About - giới thiệu
+Route::get('/lien-he', 'FrontendController@contact')->name('frontend.contact');
+
+// Tạo route sendMailContactForm
+Route::post('/lien-he/goi-loi-nhan', 'FrontendController@sendMailContactForm')->name('frontend.contact.sendMailContactForm');
 
 //Tạo trang danh sách Sản phẩm (product)
 Route::get('/san-pham', 'FrontendController@product')->name('frontend.product');
@@ -75,4 +84,16 @@ Route::get('/loai-san-pham/{type}', 'FrontendController@getLoaiSp')->name('loais
 //Tạo trang Chi tiết Sản phẩm (product-detail)
 Route::get('/san-pham/{id}', 'FrontendController@productDetail')->name('frontend.productDetail');
 
+//Tạo trang thanh toán (checkout)
 Route::get('/gio-hang', 'FrontendController@cart')->name('frontend.cart');
+
+//Tạo đơn hàng và gởi mail xác nhận
+Route::get('/gio-hang', 'FrontendController@cart')->name('frontend.cart');
+Route::post('/dat-hang', 'FrontendController@order')->name('frontend.order');
+Route::get('/dat-hang/hoan-tat', 'FrontendController@orderFinish')->name('frontend.orderFinish');
+
+//Khách hàng đăng nhập tài khoản
+Route::get('/dang-nhap', 'FrontendController@getLogin')->name('frontend.login');
+
+//Khách hàng đăng ký tài khoản
+Route::get('/dang-ky', 'FrontendController@getRegister')->name('frontend.register');
