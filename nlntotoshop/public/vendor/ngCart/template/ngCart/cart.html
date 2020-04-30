@@ -68,9 +68,9 @@
                                         </div>
                                     </td>
                                     <td class="column-2 text-center"><% item.getName() %></td>
-                                    <td class="column-3 text-center"><% item.getPrice()  %> VNĐ</td>
+                                    <td class="column-3 text-center"><% item.getPrice() %> VND</td>
                                     <td class="column-4 text-center"><% item.getQuantity() | number %></td>
-                                    <td class="column-5 text-center"><% item.getTotal()  %> VNĐ</td>
+                                    <td class="column-5 text-center"><% item.getTotal() %> VND</td>
                                     <td class="column-6 text-center"><span ng-click="ngCart.removeItemById(item.getId())"
                                             class="glyphicon glyphicon-remove remove">Xóa</span></td>
                                 </tr>
@@ -121,7 +121,7 @@
 
                             <div class="size-209 p-t-1">
                                 <span class="mtext-110 cl2">
-                                    <% ngCart.totalCost()  %> VNĐ
+                                    <% ngCart.totalCost() %> VND
                                 </span>
                             </div>
                         </div>

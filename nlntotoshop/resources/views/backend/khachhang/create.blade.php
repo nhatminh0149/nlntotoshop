@@ -42,7 +42,7 @@
 
             <div class="form-group">
                 <label for="kh_matKhau">Mật khẩu</label>
-                <input type="text" class="form-control" id="kh_matKhau" name="kh_matKhau" value="{{ old('kh_matKhau') }}">
+                <input type="password" class="form-control" id="kh_matKhau" name="kh_matKhau" value="{{ old('kh_matKhau') }}">
                 @if($errors->has("kh_matKhau"))
                     <div class="a" style="color: red; font-style: italic; font-size: 14px;">
                         {{$errors->first("kh_matKhau")}}

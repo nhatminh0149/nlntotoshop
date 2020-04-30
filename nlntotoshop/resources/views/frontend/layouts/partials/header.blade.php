@@ -43,8 +43,13 @@
                     </div>
 
                     <div class="col-md-4 col-sm-12 col-12 mt-2 text-center">
+                        @if(Session::has('kh_taiKhoan'))
+                            <a href="#" class="btnToto"><i class="fa fa-heartbeat" aria-hidden="true"></i>&nbsp;Hi! {{ Session::get('kh_hoTen') }}</a>
+                            <a href="{{ route('frontend.logout') }}" class="btnToto"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Đăng xuất</a>
+                        @else
                             <a href="{{ route('frontend.register') }}" class="btnToto"><i class="fa fa-user-o" aria-hidden="true"></i>&nbsp;Đăng ký</a>&nbsp;
-                            <a href="{{ route('frontend.login') }}" class="btnToto"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Đăng nhập</a>
+                            <a href="{{ route('frontend.login') }}" class="btnToto"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Đăng nhập</a>    
+                        @endif
                     </div>
                 </div>
 
@@ -61,22 +66,44 @@
                     <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <li class="{{ Request::is('/') ? 'active-menu' : '' }}">
-                                <a href="{{ route('frontend.home') }}">Trang chủ</a>
-                            </li>
+                            @if(Session::has('kh_taiKhoan') && Session::get('kh_taiKhoan') == 'admin')
+                                <li class="{{ Request::is('/') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('frontend.home') }}">Trang chủ</a>
+                                </li>
 
-                            <li class="{{ Request::is('san-pham') ? 'active-menu' : '' }}">
-                                <a href="{{ route('frontend.product') }}">Sản phẩm</a>
-                            </li>
+                                <li class="{{ Request::is('san-pham') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('frontend.product') }}">Sản phẩm</a>
+                                </li>
 
-                            <li class="{{ Request::is('gioi-thieu') ? 'active-menu' : '' }}">
-                                <a href="{{ route('frontend.about') }}">Giới thiệu</a>
-                            </li>
+                                <li class="{{ Request::is('gioi-thieu') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('frontend.about') }}">Giới thiệu</a>
+                                </li>
+
+                                <li class="{{ Request::is('lien-he') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('frontend.contact') }}">Liên hệ</a>
+                                </li>
+
+                                <li class="{{ Request::is('admin') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('danhsachloaisanpham.index') }}">Quản trị</a>
+                                </li>
+                            @else
+                                <li class="{{ Request::is('/') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('frontend.home') }}">Trang chủ</a>
+                                </li>
+
+                                <li class="{{ Request::is('san-pham') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('frontend.product') }}">Sản phẩm</a>
+                                </li>
+
+                                <li class="{{ Request::is('gioi-thieu') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('frontend.about') }}">Giới thiệu</a>
+                                </li>
 
 
-                            <li class="{{ Request::is('lien-he') ? 'active-menu' : '' }}">
-                                <a href="{{ route('frontend.contact') }}">Liên hệ</a>
-                            </li>
+                                <li class="{{ Request::is('lien-he') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('frontend.contact') }}">Liên hệ</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                     

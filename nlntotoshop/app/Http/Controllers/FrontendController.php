@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Auth;
+use DB;
+use Mail;
+use App\User;
 use App\LoaiSanPham; 
 use App\Sanpham;
 use App\HinhThucVanChuyen;
@@ -10,11 +15,12 @@ use App\KhachHang;
 use App\DonDatHang;
 use App\ChiTietDonHang;
 use Carbon\Carbon;
-
-use Mail;
 use App\Mail\ContactMailer;
 use App\Mail\OrderMailer;
-use DB;
+use Session;
+
+
+
 
 
 class FrontendController extends Controller
@@ -166,7 +172,7 @@ class FrontendController extends Controller
             // Tạo mới khách hàng
             $khachhang = new Khachhang();
             $khachhang->kh_taiKhoan = $request->khachhang['kh_taiKhoan'];
-            $khachhang->kh_matKhau = bcrypt('123456');
+            $khachhang->kh_matKhau = md5('123456');
             $khachhang->kh_hoTen = $request->khachhang['kh_hoTen'];
             $khachhang->kh_gioiTinh = $request->khachhang['kh_gioiTinh'];
             $khachhang->kh_email = $request->khachhang['kh_email'];
@@ -206,6 +212,7 @@ class FrontendController extends Controller
             }
             // Gởi mail khách hàng
             // dd($dataMail);
+            
             Mail::to($khachhang->kh_email)
                 ->send(new OrderMailer($dataMail));
         }
@@ -241,5 +248,132 @@ class FrontendController extends Controller
     public function getRegister()
     {
         return view('frontend.pages.dangky');
+    }
+
+    public function postRegister(Request $request)
+    {
+        $this->validate($request, [
+            'kh_taiKhoan' => 'required|unique:khachhang,kh_taiKhoan',
+            'kh_matKhau' => 'required|min:6',
+            're_kh_matKhau' => 'same:kh_matKhau',
+            'kh_hoTen' => 'required',
+            'kh_email' => 'required|email',
+            'kh_diaChi' => 'required',
+            'kh_dienThoai' => 'required|digits:10',
+        ],[
+            'kh_taiKhoan.required' => "Tên tài khoản của khách hàng không được để trống",
+            'kh_taiKhoan.unique' => "Tên tài khoản này đã tồn tại. Quý khách vui lòng sử dụng tên tài khoản khác", 
+            'kh_matKhau.required' => "Mật khẩu của khách hàng không được để trống", 
+            'kh_matKhau.min' => "Mật khẩu phải ít nhất có 6 kí tự", 
+            're_kh_matKhau.same' => "Mật khẩu không giống nhau",
+            'kh_hoTen.required' => "Họ tên của khách hàng không được để trống", 
+            'kh_email.required' => "Email của khách hàng không được để trống", 
+            'kh_email.email' => "Email không đúng định dạng", 
+            'kh_diaChi.required' => "Địa chỉ của khách hàng không được để trống", 
+            'kh_dienThoai.required' => "SĐT của khách hàng không được để trống", 
+            'kh_dienThoai.digits' => "SĐT của khách hàng phải là số 10 kí tự", 
+        ]);
+
+        $kh = new KhachHang();
+        $kh->kh_ma = $request->kh_ma;
+        $kh->kh_taiKhoan = $request->kh_taiKhoan;
+        $kh->kh_matKhau = md5($request->kh_matKhau);
+        $kh->kh_hoTen = $request->kh_hoTen;
+        $kh->kh_gioiTinh = $request->kh_gioiTinh;
+        $kh->kh_email = $request->kh_email;
+        $kh->kh_diaChi = $request->kh_diaChi;
+        $kh->kh_dienThoai = $request->kh_dienThoai;
+        $kh->kh_trangThai = 0; // Chưa kích hoạt
+
+        $kh->save();
+        
+        return redirect()->back()->with('thanhcong', "Quý khách tạo tài khoản thành công!");
+        // Session::flash('alert-warning', 'Thêm mới thành công');
+        
+        // return redirect()->route('danhsachkhachhang.index');
+    }
+
+    // public function __construct(){
+    //     $this->middleware('cus');
+    // }
+
+    // public function logout(){
+    //     Auth::logout();
+    //     return redirect()->route('frontend.home');
+    // }
+
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            'kh_taiKhoan' => 'required',
+            'kh_matKhau' => 'required|min:6',
+        ],[
+            'kh_taiKhoan.required' => "Vui lòng nhập tài khoản",
+            'kh_matKhau.required' => "Vui lòng nhập mật khẩu", 
+            'kh_matKhau.min' => "Mật khẩu phải ít nhất có 6 kí tự", 
+        ]);
+        
+        // $kh_taiKhoan = $request['kh_taiKhoan'];
+        // $kh_matKhau = md5($request['kh_matKhau']);
+        
+        // print_r($kh_taiKhoan);
+        // print_r('<br>');
+        // print_r($kh_matKhau);
+        
+        // if(Auth::attempt(['kh_taiKhoan'=>$kh_taiKhoan, 'kh_matKhau'=>$kh_matKhau])){
+        //     // return redirect()->back()->with( ['flag' => 'success', 'message' => "Đăng nhập thành công"] );
+        //     echo "Đăng nhập thành công";
+        // }
+        // else{
+        //     // return redirect()->back()->with( ['flag' => 'danger', 'message' => "Đăng nhập không thành công"] );
+        //     echo "Đăng nhập không thành công";
+            
+        // }
+
+        // $result = DB::table('khachhang')->where('kh_taiKhoan', $kh_taiKhoan)->get()->toArray();
+        // // echo '<pre>';
+        // // print_r($result);
+        // foreach($result as $value){
+
+        // }
+        // if($value->kh_matKhau == $kh_matKhau){
+        //     echo "Đăng nhập thành công";
+        // }
+        // else{
+        //     echo $kh_matKhau;
+        //     echo "<br>";
+        //     echo $value->kh_matKhau;
+        // }
+
+        $khachhang = KhachHang::where("kh_taiKhoan", $request->kh_taiKhoan)
+                              ->where("kh_matKhau", md5($request->kh_matKhau))->first();
+        if($khachhang){
+            $request->session()->put('kh_taiKhoan', $khachhang->kh_taiKhoan);
+            $request->session()->put('kh_matKhau', $khachhang->kh_matKhau);
+            $request->session()->put('kh_hoTen', $khachhang->kh_hoTen);
+            $request->session()->put('kh_gioiTinh', $khachhang->kh_gioiTinh);
+            $request->session()->put('kh_email', $khachhang->kh_email);
+            $request->session()->put('kh_diaChi', $khachhang->kh_diaChi);
+            $request->session()->put('kh_dienThoai', $khachhang->kh_dienThoai);
+            return redirect()->back()->with( ['flag' => 'success', 'message' => "Đăng nhập thành công"] );
+        }
+        else{
+            return redirect()->back()->with( ['flag' => 'danger', 'message' => "Đăng nhập không thành công"] );  
+        }
+        
+    }
+    public function postLogout(Request $request){
+        try{
+            if($request->session()->exists('kh_taiKhoan')){
+                $request->session()->forget('kh_taiKhoan');
+            }
+            if($request->session()->exists('kh_matKhau')){
+                $request->session()->forget('kh_matKhau');
+            }
+            return redirect()->route('frontend.home');
+        }
+        catch (Exception $ex){
+            return response(['error'=>true, 'message'=>$ex->getMessage()], 200);
+        }
     }
 }

@@ -63,7 +63,7 @@ class KhachHangController extends Controller
         $kh = new KhachHang();
         $kh->kh_ma = $request->kh_ma;
         $kh->kh_taiKhoan = $request->kh_taiKhoan;
-        $kh->kh_matKhau = Hash::make($request->kh_matKhau);
+        $kh->kh_matKhau = md5($request->kh_matKhau);
         $kh->kh_hoTen = $request->kh_hoTen;
         $kh->kh_gioiTinh = $request->kh_gioiTinh;
         $kh->kh_email = $request->kh_email;
@@ -114,7 +114,7 @@ class KhachHangController extends Controller
     {
         $this->validate($request, [
             'kh_taiKhoan' => 'required',
-            // 'kh_matKhau' => 'required|min:6',
+            'kh_matKhau' => 'required|min:6',
             'kh_hoTen' => 'required',
             'kh_email' => 'required|email',
             'kh_diaChi' => 'required',
@@ -122,7 +122,7 @@ class KhachHangController extends Controller
         ],[
             'kh_taiKhoan.required' => "Tên tài khoản của khách hàng không được để trống",
             // 'kh_taiKhoan.unique' => "Tên tài khoản này đã có trong CSDL", 
-            // 'kh_matKhau.required' => "Mật khẩu của khách hàng không được để trống", 
+            'kh_matKhau.required' => "Mật khẩu của khách hàng không được để trống", 
             'kh_matKhau.min' => "Mật khẩu phải ít nhất có 6 kí tự", 
             'kh_hoTen.required' => "Họ tên của khách hàng không được để trống", 
             'kh_email.required' => "Email của khách hàng không được để trống", 
@@ -135,7 +135,7 @@ class KhachHangController extends Controller
         $kh = KhachHang::where("kh_ma",  $id)->first();;
         $kh->kh_ma = $request->kh_ma;
         $kh->kh_taiKhoan = $request->kh_taiKhoan;
-        // $kh->kh_matKhau = Hash::make($request->kh_matKhau);
+        $kh->kh_matKhau = md5($request->kh_matKhau);
         $kh->kh_hoTen = $request->kh_hoTen;
         $kh->kh_gioiTinh = $request->kh_gioiTinh;
         $kh->kh_email = $request->kh_email;

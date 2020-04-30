@@ -61,9 +61,9 @@ Danh sách khách hàng
                 <td>{{ $kh->kh_dienThoai }}</td>
                 <td>
                     @if (($kh->kh_trangThai) == 0)
-                        {{ 'Chưa kích hoạt' }}
+                        {{ 'User' }}
                     @elseif (($kh->kh_trangThai) == 1) 
-                            {{ 'Kích hoạt' }}
+                            {{ 'Admin' }}
                     @endif
                 </td>
                 <td>

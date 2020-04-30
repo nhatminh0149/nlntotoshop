@@ -3,7 +3,7 @@
 
 {{-- Thay thế nội dung vào Placeholder `title` của view `frontend.layouts.master` --}}
 @section('title')
-Shop thời trang - TotoShop
+H O À N T Ấ T - P A G E
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `custom-css` của view `frontend.layouts.master` --}}
@@ -13,10 +13,11 @@ Shop thời trang - TotoShop
 {{-- Thay thế nội dung vào Placeholder `main-content` của view `frontend.layouts.master` --}}
 @section('main-content')
 <!-- Title page -->
-<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{{ asset('themes/cozastore/images/bg-01.jpg') }}');">
-    <h2 class="ltext-105 cl0 txt-center">
-        Đặt hàng hoàn tất
-    </h2>
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style=" background: linear-gradient(rgba(23, 23, 24, 0.7), rgba(30, 30, 31, 0.7)),
+            url('{{ asset('img/banner/banner8.jpg') }}') center no-repeat;">
+    <h3 class="ltext-105 cl0 txt-center">
+        Đ Ặ T&nbsp; H À N G &nbsp;H O À N &nbsp; T Ấ T
+    </h3>
 </section>
 
 

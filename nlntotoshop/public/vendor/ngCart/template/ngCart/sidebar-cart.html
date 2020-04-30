@@ -15,7 +15,7 @@
                 </a>
                 
                 <span class="header-cart-item-info">
-                    <% item.getQuantity() | number %> x <% item.getPrice()  %> 
+                    <% item.getQuantity() | number %> x <% item.getPrice() %> 
                 </span>
 
                 <span ng-click="ngCart.removeItemById(item.getId())" class="glyphicon glyphicon-remove remove">Xóa</span>
@@ -32,7 +32,7 @@
         Shipping: <% ngCart.getShipping() | currency %>
     </div>
     <div class="header-cart-total w-full p-tb-40">
-        Tổng thành tiền: <% ngCart.totalCost()  %> VNĐ
+        Tổng thành tiền: <% ngCart.totalCost()  %> VND
     </div>
 
     <div class="header-cart-buttons flex-w w-full">

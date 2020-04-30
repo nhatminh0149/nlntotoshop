@@ -9,44 +9,7 @@
 {{-- Thay thế nội dung vào Placeholder `custom-css` của view `frontend.layouts.master` --}}
 @section('custom-css')
 <style>
-		table{
-			margin: 0px auto;
-			
-		}
-		td{
-			padding: 10px;
-		}
-		td input[type="text"],td input[type="password"]{
-			background: none; 
-			display: block;
-			margin-left: 50px; 
-			text-align:center;
-			border: 1px solid grey;
-			padding:15px;
-			width: 200px; 
-			height:20px;
-			outline:none;
-			color:black; 
-			border-radius:5px;
-			font-size: 16px;
-		}
 		
-		td input[type="submit"] {
-			background: none;
-			display: inline-block;
-			margin-left: 15px;
-			margin-top: 15px;
-			text-align:center;
-			border:2px solid grey; 
-			border-radius: 5px;
-			border-color:grey;
-			width: 80px;
-			height:30px;
-			line-height:20px; 
-			outline:none;
-			color:black;
-			
-		}
 </style>
 @endsection
 
@@ -62,29 +25,37 @@
 
 <div class="container">
 	<div class="content mt-5">
-		<form action="#" method="POST">
-			<table>
-				<tr>
-					<td>Tên tài khoản:</td>
-					<td>
-						<input type="text" name="kh_taiKhoan"/>
-					</td>
-				</tr>
-				<tr>
-					<td>Mật khẩu:</td>
-					<td>
-						<input type="password" name="kh_matKhau"/>
-					</td>
-				<tr>
-					<td></td>
-					<td style="padding-left:50px">
-						<input type="submit" name="dangky" value="Đăng ký"/>
-						<input type="submit" name="dangnhap" value="Đăng nhập"/> 
-					</td>
-				</tr>
-				
-			</table>
-		</form>
+		<h3 style="text-align: center;">KHÁCH HÀNG ĐĂNG NHẬP</h3>
+        <form method="post" action="{{ route('frontend.login') }}">
+			{{ csrf_field() }}
+			
+			@if(Session::has('flag'))
+            	<div class="alert alert-{{  Session::get('flag') }}"> {{ Session::get('message') }} </div>
+			@endif
+            <div class="form-group">
+                <label for="kh_taiKhoan">Tài khoản khách hàng</label>
+                <input type="text" class="form-control" id="kh_taiKhoan" name="kh_taiKhoan">
+                <!-- "old" để lấy ra input cũ từ view, Nếu không tìm thấy input cũ thì sẽ trả về null. -->
+                @if($errors->has("kh_taiKhoan"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("kh_taiKhoan")}}
+                    </div>                 
+                @endif
+            </div>
+
+            <div class="form-group">
+                <label for="kh_matKhau">Mật khẩu</label>
+                <input type="password" class="form-control" id="kh_matKhau" name="kh_matKhau">
+                @if($errors->has("kh_matKhau"))
+                    <div class="a" style="color: red; font-style: italic; font-size: 14px;">
+                        {{$errors->first("kh_matKhau")}}
+                    </div>                 
+                @endif
+            </div>
+
+            <br>
+            <button type="submit" class="btn btn-outline-dark">Đăng nhập</button>&nbsp;&nbsp;
+        </form>
 	</div>
 </div>
 

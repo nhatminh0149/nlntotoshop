@@ -330,7 +330,7 @@
                             hãy đến với Totoshop để nhận được những gì bạn đang tìm kiếm nhé!
                         </p>
                         <div class="button">
-                            <a href="#" class="btnXemThem1">XEM THÊM</a>
+                            <a href="{{ route('frontend.about') }}" class="btnXemThem1">XEM THÊM</a>
                         </div>
                     </div>
                 </div>

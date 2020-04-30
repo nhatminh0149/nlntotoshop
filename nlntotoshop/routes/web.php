@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\KhachHang;
+use App\User;
 
 Route::get('/', function () {
     return view('welcome');
@@ -85,7 +87,7 @@ Route::get('/loai-san-pham/{type}', 'FrontendController@getLoaiSp')->name('loais
 Route::get('/san-pham/{id}', 'FrontendController@productDetail')->name('frontend.productDetail');
 
 //Tạo trang thanh toán (checkout)
-Route::get('/gio-hang', 'FrontendController@cart')->name('frontend.cart');
+//Route::get('/gio-hang', 'FrontendController@cart')->name('frontend.cart');
 
 //Tạo đơn hàng và gởi mail xác nhận
 Route::get('/gio-hang', 'FrontendController@cart')->name('frontend.cart');
@@ -94,6 +96,13 @@ Route::get('/dat-hang/hoan-tat', 'FrontendController@orderFinish')->name('fronte
 
 //Khách hàng đăng nhập tài khoản
 Route::get('/dang-nhap', 'FrontendController@getLogin')->name('frontend.login');
+Route::post('/dang-nhap', 'FrontendController@postLogin')->name('frontend.login');
 
 //Khách hàng đăng ký tài khoản
 Route::get('/dang-ky', 'FrontendController@getRegister')->name('frontend.register');
+Route::post('/dang-ky', 'FrontendController@postRegister')->name('frontend.register');
+
+//Thực hiện Đăng xuất
+Route::get('/log-out', 'FrontendController@postLogout')->name('frontend.logout');
+
+Route::get('/home', 'HomeController@index')->name('home');
