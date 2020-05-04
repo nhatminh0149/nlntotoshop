@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+
     <style>
         @import url("https://fonts.googleapis.com/css?family=Baloo|Nunito Sans|Muli|Roboto|Gugi|Roboto+Mono|Roboto+Mono:wght@100;300;40|Quicksand:wght@500|Quicksand");
         
@@ -279,8 +273,7 @@
             transition-delay: .2s;
         }
     </style>
-</head>
-<body>
+
     <section class="section-slide">
         <div class="wrap-slick1">
             <div class="slick1">
@@ -316,21 +309,18 @@
 
                 <div class="col-md-6 col-12">
                     <div class="panel text-left">
-                        <h1>GIỚI THIỆU VỀ TOTOSHOP</h1>
+                        <h1>{{ __('totoshop.section2_h1') }}</h1>
                         <p class="pt-4">
-                            Góp mặt trên thị trường thời trang Việt Nam từ năm 2009, với 10 năm không ngừng phát triển, đổi mới và tạo dấu ấn,
-                            Totoshop tự hào trở thành một trong những thương hiệu thời trang của người Việt được yêu thích nhất của giới trẻ. 
+                            {{ __('totoshop.section2_p1') }} 
                         </p>
                         <p class="pt-2">
-                            Với điểm mạnh về sự đa dạng mẫu mã, chất lượng trong từng sản phẩm và luôn cập nhật những xu hướng mới nhất,
-                            đến với Totoshop, bạn không chỉ tìm kiếm được những thứ mình "cần" mà còn tìm thấy được những thứ mình "nên có".
+                            {{ __('totoshop.section2_p2') }}
                         </p>
                         <p class="pt-2">
-                            Dù bạn yêu thích phong cách thời trang nào, hay đang trong quá trình định hình phong cách của bản thân,
-                            hãy đến với Totoshop để nhận được những gì bạn đang tìm kiếm nhé!
+                            {{ __('totoshop.section2_p3') }}
                         </p>
                         <div class="button">
-                            <a href="{{ route('frontend.about') }}" class="btnXemThem1">XEM THÊM</a>
+                            <a href="{{ route('frontend.about') }}" class="btnXemThem1">{{ __('totoshop.section2_xemthem') }}</a>
                         </div>
                     </div>
                 </div>
@@ -342,7 +332,7 @@
     <section class="section-3">
         <div class="container-fluid">
             <div class="row"> 
-                <h2 class="list-title">THƯƠNG HIỆU TOTOSHOP</h2>
+                <h2 class="list-title">{{ __('totoshop.section3_h2') }}</h2>
             </div>
             
             <div class="row text-center text-white">
@@ -356,15 +346,15 @@
                 <div class="col-12 col-md-4 mb-4 mb-md-0">
                     <div class="shop-info">
                         <img class="img-fluid" src="{{ asset('img/icon/store2.jpg') }}" alt="icon-1" width="100" height="100">
-                        <h4>Quy mô</h4>
-                        <p>Hệ thống 20 cửa hàng trên toàn quốc</p>
+                        <h4>{{ __('totoshop.section3_h4_quymo') }}</h4>
+                        <p>{{ __('totoshop.section3_p_quymo') }}</p>
                     </div>
                 </div>
                 <div class="col-12 col-md-4 mb-4 mb-md-0">
                     <div class="shop-info">
                         <img class="img-fluid" src="{{ asset('img/icon/phone2.jpg') }}" alt="icon-1" width="100" height="100">
                         <h4>1900 633 501</h4>
-                        <p>Hotline hỗ trợ 24/7</p>
+                        <p>{{ __('totoshop.section3_p_hotline') }}</p>
                     </div>
                 </div>
             </div>
@@ -375,7 +365,7 @@
     <section class="section-4">
             <div class="container">
                 <div class="row mt-5"> 
-                    <h3 class="list-title">SẢN PHẨM HOT</h3>
+                    <h3 class="list-title">{{ __('totoshop.section4_h3') }}</h3>
                 </div>
                 <div class="linetoto mb-5">
                     <hr>
@@ -383,7 +373,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <div class="hovereffect">
-                            <img class="img-responsive" src="{{ asset('img/sanpham/do_doi/aothunCP6.jpg') }}" alt="">
+                            <img class="img-responsive" src="{{ asset('img/sanpham/do_doi/aothunC1.jpg') }}" alt="">
                             <div class="overlay">
                             <!-- <h2>COUPLE CP6</h2>
                             <a class="info" href="#">Xem thêm</a> -->
@@ -392,7 +382,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <div class="hovereffect">
-                            <img class="img-responsive" src="{{ asset('img/sanpham/do_doi/aothunCP7.jpg') }}" alt="">
+                            <img class="img-responsive" src="{{ asset('img/sanpham/do_doi/aothunC2.jpg') }}" alt="">
                             <div class="overlay">
                             <!-- <h2>COUPLE CP7</h2>
                             <a class="info" href="#">Xem thêm</a> -->
@@ -401,7 +391,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <div class="hovereffect">
-                            <img class="img-responsive" src="{{ asset('img/sanpham/do_doi/aothunCP8.jpg') }}" alt="">
+                            <img class="img-responsive" src="{{ asset('img/sanpham/do_doi/aothunC3.jpg') }}" alt="">
                             <div class="overlay">
                             <!-- <h2>COUPLE CP8</h2>
                             <a class="info" href="#">Xem thêm</a> -->
@@ -410,7 +400,7 @@
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                         <div class="hovereffect">
-                            <img class="img-responsive" src="{{ asset('img/sanpham/do_doi/aothunCP9.jpg') }}" alt="">
+                            <img class="img-responsive" src="{{ asset('img/sanpham/do_doi/aothunC4.jpg') }}" alt="">
                             <div class="overlay">
                             <!-- <h2>COUPLE CP9</h2>
                             <a class="info" href="#">Xem thêm</a> -->
@@ -420,10 +410,8 @@
                 </div>
 
                 <div class="button text-center pt-3">
-                    <a href="{{ route('frontend.product') }}" class="btnXemThem2">XEM TẤT CẢ</a>
+                    <a href="{{ route('frontend.product') }}" class="btnXemThem2">{{ __('totoshop.section4_xemtatca') }}</a>
                 </div>
             </div>
         </section> 
 
-</body>
-</html>

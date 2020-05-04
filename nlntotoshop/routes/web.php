@@ -56,6 +56,10 @@ Route::get('/admin/danhsachdondathang/index', 'DonDatHangController@index')->nam
 Route::get('/admin/danhsachdondathang/edit{id}', 'DonDatHangController@edit')->name('danhsachdondathang.edit');
 Route::resource('/admin/danhsachdondathang', 'DonDatHangController');
 
+// Tạo route Thống kê, Báo cáo Đơn hàng
+Route::get('/admin/baocao/donhang', 'BaoCaoController@donhang')->name('backend.baocao.donhang');
+Route::get('/admin/baocao/donhang/data', 'BaoCaoController@donhangData')->name('backend.baocao.donhang.data');
+
 
 // Route::get('/', function (){
 //     return view('frontend/index');
@@ -106,3 +110,10 @@ Route::post('/dang-ky', 'FrontendController@postRegister')->name('frontend.regis
 Route::get('/log-out', 'FrontendController@postLogout')->name('frontend.logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('setLocale/{locale}', function ($locale) {
+    if (in_array($locale, Config::get('app.locales'))) {
+      Session::put('locale', $locale);
+    }
+    return redirect()->back();
+})->name('app.setLocale');

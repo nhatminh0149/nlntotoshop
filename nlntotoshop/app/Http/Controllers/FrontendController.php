@@ -170,26 +170,31 @@ class FrontendController extends Controller
         $dataMail = [];
         try {
             // Tạo mới khách hàng
-            $khachhang = new Khachhang();
-            $khachhang->kh_taiKhoan = $request->khachhang['kh_taiKhoan'];
-            $khachhang->kh_matKhau = md5('123456');
-            $khachhang->kh_hoTen = $request->khachhang['kh_hoTen'];
-            $khachhang->kh_gioiTinh = $request->khachhang['kh_gioiTinh'];
-            $khachhang->kh_email = $request->khachhang['kh_email'];
-            if(!empty($request->khachhang['kh_diaChi'])) {
-                $khachhang->kh_diaChi = $request->khachhang['kh_diaChi'];
-            }
-            if(!empty($request->khachhang['kh_dienThoai'])) {
-                $khachhang->kh_dienThoai = $request->khachhang['kh_dienThoai'];
-            }
-            $khachhang->kh_trangThai = 0; // Chưa kích hoạt
-            $khachhang->save();
+            // $khachhang = new Khachhang();
+             // $khachhang->kh_taiKhoan = $request->khachhang['kh_taiKhoan'];
+            // $khachhang->kh_matKhau = md5('123456');
+            // $khachhang->kh_hoTen = $request->khachhang['kh_hoTen'];
+            // $khachhang->kh_gioiTinh = $request->khachhang['kh_gioiTinh'];
+            // $khachhang->kh_email = $request->khachhang['kh_email'];
+            // if(!empty($request->khachhang['kh_diaChi'])) {
+            //     $khachhang->kh_diaChi = $request->khachhang['kh_diaChi'];
+            // }
+            // if(!empty($request->khachhang['kh_dienThoai'])) {
+            //     $khachhang->kh_dienThoai = $request->khachhang['kh_dienThoai'];
+            // }
+            // $khachhang->kh_trangThai = 0; // Chưa kích hoạt
+            //$khachhang->save();
+            
+            // Lấy lại thông tin từ Khách hàng
+            $kh_ma = session()->get('kh_ma');
+            $khachhang = Khachhang::find($kh_ma); //SELECT * from khachhang WHERE kh_ma = ?
 
             $dataMail['khachhang'] = $khachhang->toArray();
 
             // Tạo mới đơn hàng
             $dondathang = new DonDatHang();
-            $dondathang->kh_ma = $khachhang->kh_ma;
+            // $dondathang->kh_ma = $khachhang->kh_ma;
+            $dondathang->kh_ma = $kh_ma;
             $dondathang->ddh_thoiGianDatHang = Carbon::now();
             $dondathang->ddh_diaChiGiaoHang = $request->dondathang['ddh_diaChiGiaoHang'];
             $dondathang->ddh_dienThoai = $request->dondathang['ddh_dienThoai'];
@@ -348,6 +353,7 @@ class FrontendController extends Controller
         $khachhang = KhachHang::where("kh_taiKhoan", $request->kh_taiKhoan)
                               ->where("kh_matKhau", md5($request->kh_matKhau))->first();
         if($khachhang){
+            $request->session()->put('kh_ma', $khachhang->kh_ma);
             $request->session()->put('kh_taiKhoan', $khachhang->kh_taiKhoan);
             $request->session()->put('kh_matKhau', $khachhang->kh_matKhau);
             $request->session()->put('kh_hoTen', $khachhang->kh_hoTen);
@@ -355,7 +361,7 @@ class FrontendController extends Controller
             $request->session()->put('kh_email', $khachhang->kh_email);
             $request->session()->put('kh_diaChi', $khachhang->kh_diaChi);
             $request->session()->put('kh_dienThoai', $khachhang->kh_dienThoai);
-            return redirect()->back()->with( ['flag' => 'success', 'message' => "Đăng nhập thành công"] );
+            return redirect()->route('frontend.home');
         }
         else{
             return redirect()->back()->with( ['flag' => 'danger', 'message' => "Đăng nhập không thành công"] );  
@@ -364,11 +370,29 @@ class FrontendController extends Controller
     }
     public function postLogout(Request $request){
         try{
+            if($request->session()->exists('kh_ma')){
+                $request->session()->forget('kh_ma');
+            }
             if($request->session()->exists('kh_taiKhoan')){
                 $request->session()->forget('kh_taiKhoan');
             }
             if($request->session()->exists('kh_matKhau')){
                 $request->session()->forget('kh_matKhau');
+            }
+            if($request->session()->exists('kh_hoTen')){
+                $request->session()->forget('kh_hoTen');
+            }
+            if($request->session()->exists('kh_gioiTinh')){
+                $request->session()->forget('kh_gioiTinh');
+            }
+            if($request->session()->exists('kh_email')){
+                $request->session()->forget('kh_email');
+            }
+            if($request->session()->exists('kh_diaChi')){
+                $request->session()->forget('kh_diaChi');
+            }
+            if($request->session()->exists('kh_dienThoai')){
+                $request->session()->forget('kh_dienThoai');
             }
             return redirect()->route('frontend.home');
         }

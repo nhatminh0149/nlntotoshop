@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use DB;
+use App\NhaCungCap;
+use App\LoaiSanPham; 
+use App\Sanpham;
+use App\HinhThucVanChuyen;
+use App\KhachHang;
+use App\DonDatHang;
+
+class BaoCaoController extends Controller
+{
+
+    /**
+     * Action hiển thị view Báo cáo đơn hàng
+     */
+    public function donhang()
+    {
+        $nhacungcap_count = NhaCungCap::count();
+        $loaisanpham_count = LoaiSanPham::count();
+        $sanpham_count = Sanpham::count();
+        $hinhthucvanchuyen_count = HinhThucVanChuyen::count();
+        $khachhang_count = KhachHang::count();
+        $dondathang_count = DonDatHang::count();
+        return view('backend.reports.donhang', compact('nhacungcap_count', 'loaisanpham_count', 'sanpham_count', 'hinhthucvanchuyen_count', 'khachhang_count', 'dondathang_count'));
+    }
+
+    /**
+     * Action AJAX get data cho báo cáo Đơn hàng
+     */
+    public function donhangData(Request $request)
+    {
+        $parameter = [
+            'tuNgay' => $request->tuNgay,
+            'denNgay' => $request->denNgay
+        ];
+        // dd($parameter);
+        $data = DB::select('
+            SELECT ddh.ddh_thoiGianDatHang as thoiGian
+                , SUM(ctdh.ctdh_soLuong * ctdh.ctdh_donGia) as tongThanhTien
+            FROM dondathang ddh
+            JOIN chitietdonhang ctdh ON ddh.ddh_ma = ctdh.ddh_ma
+            WHERE ddh.ddh_thoiGianDatHang BETWEEN :tuNgay AND :denNgay
+            GROUP BY ddh.ddh_thoiGianDatHang
+        ', $parameter);
+
+        return response()->json(array(
+            'code'  => 200,
+            'data' => $data,
+        ));
+    }
+}

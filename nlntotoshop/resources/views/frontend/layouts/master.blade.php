@@ -267,6 +267,19 @@
             });
     </script>
 
+<script>
+    // id: btnDangxuat
+    // ý tưởng JS: tìm đối tượng nào đó -> yêu cầu nó làm hành động gì đó....
+    $('#btnDangxuat').click(function(e) {
+        // Clear giỏ hàng ngCart
+        if($scope) {
+            $scope.ngCart.empty();
+        }
+
+        // Đi đến route nào đó
+        window.location = '{{ route('frontend.logout') }}';
+    });
+</script>
     <!-- Các custom script dành riêng cho từng view -->
     @yield('custom-scripts')
 

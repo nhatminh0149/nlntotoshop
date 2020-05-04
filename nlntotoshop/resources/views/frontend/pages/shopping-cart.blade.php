@@ -103,14 +103,14 @@ Giỏ hàng
                         <input type="email" class="form-control" id="kh_email" name="kh_email" ng-model="kh_email" ng-pattern="/^.+@gmail.com$/" ng-required=true>
                     </div>
                     
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="kh_diaChi">Địa chỉ:</label>
                         <input type="text" class="form-control" id="kh_diaChi" name="kh_diaChi" ng-model="kh_diaChi" ng-minlength="6" ng-maxlength="250">
                     </div>
                     <div class="form-group">
                         <label for="kh_dienThoai">Điện thoại:</label>
                         <input type="text" class="form-control" id="kh_dienThoai" name="kh_dienThoai" ng-model="kh_dienThoai" ng-minlength="6" ng-maxlength="11">
-                    </div>
+                    </div> -->
                 @endif
                 
             </div>
@@ -125,11 +125,11 @@ Giỏ hàng
                     <ul>
  
                         <!-- Thông báo lỗi ddh_diaChiGiaoHang -->
-                        <li><span class="error" ng-show="orderForm.ddh_diaChiGiaoHang.$error.required">Vui lòng nhập Địa chỉ</span></li>
+                        <li><span class="error" ng-show="orderForm.ddh_diaChiGiaoHang.$error.required">Vui lòng nhập Địa chỉ giao hàng</span></li>
                         <li><span class="error" ng-show="orderForm.ddh_diaChiGiaoHang.$error.minlength">Địa chỉ phải > 6 ký tự</span></li>
                         <li><span class="error" ng-show="orderForm.ddh_diaChiGiaoHang.$error.maxlength">Địa chỉ phải <= 250 ký tự</span> </li> 
                         <!-- Thông báo lỗi ddh_dienThoai -->
-                        <li><span class="error" ng-show="orderForm.ddh_dienThoai.$error.required">Vui lòng nhập Điện thoại</span></li>
+                        <li><span class="error" ng-show="orderForm.ddh_dienThoai.$error.required">Vui lòng nhập Điện thoại liên lạc</span></li>
                         <li><span class="error" ng-show="orderForm.ddh_dienThoai.$error.minlength">Điện thoại phải > 6 ký tự</span></li>
                         <li><span class="error" ng-show="orderForm.ddh_dienThoai.$error.maxlength">Điện thoại phải <= 11 ký tự</span> </li>
                         <!-- Thông báo lỗi htvc_ma -->
@@ -190,15 +190,15 @@ Giỏ hàng
             // kiểm tra các ràng buộc là hợp lệ, gởi AJAX đến action 
             if ($scope.orderForm.$valid) {
                 // lấy data của Form
-                var dataInputOrderForm_KhachHang = {
-                    "kh_taiKhoan": $scope.orderForm.kh_taiKhoan.$viewValue,
-                    "kh_hoTen": $scope.orderForm.kh_hoTen.$viewValue,
-                    "kh_gioiTinh": $scope.orderForm.kh_gioiTinh.$viewValue,
-                    "kh_email": $scope.orderForm.kh_email.$viewValue,
+                // var dataInputOrderForm_KhachHang = {
+                //     "kh_taiKhoan": $scope.orderForm.kh_taiKhoan.$viewValue,
+                //     "kh_hoTen": $scope.orderForm.kh_hoTen.$viewValue,
+                //     "kh_gioiTinh": $scope.orderForm.kh_gioiTinh.$viewValue,
+                //     "kh_email": $scope.orderForm.kh_email.$viewValue,
                    
-                    "kh_diaChi": $scope.orderForm.kh_diaChi.$viewValue,
-                    "kh_dienThoai": $scope.orderForm.kh_dienThoai.$viewValue,
-                };
+                //     "kh_diaChi": $scope.orderForm.kh_diaChi.$viewValue,
+                //     "kh_dienThoai": $scope.orderForm.kh_dienThoai.$viewValue,
+                // };
 
                 var dataInputOrderForm_DonDatHang = {
                    
@@ -212,7 +212,7 @@ Giỏ hàng
                 var dataCart = ngCart.getCart();
 
                 var dataInputOrderForm = {
-                    "khachhang": dataInputOrderForm_KhachHang,
+                    //"khachhang": dataInputOrderForm_KhachHang,
                     "dondathang": dataInputOrderForm_DonDatHang,
                     "giohang": dataCart,
                     "_token": "{{ csrf_token() }}",
@@ -225,7 +225,7 @@ Giỏ hàng
                     data: JSON.stringify(dataInputOrderForm)
                 }).then(function successCallback(response) {
                     // Clear giỏ hàng ngCart
-                    //$scope.ngCart.empty();
+                    $scope.ngCart.empty();
 
                     // Gởi mail thành công, thông báo cho khách hàng biết
                     swal('Đơn hàng hoàn tất!', 'Xin cám ơn Quý khách!', 'success');
