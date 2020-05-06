@@ -19,8 +19,6 @@ class KhachHangTableSeeder extends Seeder
             'kh_hoTen'     => 'Admin',
             'kh_gioiTinh'  => '0',
             'kh_email'     => 'tranlenhatminh97@gmail.com',
-            'kh_diaChi'    => 'KTXB, đường 3/2, Phường Xuân Khánh, Quận Ninh Kiều, TP Cần Thơ',
-            'kh_dienThoai' => '0919589765',
             'kh_trangThai' => 1 // Admin 
             ],     
             [
@@ -30,8 +28,6 @@ class KhachHangTableSeeder extends Seeder
             'kh_hoTen'     => 'Đường Quế Anh',
             'kh_gioiTinh'  => '0',
             'kh_email'     => 'queanhst98@gmail.com',
-            'kh_diaChi'    => '98, đường 30/4, Phường Xuân Khánh, Quận Ninh Kiều, TP Cần Thơ',
-            'kh_dienThoai' => '0909000777',
             'kh_trangThai' => 0 // User 
             ],     
             [
@@ -40,9 +36,7 @@ class KhachHangTableSeeder extends Seeder
             'kh_matKhau'   =>  md5('dididi'),
             'kh_hoTen'     => 'Nguyễn Phước Duy',
             'kh_gioiTinh'  => '1',
-            'kh_email'     => 'didi@gmail.com',
-            'kh_diaChi'    => 'Hẻm 56, đường 3/2, Phường Xuân Khánh, Quận Ninh Kiều, TP Cần Thơ',
-            'kh_dienThoai' => '0989222333',
+            'kh_email'     => 'tranlenhatminh97@gmail.com',
             'kh_trangThai' => 0 // User 
             ],     
         ];

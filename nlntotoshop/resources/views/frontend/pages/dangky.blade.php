@@ -96,7 +96,7 @@
                 @endif
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="kh_diaChi">Địa chỉ</label>
                 <input type="text" class="form-control" id="kh_diaChi" name="kh_diaChi" value="{{ old('kh_diaChi') }}">
                 @if($errors->has("kh_diaChi"))
@@ -114,7 +114,7 @@
                         {{$errors->first("kh_dienThoai")}}
                     </div>                 
                 @endif
-            </div>
+            </div> -->
             <br>
             <button type="submit" class="btn btn-outline-dark">OK</button>&nbsp;&nbsp;
             <button type="reset" value="Reset" class="btn btn-outline-dark">RESET</button>

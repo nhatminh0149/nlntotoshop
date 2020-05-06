@@ -31,20 +31,40 @@ class BaoCaoController extends Controller
     /**
      * Action AJAX get data cho báo cáo Đơn hàng
      */
+    // public function donhangData(Request $request)
+    // {
+    //     $parameter = [
+    //         'tuNgay' => $request->tuNgay,
+    //         'denNgay' => $request->denNgay
+    //     ];
+    //     // dd($parameter);
+    //     $data = DB::select('
+    //         SELECT ddh.ddh_thoiGianDatHang as thoiGian
+    //             , SUM(ctdh.ctdh_soLuong * ctdh.ctdh_donGia) as tongThanhTien
+    //         FROM dondathang ddh
+    //         JOIN chitietdonhang ctdh ON ddh.ddh_ma = ctdh.ddh_ma
+    //         WHERE ddh.ddh_thoiGianDatHang BETWEEN :tuNgay AND :denNgay
+    //         GROUP BY ddh.ddh_thoiGianDatHang
+    //     ', $parameter);
+
+    //     return response()->json(array(
+    //         'code'  => 200,
+    //         'data' => $data,
+    //     ));
+    // }
     public function donhangData(Request $request)
     {
         $parameter = [
-            'tuNgay' => $request->tuNgay,
-            'denNgay' => $request->denNgay
+            'thang' => $request->thang,
         ];
         // dd($parameter);
         $data = DB::select('
-            SELECT ddh.ddh_thoiGianDatHang as thoiGian
-                , SUM(ctdh.ctdh_soLuong * ctdh.ctdh_donGia) as tongThanhTien
+            SELECT month(ddh.ddh_thoiGianDatHang) AS thoiGian, SUM(htvc.htvc_chiPhi + ctdh.ctdh_soLuong * ctdh.ctdh_donGia) as tongThanhTien
             FROM dondathang ddh
+            JOIN hinhthucvanchuyen htvc ON htvc.htvc_ma = ddh.htvc_ma
             JOIN chitietdonhang ctdh ON ddh.ddh_ma = ctdh.ddh_ma
-            WHERE ddh.ddh_thoiGianDatHang BETWEEN :tuNgay AND :denNgay
-            GROUP BY ddh.ddh_thoiGianDatHang
+            WHERE year(ddh.ddh_thoiGianDatHang) = :thang
+            GROUP BY month(ddh.ddh_thoiGianDatHang)
         ', $parameter);
 
         return response()->json(array(

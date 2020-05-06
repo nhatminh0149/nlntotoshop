@@ -32,11 +32,11 @@ Danh sách hình thức vận chuyển
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Mã HTVC</th>
-            <th>Tên HTVC</th>
-            <th>Chi phí</th>
-            <th>Diễn giải</th>
-            <th>Chức năng</th>
+            <th style="width: 30px;">Mã HTVC</th>
+            <th style="width: 230px;">Tên HTVC</th>
+            <th style="width: 120px;">Chi phí</th>
+            <th style="width: 320px;">Diễn giải</th>
+            <th style="width: 200px;">Chức năng</th>
         </tr>
     </thead>
     <tbody>
@@ -52,7 +52,7 @@ Danh sách hình thức vận chuyển
                         <!-- Khi gởi Request Xóa dữ liệu, Laravel Framework mặc định chỉ chấp nhận thực thi nếu có gởi kèm field `_method=DELETE` -->
                         <input type="hidden" name="_method" value="DELETE" />
                         {{ csrf_field() }}
-                        <br><button type="submit" class="btn btn-outline-dark"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>
+                        &nbsp;<button type="submit" class="btn btn-outline-dark"><i class="fa fa-trash" aria-hidden="true"></i>&nbsp;Xóa</button>
                     </form>
                 </td>
             </tr>

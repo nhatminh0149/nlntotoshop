@@ -53,7 +53,7 @@ Route::resource('/admin/danhsachhinhthucvanchuyen', 'HinhThucVanChuyenController
 
 // route Danh mục Đơn đặt hàng
 Route::get('/admin/danhsachdondathang/index', 'DonDatHangController@index')->name('danhsachdondathang.index');
-Route::get('/admin/danhsachdondathang/edit{id}', 'DonDatHangController@edit')->name('danhsachdondathang.edit');
+Route::get('/admin/danhsachdondathang/active{id}', 'DonDatHangController@active')->name('danhsachdondathang.active');
 Route::resource('/admin/danhsachdondathang', 'DonDatHangController');
 
 // Tạo route Thống kê, Báo cáo Đơn hàng

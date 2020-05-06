@@ -6,6 +6,14 @@
 Danh sách nhà cung cấp
 @endsection
 
+@section('custom-css')
+    <style>
+        th{
+            text-align: center;
+        }
+    </style>
+@endsection
+
 {{-- Thay thế nội dung vào Placeholder `content` của view `backend.layouts.index` --}}
 @section('content')
     <!-- Đây là div hiển thị Kết quả (thành công, thất bại) sau khi thực hiện các chức năng Thêm, Sửa, Xóa.
@@ -31,8 +39,8 @@ Danh sách nhà cung cấp
         <thead>
             <tr>
                 <th>Mã NCC</th>
-                <th>Tên NCC</th>
-                <th>Địa chỉ</th>
+                <th style="width: 200px;">Tên NCC</th>
+                <th style="width: 230px;">Địa chỉ</th>
                 <th>SĐT</th>
                 <th>Chức năng</th>
             </tr>
@@ -40,11 +48,11 @@ Danh sách nhà cung cấp
         <tbody>
             @foreach($danhsachnhacungcap as $ncc)
                 <tr>
-                    <td>{{ $ncc->ncc_ma }}</td>
+                    <td style="text-align: center;">{{ $ncc->ncc_ma }}</td>
                     <td>{{ $ncc->ncc_ten }}</td>
                     <td>{{ $ncc->ncc_diaChi }}</td>
-                    <td>{{ $ncc->ncc_dienThoai }}</td>
-                    <td>
+                    <td style="text-align: center;">{{ $ncc->ncc_dienThoai }}</td>
+                    <td style="text-align: center;">
                         <a href="{{ route('danhsachnhacungcap.edit', ['id' => $ncc->ncc_ma]) }}" class="btn btn-outline-dark pull-left"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa</a>
                         <form method="post" action="{{ route('danhsachnhacungcap.destroy', ['id' => $ncc->ncc_ma]) }}" class="pull-left">
                             <!-- Khi gởi Request Xóa dữ liệu, Laravel Framework mặc định chỉ chấp nhận thực thi nếu có gởi kèm field `_method=DELETE` -->

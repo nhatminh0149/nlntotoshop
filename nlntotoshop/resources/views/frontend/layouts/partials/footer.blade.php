@@ -47,12 +47,12 @@
 
             <!-- Grid column -->
             <div class="col-md-5 col-sm-6 col-12 mt-5">
-                <h6 class="text-uppercase mb-4 font-weight-bold">CÔNG TY TNHH TOTO VIỆT NAM</h6>
-                <p><i class="fa fa-home mr-3"></i>Số 412 Lê Văn Sỹ. Phường 14, Quận 3, TPHCM.</p>
+                <h6 class="text-uppercase mb-4 font-weight-bold">{{ __('totoshop.footer_h6') }}</h6>
+                <p><i class="fa fa-home mr-3"></i>{{ __('totoshop.footer_diachi') }}</p>
                 <p> <i class="fa fa-phone mr-3"></i>0938 803 633</p>
                 <p><i class="fa fa-envelope mr-3"></i>sale.online@totoshop.vn</p>
-                <p>Số ĐKKD: 41C8013053. Ngày cấp: 01/12/2010. <br>
-                    Nơi cấp: UBND Quận 3.</p>
+                <p>{{ __('totoshop.footer_dkkd') }} <br>
+                {{ __('totoshop.footer_noicap') }}</p>
                 <div class="text-center text-md-left">
                     <ul class="list-unstyled list-inline">
                     <li class="list-inline-item">
@@ -99,11 +99,11 @@
 
             <!-- Grid column -->
             <div class="col-md-2 col-sm-6 col-12 mt-5">
-            <h6 class="text-uppercase mb-4 font-weight-bold">THÔNG TIN</h6>
-            <p>Giới thiệu</p>
-            <p>Đối tác</p>
-            <p>Quy định chung</p>
-            <p>Liên hệ công ty</p>
+            <h6 class="text-uppercase mb-4 font-weight-bold">{{ __('totoshop.footer_thongtin') }}</h6>
+            <p>{{ __('totoshop.footer_gioithieu') }}</p>
+            <p>{{ __('totoshop.footer_doitac') }}</p>
+            <p>{{ __('totoshop.footer_quydinhchung') }}</p>
+            <p>{{ __('totoshop.footer_lienhecongty') }}</p>
 
             </div>
 
@@ -112,10 +112,10 @@
 
             <!-- Grid column -->
             <div class="col-md-2 col-sm-6 col-12 mt-5">
-            <h6 class="text-uppercase mb-4 font-weight-bold">CHÍNH SÁCH</h6>
-            <p>Chính sách đổi hàng</p>
-            <p>Chính sách bảo hành</p>
-            <p>Chính sách bảo mật</p>
+            <h6 class="text-uppercase mb-4 font-weight-bold">{{ __('totoshop.footer_chinhsach') }}</h6>
+            <p>{{ __('totoshop.footer_doihang') }}</p>
+            <p>{{ __('totoshop.footer_baohanh') }}</p>
+            <p>{{ __('totoshop.footer_baomat') }}</p>
             </div> 
             <!-- Grid column -->
 
@@ -126,10 +126,10 @@
             <!-- Grid column -->
             <div class="col-md-3 col-sm-6 col-12 mt-5">
             <h6 class="text-uppercase mb-4 font-weight-bold">FAQ</h6>
-            <p>Thanh toán và vận chuyển</p>
-            <p>Hướng dẫn chọn size</p>
-            <p>Câu hỏi thường gặp</p>
-            <p>Kiểm tra thông tin đơn hàng</p>
+            <p>{{ __('totoshop.footer_thanhtoanvavanchuyen') }}</p>
+            <p>{{ __('totoshop.footer_chonsize') }}</p>
+            <p>{{ __('totoshop.footer_cauhoi') }}</p>
+            <p>{{ __('totoshop.footer_ktratt') }}</p>
             </div> 
             <!-- Grid column -->
 
@@ -144,7 +144,7 @@
 
             <!--Copyright-->
             <p class="text-center text-md-left">
-                <p>ToToShop - Thương hiệu thời trang của người Việt được yêu thích nhất của giới trẻ.</p>
+                <p>{{ __('totoshop.footer_thuonghieu') }}</p>
             </p>
 
             </div>

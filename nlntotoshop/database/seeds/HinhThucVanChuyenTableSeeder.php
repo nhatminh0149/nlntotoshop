@@ -26,23 +26,22 @@ class HinhThucVanChuyenTableSeeder extends Seeder
             ], 
             [
                 'htvc_ma'     => 3,
-                'htvc_ten'    => "Chuyển phát tiêu chuẩn",
-                'htvc_chiPhi'   => 20000,
-                'htvc_dienGiai' => "Nhận hàng trong vòng từ 3 đến 5 ngày",
+                'htvc_ten'    => "Giao hàng trong khu vực nội ô thành phố",
+                'htvc_chiPhi'   => 5000,
+                'htvc_dienGiai' => "Nhận hàng trong ngày hoặc từ 1 đến 2 ngày.",
             ], 
             [
                 'htvc_ma'     => 4,
-                'htvc_ten'    => "Chuyển phát nhanh",
-                'htvc_chiPhi'   => 30000,
-                'htvc_dienGiai' => "Nhận hàng trong vòng từ 2 đến 3 ngày",
+                'htvc_ten'    => "Chuyển phát tiêu chuẩn",
+                'htvc_chiPhi'   => 20000,
+                'htvc_dienGiai' => "Nhận hàng trong vòng từ 3 đến 5 ngày.",
             ], 
             [
                 'htvc_ma'     => 5,
-                'htvc_ten'    => "Chuyển phát hỏa tốc",
-                'htvc_chiPhi'   => 40000,
-                'htvc_dienGiai' => "Nhận hàng trong vòng 24h",
-            ], 
-            
+                'htvc_ten'    => "Chuyển phát nhanh",
+                'htvc_chiPhi'   => 30000,
+                'htvc_dienGiai' => "Nhận hàng trong vòng từ 1 đến 2 ngày",
+            ],       
         ];
         DB::table('hinhthucvanchuyen')->insert($list);
     }

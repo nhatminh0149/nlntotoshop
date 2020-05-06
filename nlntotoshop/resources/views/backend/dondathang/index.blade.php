@@ -3,7 +3,17 @@
 
 {{-- Thay thế nội dung vào Placeholder `title` của view `backend.layouts.index` --}}
 @section('title')
-Danh sách đơn đặt hàng
+    Danh sách đơn đặt hàng
+@endsection
+
+{{-- Thay thế nội dung vào Placeholder `custom-css` của view `backend.layouts.index` --}}
+@section('custom-css')
+    <style>
+        .badge a{
+            color: white;
+            text-decoration: none;
+        }
+    </style>
 @endsection
 
 {{-- Thay thế nội dung vào Placeholder `content` của view `backend.layouts.index` --}}
@@ -32,14 +42,15 @@ Danh sách đơn đặt hàng
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Mã ĐĐH</th>
+            <th style="width: 10px;">Mã ĐĐH</th>
             <th>Tài khoản KH</th>
             <th>Ngày lập</th>
-            <th>Nơi giao</th>
+            <th style="width: 200px;">Nơi giao</th>
             <th>SĐT</th>
-            <th>Tổng tiền</th>
+            <th style="width: 60px;">Chi phí vận chuyển</th>
+            <th style="width: 120px;">Tổng thành tiền</th>
             <th>Trạng thái xử lý</th>
-            <th>Hành động</th>
+            <!-- <th>Hành động</th> -->
         </tr>
     </thead>
     <tbody>
@@ -50,25 +61,26 @@ Danh sách đơn đặt hàng
                 <td>{{ $ddh->ddh_thoiGianDatHang }}</td>
                 <td>{{ $ddh->ddh_diaChiGiaoHang }}</td>
                 <td>{{ $ddh->ddh_dienThoai }}</td>
+                <td>{{ number_format($ddh->htvc_chiPhi, 0, ',' , ',') }}</td>
                 <td>{{ number_format($ddh->TongThanhTien, 0, ',' , ',') }} VNĐ</td>
                 <td> 
-                    @if (($ddh->ddh_trangThai) == 1)
-                        <div class="badge badge-danger">
-                            {{ 'Chưa xử lý' }}
-                       </div>
-                    @else 
+                    @if (($ddh->ddh_trangThai) == 2)
                         <div class="badge badge-info">
                             {{ 'Đã xử lý' }}
                         </div>
+                    @else 
+                        <div class="badge badge-danger">
+                            <a href="{{ route('danhsachdondathang.active', ['id' => $ddh->ddh_ma]) }}">{{ 'Chưa xử lý' }}</a>
+                        </div>
                     @endif
                 </td>
-                <td>
+                <!-- <td>
                     @if (($ddh->ddh_trangThai) == 1)
                         <a href="#" class="btn btn-warning btn-sm">
                             {{ 'Duyệt' }}
                        </a>
                     @endif
-                </td>
+                </td> -->
             </tr>
         @endforeach
     </tbody>

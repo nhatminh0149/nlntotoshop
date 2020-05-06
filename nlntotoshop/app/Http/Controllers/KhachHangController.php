@@ -45,8 +45,8 @@ class KhachHangController extends Controller
             'kh_matKhau' => 'required|min:6',
             'kh_hoTen' => 'required',
             'kh_email' => 'required|email',
-            'kh_diaChi' => 'required',
-            'kh_dienThoai' => 'required|digits:10',
+            // 'kh_diaChi' => 'required',
+            // 'kh_dienThoai' => 'required|digits:10',
         ],[
             'kh_taiKhoan.required' => "Tên tài khoản của khách hàng không được để trống",
             'kh_taiKhoan.unique' => "Tên tài khoản này đã có trong CSDL", 
@@ -55,9 +55,9 @@ class KhachHangController extends Controller
             'kh_hoTen.required' => "Họ tên của khách hàng không được để trống", 
             'kh_email.required' => "Email của khách hàng không được để trống", 
             'kh_email.email' => "Email không đúng định dạng", 
-            'kh_diaChi.required' => "Địa chỉ của khách hàng không được để trống", 
-            'kh_dienThoai.required' => "SĐT của khách hàng không được để trống", 
-            'kh_dienThoai.digits' => "SĐT của khách hàng phải là số 10 kí tự", 
+            // 'kh_diaChi.required' => "Địa chỉ của khách hàng không được để trống", 
+            // 'kh_dienThoai.required' => "SĐT của khách hàng không được để trống", 
+            // 'kh_dienThoai.digits' => "SĐT của khách hàng phải là số 10 kí tự", 
         ]);
 
         $kh = new KhachHang();
@@ -67,8 +67,8 @@ class KhachHangController extends Controller
         $kh->kh_hoTen = $request->kh_hoTen;
         $kh->kh_gioiTinh = $request->kh_gioiTinh;
         $kh->kh_email = $request->kh_email;
-        $kh->kh_diaChi = $request->kh_diaChi;
-        $kh->kh_dienThoai = $request->kh_dienThoai;
+        // $kh->kh_diaChi = $request->kh_diaChi;
+        // $kh->kh_dienThoai = $request->kh_dienThoai;
         $kh->kh_trangThai = $request->kh_trangThai;
 
         $kh->save();
@@ -117,8 +117,8 @@ class KhachHangController extends Controller
             'kh_matKhau' => 'required|min:6',
             'kh_hoTen' => 'required',
             'kh_email' => 'required|email',
-            'kh_diaChi' => 'required',
-            'kh_dienThoai' => 'required|digits:10',
+            // 'kh_diaChi' => 'required',
+            // 'kh_dienThoai' => 'required|digits:10',
         ],[
             'kh_taiKhoan.required' => "Tên tài khoản của khách hàng không được để trống",
             // 'kh_taiKhoan.unique' => "Tên tài khoản này đã có trong CSDL", 
@@ -127,9 +127,9 @@ class KhachHangController extends Controller
             'kh_hoTen.required' => "Họ tên của khách hàng không được để trống", 
             'kh_email.required' => "Email của khách hàng không được để trống", 
             'kh_email.email' => "Email không đúng định dạng", 
-            'kh_diaChi.required' => "Địa chỉ của khách hàng không được để trống", 
-            'kh_dienThoai.required' => "SĐT của khách hàng không được để trống", 
-            'kh_dienThoai.digits' => "SĐT của khách hàng phải là số 10 kí tự", 
+            // 'kh_diaChi.required' => "Địa chỉ của khách hàng không được để trống", 
+            // 'kh_dienThoai.required' => "SĐT của khách hàng không được để trống", 
+            // 'kh_dienThoai.digits' => "SĐT của khách hàng phải là số 10 kí tự", 
         ]);
 
         $kh = KhachHang::where("kh_ma",  $id)->first();;
@@ -139,8 +139,8 @@ class KhachHangController extends Controller
         $kh->kh_hoTen = $request->kh_hoTen;
         $kh->kh_gioiTinh = $request->kh_gioiTinh;
         $kh->kh_email = $request->kh_email;
-        $kh->kh_diaChi = $request->kh_diaChi;
-        $kh->kh_dienThoai = $request->kh_dienThoai;
+        // $kh->kh_diaChi = $request->kh_diaChi;
+        // $kh->kh_dienThoai = $request->kh_dienThoai;
         $kh->kh_trangThai = $request->kh_trangThai;
         
         $kh->save();

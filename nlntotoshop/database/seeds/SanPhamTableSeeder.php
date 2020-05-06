@@ -43,7 +43,7 @@ class SanPhamTableSeeder extends Seeder
             [
                 'sp_ma' => 4,
                 'sp_ten' => 'ÁO THUN B4',
-                'sp_gia' => '265000',
+                'sp_gia' => '245000',
                 'sp_hinh' => "aothunB4.jpg",
                 'sp_thongTin' => 'Áo thun B4 vàng chanh chất liệu cotton mềm mịn, mang lại cảm giác dễ chịu cho người mặc kèm với họa tiết đặc sắc giúp các chàng trai trở nên năng động hơn. Thích hợp cho những bạn từ 60 đến 75 kg.',
                 // 'sp_trangThai' => '2',

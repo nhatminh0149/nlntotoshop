@@ -10,6 +10,7 @@ use App\KichCoSanPham;
 use App\HinhThucVanChuyen;
 use App\KhachHang;
 use DB;
+use Session;
 
 class DonDatHangController extends Controller
 {
@@ -32,14 +33,16 @@ class DonDatHangController extends Controller
 
         $ds_dondathang = DB::table('dondathang')
                 ->select('dondathang.ddh_ma', 'khachhang.kh_taiKhoan', 'dondathang.ddh_thoiGianDatHang',
-                            'dondathang.ddh_diaChiGiaoHang', 'dondathang.ddh_dienThoai', 'dondathang.ddh_trangThai',
-                            DB::raw('SUM(chitietdonhang.ctdh_soLuong * chitietdonhang.ctdh_donGia) as TongThanhTien'))
+                         'dondathang.ddh_diaChiGiaoHang', 'dondathang.ddh_dienThoai', 'dondathang.ddh_trangThai', 'hinhthucvanchuyen.htvc_chiPhi',
+                          DB::raw('SUM(hinhthucvanchuyen.htvc_chiPhi + chitietdonhang.ctdh_soLuong * chitietdonhang.ctdh_donGia) as TongThanhTien'))
+                ->join('hinhthucvanchuyen', 
+                       'hinhthucvanchuyen.htvc_ma', '=', 'dondathang.htvc_ma')
                 ->join('khachhang',
-                        'dondathang.kh_ma', '=', 'khachhang.kh_ma')
+                       'dondathang.kh_ma', '=', 'khachhang.kh_ma')
                 ->join('chitietdonhang',
-                        'dondathang.ddh_ma', '=', 'chitietdonhang.ddh_ma')
+                       'dondathang.ddh_ma', '=', 'chitietdonhang.ddh_ma')
                 ->groupBy('dondathang.ddh_ma', 'khachhang.kh_taiKhoan', 'dondathang.ddh_thoiGianDatHang',
-                            'dondathang.ddh_diaChiGiaoHang', 'dondathang.ddh_dienThoai', 'dondathang.ddh_trangThai')
+                          'dondathang.ddh_diaChiGiaoHang', 'dondathang.ddh_dienThoai', 'dondathang.ddh_trangThai', 'hinhthucvanchuyen.htvc_chiPhi')
                 ->paginate(5);
         //print_r($ds_dondathang);
         return view('backend.dondathang.index')->with('danhsachdondathang',$ds_dondathang);
@@ -85,11 +88,7 @@ class DonDatHangController extends Controller
      */
     public function edit($id)
     {
-        $sp = SanPham::where("sp_ma", $id)->first();
-        $ds_loai = LoaiSanPham::all();
-        return view('backend.sanpham.edit')
-            ->with('sp', $sp)
-            ->with('danhsachloai', $ds_loai);
+        
     }
 
     /**
@@ -113,6 +112,22 @@ class DonDatHangController extends Controller
     public function destroy($id)
     {
 
+    }
+
+    /**
+     * Xử lý duyệt đơn hàng
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function active($id)
+    {
+        $ddh = DonDatHang::find($id);
+
+        $ddh->ddh_trangThai = 2;
+        $ddh->save();
+        Session::flash('alert-success', 'Xử lý đơn hàng thành công');
+        return redirect()->back();
     }
 
 }

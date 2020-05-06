@@ -7,27 +7,19 @@
         </li>
     </ul>
 </nav> -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!--Header-->
-    <nav class="navbar navbar-light justify-content-between" style="color: #f6a519; background: #0c0805; text-decoration: none;">
-    <div class="container">
-            <div class="left-panel">
-                <img src="{{ asset('img/logo/logoshop1.jpg') }}" class="img-list" width="100" height="50"/>
-            </div>
-            <div class="right-panel">
-            <a>  Xin chào Admin </a>&nbsp;&nbsp;&nbsp;
-            <i class="fa fa-heart" aria-hidden="true"></i> <a href="{{ route('frontend.home') }}" style="color: #e49818; text-decoration: none;">Trang chủ</a>&nbsp;&nbsp;&nbsp;
-            <!-- <i class="fa fa-sign-out" aria-hidden="true"></i> <a href="#"  style="color: #e49818; text-decoration: none;">Đăng xuất</a> -->
-            </div>
+
+<!--Header-->
+<nav class="navbar navbar-light justify-content-between" style="color: #f6a519; text-decoration: none; background: linear-gradient(rgba(23, 23, 24, 0.7), rgba(30, 30, 31, 0.7)),
+            url('{{ asset('img/banner/banner8.jpg') }}') center no-repeat;">
+<div class="container">
+        <div class="left-panel">
+            <img src="{{ asset('img/logo/logoshop1.jpg') }}" class="img-list" width="100" height="50"/>
         </div>
-    </nav>
-    <!-- End Header --> 
-</body>
-</html>
+        <div class="right-panel">
+        <a>  Xin chào Admin </a>&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-heart" aria-hidden="true"></i> <a href="{{ route('frontend.home') }}" style="color: #e49818; text-decoration: none;">Trang chủ</a>&nbsp;&nbsp;&nbsp;
+        <!-- <i class="fa fa-sign-out" aria-hidden="true"></i> <a href="#"  style="color: #e49818; text-decoration: none;">Đăng xuất</a> -->
+        </div>
+    </div>
+</nav>
+<!-- End Header --> 

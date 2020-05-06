@@ -44,6 +44,7 @@
     </div>
     <!-- End main content -->
 
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>

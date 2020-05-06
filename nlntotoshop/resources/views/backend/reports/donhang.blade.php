@@ -137,26 +137,42 @@
 
     </div>
 
-    <h4 style="text-align: center;">TỔNG DOANH THU THEO NGÀY</h4>
-<div class="row">
-    <div class="col-md-12">
-        <form method="get" action="#" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="form-group">
-                <label for="tuNgay">Từ ngày</label>
-                <input type="text" class="form-control" id="tuNgay" name="tuNgay">
-            </div>
-            <div class="form-group">
-                <label for="denNgay">Đến ngày</label>
-                <input type="text" class="form-control" id="denNgay" name="denNgay">
-            </div>
-            <button type="submit" class="btn btn-primary" id="btnLapBaoCao">Lập báo cáo</button>
-        </form>
+    <!-- <h4 style="text-align: center;">TỔNG DOANH THU THEO NGÀY</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="get" action="#" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="tuNgay">Từ ngày</label>
+                    <input type="text" class="form-control" id="tuNgay" name="tuNgay">
+                </div>
+                <div class="form-group">
+                    <label for="denNgay">Đến ngày</label>
+                    <input type="text" class="form-control" id="denNgay" name="denNgay">
+                </div>
+                <button type="submit" class="btn btn-primary" id="btnLapBaoCao">Lập báo cáo</button>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <canvas id="chartOfobjChart" style="width: 100%;height: 400px;"></canvas>
+        </div>
+    </div> -->
+    <h4 style="text-align: center;">TỔNG DOANH THU THEO THÁNG TRONG NĂM</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="get" action="#" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="thang">Chọn năm</label>
+                    <input type="number" class="form-control" id="thang" name="thang">
+                </div>
+                <button type="submit" class="btn btn-primary" id="btnLapBaoCao">Lập báo cáo</button>
+            </form>
+        </div>
+        <div class="col-md-12">
+            <canvas id="chartOfobjChart" style="width: 100%;height: 400px;"></canvas>
+        </div>
     </div>
-    <div class="col-md-12">
-        <canvas id="chartOfobjChart" style="width: 100%;height: 400px;"></canvas>
-    </div>
-</div>
 @endsection
 
 @section('custom-scripts')
@@ -200,8 +216,9 @@
                 url: '{{ route('backend.baocao.donhang.data') }}',
                 type: "GET",
                 data: {
-                    tuNgay: $('#tuNgay').val(),
-                    denNgay: $('#denNgay').val(),
+                    // tuNgay: $('#tuNgay').val(),
+                    // denNgay: $('#denNgay').val(),
+                    thang: $('#thang').val(),
                 },
                 success: function(response) {
                     var myLabels = [];
@@ -225,7 +242,7 @@
                             datasets: [{
                                 data: myData,
                                 borderColor: "#9ad0f5",
-                                backgroundColor: "rgba(0, 0, 0, 0.1)",
+                                backgroundColor: "#00c0ef",
                                 borderWidth: 1
                             }]
                         },
@@ -237,13 +254,15 @@
                             },
                             title: {
                                 display: true,
-                                text: "Báo cáo đơn hàng"
+                                // text: "Báo cáo đơn hàng"
+                                text: "Tổng doanh thu"
                             },
                             scales: {
                                 xAxes: [{
                                     scaleLabel: {
                                         display: true,
-                                        labelString: 'Ngày nhận đơn hàng'
+                                        // labelString: 'Ngày nhận đơn hàng'
+                                        labelString: 'Tháng'
                                     }
                                 }],
                                 yAxes: [{

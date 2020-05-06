@@ -27,7 +27,8 @@ Danh sách khách hàng
 - Đường dẫn URL là đường dẫn được tạo ra bằng route có tên `danhsachsanpham.create`
 - Sẽ có dạng http://tenmiencuaban.com/admin/danhsachsanpham/create
 -->
-<h4 style="background: #0c0805; color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">DANH SÁCH KHÁCH HÀNG</h4>
+<h4 style="background: #0c0805; color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px"> DANH SÁCH KHÁCH HÀNG </h4>
+
 <!-- Tạo table hiển thị danh sách các sản phẩm -->
 <table class="table table-bordered">
     <thead>
@@ -36,8 +37,7 @@ Danh sách khách hàng
             <th>Tài khoản</th>
             <th>Họ tên</th>
             <th>Giới tính</th>
-            <th>Email</th>
-            <th>SĐT</th>
+            <th>Email</th>>
             <th>Trạng thái</th>
             <th>Chức năng</th>
         </tr>
@@ -58,7 +58,6 @@ Danh sách khách hàng
                     @endif
                 </td>
                 <td>{{ $kh->kh_email }}</td>
-                <td>{{ $kh->kh_dienThoai }}</td>
                 <td>
                     @if (($kh->kh_trangThai) == 0)
                         {{ 'User' }}

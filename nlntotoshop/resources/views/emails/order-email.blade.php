@@ -15,6 +15,10 @@
         <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">{{ $data['khachhang']['kh_taiKhoan'] }}</td> 
     </tr>
     <tr>
+        <th style="border-bottom: 1px solid black;border-right: 1px solid black;border-left: 1px solid black;text-align: right; padding: 5px;">Họ tên khách hàng:</th>
+        <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">{{ $data['khachhang']['kh_hoTen'] }}</td> 
+    </tr>
+    <tr>
         <th style="border-bottom: 1px solid black;border-right: 1px solid black;border-left: 1px solid black;text-align: right; padding: 5px;">Email khách hàng:</th>
         <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">{{ $data['khachhang']['kh_email'] }}</td>
     </tr>
@@ -23,16 +27,13 @@
         <td style="border-bottom: 1px solid black; border-right: 1px solid black; padding: 5px;">{{ $data['dondathang']['ddh_thoiGianDatHang'] }}</td>
     </tr>
     <tr>
-        <!-- <th style="border-bottom: 1px solid black;border-right: 1px solid black;border-left: 1px solid black;text-align: right; padding: 5px;">Địa chỉ
-            khách hàng:</th>
-        <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">{{ $data['khachhang']['kh_diaChi'] }}</td> -->
 
         <th style="border-bottom: 1px solid black;border-right: 1px solid black;border-left: 1px solid black;text-align: right; padding: 5px;">Địa chỉ giao hàng:</th>
         <td style="border-bottom: 1px solid black;border-right: 1px solid black; padding: 5px;">{{ $data['dondathang']['ddh_diaChiGiaoHang'] }}</td>
     </tr>
     <tr>
-        <th style="border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; text-align: right; padding: 5px;">Số điện thoại khách hàng:</th>
-        <td style="border-bottom: 1px solid black; border-right: 1px solid black; padding: 5px;">{{ $data['khachhang']['kh_dienThoai'] }}</td> 
+        <th style="border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; text-align: right; padding: 5px;">Số điện thoại nhận hàng:</th>
+        <td style="border-bottom: 1px solid black; border-right: 1px solid black; padding: 5px;">{{ $data['dondathang']['ddh_dienThoai'] }}</td> 
     </tr>
     
     <tr>

@@ -263,8 +263,8 @@ class FrontendController extends Controller
             're_kh_matKhau' => 'same:kh_matKhau',
             'kh_hoTen' => 'required',
             'kh_email' => 'required|email',
-            'kh_diaChi' => 'required',
-            'kh_dienThoai' => 'required|digits:10',
+            // 'kh_diaChi' => 'required',
+            // 'kh_dienThoai' => 'required|digits:10',
         ],[
             'kh_taiKhoan.required' => "Tên tài khoản của khách hàng không được để trống",
             'kh_taiKhoan.unique' => "Tên tài khoản này đã tồn tại. Quý khách vui lòng sử dụng tên tài khoản khác", 
@@ -274,9 +274,9 @@ class FrontendController extends Controller
             'kh_hoTen.required' => "Họ tên của khách hàng không được để trống", 
             'kh_email.required' => "Email của khách hàng không được để trống", 
             'kh_email.email' => "Email không đúng định dạng", 
-            'kh_diaChi.required' => "Địa chỉ của khách hàng không được để trống", 
-            'kh_dienThoai.required' => "SĐT của khách hàng không được để trống", 
-            'kh_dienThoai.digits' => "SĐT của khách hàng phải là số 10 kí tự", 
+            // 'kh_diaChi.required' => "Địa chỉ của khách hàng không được để trống", 
+            // 'kh_dienThoai.required' => "SĐT của khách hàng không được để trống", 
+            // 'kh_dienThoai.digits' => "SĐT của khách hàng phải là số 10 kí tự", 
         ]);
 
         $kh = new KhachHang();
@@ -286,8 +286,8 @@ class FrontendController extends Controller
         $kh->kh_hoTen = $request->kh_hoTen;
         $kh->kh_gioiTinh = $request->kh_gioiTinh;
         $kh->kh_email = $request->kh_email;
-        $kh->kh_diaChi = $request->kh_diaChi;
-        $kh->kh_dienThoai = $request->kh_dienThoai;
+        // $kh->kh_diaChi = $request->kh_diaChi;
+        // $kh->kh_dienThoai = $request->kh_dienThoai;
         $kh->kh_trangThai = 0; // Chưa kích hoạt
 
         $kh->save();
@@ -359,8 +359,8 @@ class FrontendController extends Controller
             $request->session()->put('kh_hoTen', $khachhang->kh_hoTen);
             $request->session()->put('kh_gioiTinh', $khachhang->kh_gioiTinh);
             $request->session()->put('kh_email', $khachhang->kh_email);
-            $request->session()->put('kh_diaChi', $khachhang->kh_diaChi);
-            $request->session()->put('kh_dienThoai', $khachhang->kh_dienThoai);
+            // $request->session()->put('kh_diaChi', $khachhang->kh_diaChi);
+            // $request->session()->put('kh_dienThoai', $khachhang->kh_dienThoai);
             return redirect()->route('frontend.home');
         }
         else{
@@ -388,12 +388,12 @@ class FrontendController extends Controller
             if($request->session()->exists('kh_email')){
                 $request->session()->forget('kh_email');
             }
-            if($request->session()->exists('kh_diaChi')){
-                $request->session()->forget('kh_diaChi');
-            }
-            if($request->session()->exists('kh_dienThoai')){
-                $request->session()->forget('kh_dienThoai');
-            }
+            // if($request->session()->exists('kh_diaChi')){
+            //     $request->session()->forget('kh_diaChi');
+            // }
+            // if($request->session()->exists('kh_dienThoai')){
+            //     $request->session()->forget('kh_dienThoai');
+            // }
             return redirect()->route('frontend.home');
         }
         catch (Exception $ex){
