@@ -27,7 +27,7 @@ Danh sách hình thức vận chuyển
 - Đường dẫn URL là đường dẫn được tạo ra bằng route có tên `danhsachsanpham.create`
 - Sẽ có dạng http://tenmiencuaban.com/admin/danhsachsanpham/create
 -->
-<h4 style="background: #0c0805; color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">DANH SÁCH HÌNH THỨC VẬN CHUYỂN</h4>
+<h4 style="background: linear-gradient(rgba(23, 23, 24, 0.98), rgba(30, 30, 31, 0.98)); color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">DANH SÁCH HÌNH THỨC VẬN CHUYỂN</h4>
 <!-- Tạo table hiển thị danh sách các sản phẩm -->
 <table class="table table-bordered">
     <thead>

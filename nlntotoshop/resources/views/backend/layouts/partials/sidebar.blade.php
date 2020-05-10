@@ -49,7 +49,7 @@
                 </a>
             </li>
         </ul> -->
-        <div class="menu-heading" style="font-weight: bold;">DANH MỤC QUẢN LÝ</div>
+        <div class="menu-heading" style="font-weight: bold; background: linear-gradient(rgba(23, 23, 24, 0.98), rgba(30, 30, 31, 0.98));">DANH MỤC QUẢN LÝ</div>
         <div class="menu-items">
         <ul>
             <li><a href="{{ route('danhsachnhacungcap.index') }}"><i class="fa fa-home" aria-hidden="true"></i>&nbsp; Nhà cung cấp</a></li>

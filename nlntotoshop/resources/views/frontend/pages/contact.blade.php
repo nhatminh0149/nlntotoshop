@@ -14,9 +14,6 @@ L I Ê N H Ệ - P A G E
         margin-left: 280px;
         width: 50%;
         border: 1px solid #e6e6e6;
-        /* padding-bottom: 30px;
-        padding-left: 15px; 
-        padding-right: 15px; */
         padding: 20px 15px 30px 15px;
     }
     
@@ -34,7 +31,7 @@ L I Ê N H Ệ - P A G E
 <section class="bg-img1 txt-center p-lr-15 p-tb-92" style=" background: linear-gradient(rgba(23, 23, 24, 0.7), rgba(30, 30, 31, 0.7)),
             url('{{ asset('img/banner/banner8.jpg') }}') center no-repeat;">
     <h3 class="ltext-105 cl0 txt-center">
-        L I Ê N &nbsp; H Ệ
+        {{ __('totoshop.h3_lienhe') }}
     </h3>
 </section>
 
@@ -45,7 +42,7 @@ L I Ê N H Ệ - P A G E
             <!-- <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md"> -->
                 <form name="contactForm" ng-submit="submitContactForm()" novalidate>
                     <h4 class="mtext-105 cl2 txt-center p-b-30">
-                        Gởi lời nhắn cho Toto Shop
+                        {{ __('totoshop.h4_lienhe') }}
                     </h4>
 
                     <!-- Div Thông báo lỗi 
@@ -55,35 +52,34 @@ L I Ê N H Ệ - P A G E
                     <div class="alert alert-danger" ng-show="contactForm.$invalid">
                         <ul>
                             <!-- Thông báo lỗi email -->
-                            <li><span class="error" ng-show="contactForm.email.$error.required">Vui lòng nhập email</span></li>
-                            <li><span class="error" ng-show="!contactForm.email.$error.required && contactForm.email.$error.pattern">Chỉ chấp nhập GMAIL, vui lòng kiểm tra lại</span></li>
+                            <li><span class="error" ng-show="contactForm.email.$error.required">{{ __('totoshop.loi_mail') }}</span></li>
+                            <li><span class="error" ng-show="!contactForm.email.$error.required && contactForm.email.$error.pattern">{{ __('totoshop.loi_gmail') }}</span></li>
 
                             <!-- Thông báo lỗi message -->
-                            <li><span class="error" ng-show="contactForm.message.$error.required">Vui lòng nhập lời nhắn</span></li>
-                            <li><span class="error" ng-show="contactForm.message.$error.minlength">Lời nhắn phải > 6 ký tự</span></li>
-                            <li><span class="error" ng-show="contactForm.message.$error.maxlength">Lời nhắn phải <= 250 ký tự</span> </li> </li> </div> <!-- Div Thông báo validate hợp lệ Chỉ hiển thị khi các validate trong form `contactForm` không hợp lệ=> contactForm.$valid = true
+                            <li><span class="error" ng-show="contactForm.message.$error.required">{{ __('totoshop.loi_loinhan') }}</span></li>
+                            <li><span class="error" ng-show="contactForm.message.$error.minlength">{{ __('totoshop.loi_loinhanmin') }}</span></li>
+                            <li><span class="error" ng-show="contactForm.message.$error.maxlength">{{ __('totoshop.loi_loinhanmax') }}</span> </li> </li> </div> <!-- Div Thông báo validate hợp lệ Chỉ hiển thị khi các validate trong form `contactForm` không hợp lệ=> contactForm.$valid = true
                                 Sử dụng tiền chỉ lệnh ng-show="contactForm.$valid"
                                 -->
                                 <div class="alert alert-success" ng-show="contactForm.$valid">
-                                    Thông tin hợp lệ, vui lòng bấm nút <b>"Gởi lời nhắn"</b> để gởi mail đến Quản trị trang web<br />
-                                    Xin chân thành cám ơn các đóng góp, ý kiến, thắc mắc của Quý Khách hàng.
+                                    {{ __('totoshop.hople_lienhe') }}
                                 </div>
 
                                 <!-- Validate email -->
                                 <div class="bor8 m-b-20 how-pos4-parent">
-                                    <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Email của bạn" ng-model="email" ng-pattern="/^.+@gmail.com$/" ng-required=true>
+                                    <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="{{ __('totoshop.email_cua_ban') }}" ng-model="email" ng-pattern="/^.+@gmail.com$/" ng-required=true>
                                     <span class="valid" ng-show="userInfo.email.$valid">Hợp lệ</span>
                                     <img class="how-pos4 pointer-none" src="{{ asset('themes/cozastore/images/icons/icon-email.png') }}" alt="ICON">
                                 </div>
 
                                 <!-- Validate lời nhắm -->
                                 <div class="bor8 m-b-30">
-                                    <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="message" placeholder="Bạn cần chúng tôi giúp đỡ về vấn đề gì?" ng-model="message" ng-minlength="6" ng-maxlength="250" ng-required=true></textarea>
+                                    <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="message" placeholder="{{ __('totoshop.can_giup_do') }}" ng-model="message" ng-minlength="6" ng-maxlength="250" ng-required=true></textarea>
                                 </div>
 
                                 <!-- Nút submit form -->
                                 <button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer" ng-disabled="contactForm.$invalid">
-                                    Gởi lời nhắn
+                                    {{ __('totoshop.guiloinhan') }}
                                 </button>
                 </form>
             <!-- </div> -->
@@ -92,7 +88,7 @@ L I Ê N H Ệ - P A G E
         <!-- Bản đồ Địa chỉ công ty -->
         <div class="row mt-5">
             <div class="col-md-12 text-center mb-4">
-                <h2>Địa chỉ cửa hàng</h2>
+                <h2>{{ __('totoshop.diachicuahang') }}</h2>
             </div>
             <div class="col-md-12">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.823377586331!2d105.77734171428223!3d10.031429375245953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a0898ecfa45f37%3A0xf3c22c993cac6bda!2sTotoshop!5e0!3m2!1svi!2s!4v1587528395636!5m2!1svi!2s" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>

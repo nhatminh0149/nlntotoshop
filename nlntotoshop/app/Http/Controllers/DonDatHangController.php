@@ -33,8 +33,9 @@ class DonDatHangController extends Controller
 
         $ds_dondathang = DB::table('dondathang')
                 ->select('dondathang.ddh_ma', 'khachhang.kh_taiKhoan', 'dondathang.ddh_thoiGianDatHang',
-                         'dondathang.ddh_diaChiGiaoHang', 'dondathang.ddh_dienThoai', 'dondathang.ddh_trangThai', 'hinhthucvanchuyen.htvc_chiPhi',
-                          DB::raw('SUM(hinhthucvanchuyen.htvc_chiPhi + chitietdonhang.ctdh_soLuong * chitietdonhang.ctdh_donGia) as TongThanhTien'))
+                         'dondathang.ddh_diaChiGiaoHang', 'dondathang.ddh_dienThoai', 'dondathang.ddh_trangThai',
+                          DB::raw('SUM(chitietdonhang.ctdh_soLuong * chitietdonhang.ctdh_donGia) as TongTienSanPham'),
+                          'hinhthucvanchuyen.htvc_chiPhi', DB::raw('SUM((chitietdonhang.ctdh_soLuong * chitietdonhang.ctdh_donGia)+hinhthucvanchuyen.htvc_chiPhi) as TongChiPhi'))
                 ->join('hinhthucvanchuyen', 
                        'hinhthucvanchuyen.htvc_ma', '=', 'dondathang.htvc_ma')
                 ->join('khachhang',
@@ -44,7 +45,21 @@ class DonDatHangController extends Controller
                 ->groupBy('dondathang.ddh_ma', 'khachhang.kh_taiKhoan', 'dondathang.ddh_thoiGianDatHang',
                           'dondathang.ddh_diaChiGiaoHang', 'dondathang.ddh_dienThoai', 'dondathang.ddh_trangThai', 'hinhthucvanchuyen.htvc_chiPhi')
                 ->paginate(5);
-        //print_r($ds_dondathang);
+        
+        //truy vấn này không trả về một đối tượng mà nó trả về một mảng nên ko phân trang dc
+        // $ds_dondathang = DB::select('
+        //     SELECT aaa.ddh_ma, aaa.kh_taiKhoan, aaa.ddh_thoiGianDatHang, aaa.ddh_diaChiGiaoHang, aaa.ddh_dienThoai, aaa.htvc_chiPhi, aaa.ddh_trangThai, aaa.TongTienSanPham, SUM(aaa.TongTienSanPham + aaa.htvc_chiPhi) AS TongChiPhi
+        //     FROM(
+        //         SELECT ddh.ddh_ma, kh.kh_taiKhoan, ddh.ddh_thoiGianDatHang, ddh.ddh_diaChiGiaoHang, ddh.ddh_dienThoai, htvc.htvc_chiPhi, ddh.ddh_trangThai, sum(ctdh.ctdh_soLuong * ctdh.ctdh_donGia) AS TongTienSanPham
+        //         FROM dondathang ddh 
+        //         JOIN hinhthucvanchuyen htvc ON htvc.htvc_ma = ddh.htvc_ma
+        //         JOIN khachhang kh ON kh.kh_ma=ddh.kh_ma
+        //         JOIN chitietdonhang ctdh ON ctdh.ddh_ma = ddh.ddh_ma
+        //         GROUP BY ddh.ddh_ma, kh.kh_taiKhoan, ddh.ddh_thoiGianDatHang, ddh.ddh_diaChiGiaoHang, ddh.ddh_dienThoai, htvc.htvc_chiPhi, ddh.ddh_trangThai) AS aaa
+        //     GROUP BY aaa.ddh_ma, aaa.kh_taiKhoan, aaa.ddh_thoiGianDatHang, aaa.ddh_diaChiGiaoHang, aaa.ddh_dienThoai, aaa.htvc_chiPhi, aaa.ddh_trangThai, aaa.TongTienSanPham');
+
+      
+        //dd($ds_dondathang);
         return view('backend.dondathang.index')->with('danhsachdondathang',$ds_dondathang);
     }
 

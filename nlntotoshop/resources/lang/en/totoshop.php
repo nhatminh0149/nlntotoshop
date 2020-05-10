@@ -51,4 +51,49 @@ return [
 
     'section4_h3' => 'HOT PRODUCTS',
     'section4_xemtatca' => 'SEE ALL',
+
+    //trang giới thiệu - about.blade.php
+    'h3_gioithieu' => 'I N T R O D U C E',
+    'h3_gioithieu_tieude' => 'INTRODUCTION ABOUT TOTOSHOP',
+    'p1_gioithieu' => 'Having been on the Vietnamese fashion market since 2009, with 10 years of continuous development, innovation and making a mark, Totoshop is proud to become one of the most popular Vietnamese fashion brands for young people.',
+    'p2_gioithieu' => 'With strong points of diversity, design and quality in each product and always updated with the latest trends. Coming to Totoshop, you not only find what you "need" but also find what you "should have".',
+    'p3_gioithieu' => 'If you have any questions. Please contact us on 1900 633 501 - 2 or email: cskh@totoshop.vn for more details.',
+    'h3_nhiemvu' => 'OUR MISSION',
+    'p1_nhiemvu' => ' Totoshop always asks "What do customers need and get when they come to Totoshop?". From there, the products to customers are what Totoshop wants to send. If you are looking for an ideal place to unleash your shopping experience, remember to Totoshop!',
+    'p2_nhiemvu' => 'The proof of Totoshop`s efforts over the past 10 years is the widespread coverage of the southern provinces with 20 retail stores. Totoshop will continue to make efforts in the shortest time to be present in the Central provinces and widespread coverage in the Eastern / Western / Southern provinces to have the opportunity to approach customers.',
+    'p3_nhiemvu' => '"Totoshop understands that fashion is not just about wearing a beautiful shirt but rather wearing a shirt that really suits you. So, whatever your favorite style is or is in the process of shaping your style, come to Totoshop to get what you`re looking for!".',
+
+    //trang liên hệ - contact.blade.php
+    'h3_lienhe' => 'C O N T A C T',
+    'h4_lienhe' => 'Send a message to Totoshop',
+    'email_cua_ban' => 'Your email',
+    'can_giup_do' => 'What do you need our help with?',
+    'guiloinhan' => 'Send the message',
+    'loi_mail' => 'Please enter email',
+    'loi_gmail' => 'Only accept GMAIL, please check again',
+    'loi_loinhan' => 'Please enter a message',
+    'loi_loinhanmin' => 'Message must be > 6 characters',
+    'loi_loinhanmax' => 'Message must be <= 250 characters',
+    'hople_lienhe' => 'Valid information, please press the "Send the message" button to send mail to the store. Shop sincerely thank the contributions, comments, questions that customers have sent to the shop.',
+    'diachicuahang' => 'Shop address',
+
+    //trang đăng ký - dangky.blade.php
+    'h3_dangky' => 'R E G I S T E R',
+    'h3_khdangky' => 'CUSTOMER ACCOUNT REGISTRATION',
+    'kh_taikhoan' => 'Customer account',
+    'kh_matKhau' => 'Password',
+    're_kh_matKhau' => 'Enter the password',
+    'kh_hoTen' => 'Customer`s full name',
+    'kh_gioiTinh' => 'Sex',
+    'nu' => 'Female',
+    'nam' => 'Male',
+    'khac' => 'Other',
+
+    //trang đăng nhập - login.blade.php
+    'h3_dang' => ' L O G ',
+    'h3_nhap' => ' I N',
+    'h3_khdangnhap' => 'CUSTOMER ACCOUNT LOGIN',
+    'dn_kh_taikhoan' => 'Customer account',
+    'dn_kh_matKhau' => 'Password',
+    'dn_button' => 'Log in',
 ];

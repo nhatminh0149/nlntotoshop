@@ -16,6 +16,17 @@
     <style>
         .small-box{
             margin-bottom: 10px;
+            -webkit-transition: transform 0.9s ease;
+            -o-transition: transform 0.9s ease;
+            -moz-transition: transform 0.9s ease;
+            transition: transform 0.9s ease;
+        }
+        .small-box:hover{
+            -webkit-transform: scale(1.1);
+            -moz-transform: scale(1.1);
+            -ms-transform: scale(1.1);
+            -o-transform: scale(1.1);
+            transform: scale(1.1);
         }
         .small-box > .inner{
             padding: 10px 10px 3px 10px;
@@ -39,7 +50,7 @@
 @endsection
 
 @section('content')
-<h4 style="background: #0c0805; color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">THỐNG KÊ</h4>
+<h4 style="background: linear-gradient(rgba(23, 23, 24, 0.98), rgba(30, 30, 31, 0.98)); color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">THỐNG KÊ</h4>
 
     <div class="row mt-5 mb-5">
         <div class="col-lg-3 col-xs-6">
@@ -164,7 +175,7 @@
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="thang">Chọn năm</label>
-                    <input type="number" class="form-control" id="thang" name="thang">
+                    <input type="number" class="form-control" id="thang" name="thang" min="2020">
                 </div>
                 <button type="submit" class="btn btn-primary" id="btnLapBaoCao">Lập báo cáo</button>
             </form>

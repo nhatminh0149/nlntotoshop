@@ -37,7 +37,7 @@
 - Đường dẫn URL là đường dẫn được tạo ra bằng route có tên `danhsachsanpham.create`
 - Sẽ có dạng http://tenmiencuaban.com/admin/danhsachsanpham/create
 -->
-<h4 style="background: #0c0805; color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">DANH SÁCH ĐƠN ĐẶT HÀNG</h4>
+<h4 style="background: linear-gradient(rgba(23, 23, 24, 0.98), rgba(30, 30, 31, 0.98)); color: #f6a519; margin-bottom: -1px; text-align: center; border: 1px solid #ccc; padding: 10px">DANH SÁCH ĐƠN ĐẶT HÀNG</h4>
 <!-- Tạo table hiển thị danh sách các sản phẩm -->
 <table class="table table-bordered">
     <thead>
@@ -45,9 +45,10 @@
             <th style="width: 10px;">Mã ĐĐH</th>
             <th>Tài khoản KH</th>
             <th>Ngày lập</th>
-            <th style="width: 200px;">Nơi giao</th>
+            <th style="width: 280px;">Nơi giao</th>
             <th>SĐT</th>
-            <th style="width: 60px;">Chi phí vận chuyển</th>
+            <th>Tổng tiền sản phẩm</th>
+            <th>Chi phí vận chuyển</th>
             <th style="width: 120px;">Tổng thành tiền</th>
             <th>Trạng thái xử lý</th>
             <!-- <th>Hành động</th> -->
@@ -61,8 +62,9 @@
                 <td>{{ $ddh->ddh_thoiGianDatHang }}</td>
                 <td>{{ $ddh->ddh_diaChiGiaoHang }}</td>
                 <td>{{ $ddh->ddh_dienThoai }}</td>
+                <td>{{ number_format($ddh->TongTienSanPham, 0, ',' , ',') }}</td>
                 <td>{{ number_format($ddh->htvc_chiPhi, 0, ',' , ',') }}</td>
-                <td>{{ number_format($ddh->TongThanhTien, 0, ',' , ',') }} VNĐ</td>
+                <td>{{ number_format($ddh->TongChiPhi, 0, ',' , ',') }} VNĐ</td>
                 <td> 
                     @if (($ddh->ddh_trangThai) == 2)
                         <div class="badge badge-info">

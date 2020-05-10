@@ -263,6 +263,7 @@ class FrontendController extends Controller
             're_kh_matKhau' => 'same:kh_matKhau',
             'kh_hoTen' => 'required',
             'kh_email' => 'required|email',
+            'kh_gioiTinh' => 'required',
             // 'kh_diaChi' => 'required',
             // 'kh_dienThoai' => 'required|digits:10',
         ],[
@@ -274,6 +275,7 @@ class FrontendController extends Controller
             'kh_hoTen.required' => "Họ tên của khách hàng không được để trống", 
             'kh_email.required' => "Email của khách hàng không được để trống", 
             'kh_email.email' => "Email không đúng định dạng", 
+            'kh_gioiTinh.required' => "Giới tính không được để trống", 
             // 'kh_diaChi.required' => "Địa chỉ của khách hàng không được để trống", 
             // 'kh_dienThoai.required' => "SĐT của khách hàng không được để trống", 
             // 'kh_dienThoai.digits' => "SĐT của khách hàng phải là số 10 kí tự", 
