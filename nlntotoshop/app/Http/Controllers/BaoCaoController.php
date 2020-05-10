@@ -72,4 +72,31 @@ class BaoCaoController extends Controller
             'data' => $data,
         ));
     }
+
+    public function donhangSpbanchay(Request $request)
+    {
+        $parameter = [
+            'Tensanpham' => $request->sp_ma,
+            'SoLuong' => $request->sp_ten,
+        ];
+         //dd($parameter);
+        $data = DB::select('
+            SELECT *
+            FROM (
+                select sp.sp_ten as Tensanpham, sum(ctdh.ctdh_soLuong) as SoLuong
+                from sanpham sp
+                join chitietdonhang ctdh on sp.sp_ma = ctdh.sp_ma
+                group by ctdh.sp_ma, sp.sp_ten
+            ) AS tmp
+            order by tmp.SoLuong DESC
+            LIMIT 5
+        ', $parameter);
+
+        //dd($data);
+
+        return response()->json(array(
+            'code'  => 200,
+            'data' => $data,
+        ));
+    }
 }

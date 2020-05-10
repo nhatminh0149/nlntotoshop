@@ -168,6 +168,13 @@
             <canvas id="chartOfobjChart" style="width: 100%;height: 400px;"></canvas>
         </div>
     </div> -->
+
+    <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM BÁN CHẠY NHẤT</h4>
+    <div class="col-sm-12 mb-5">
+        <canvas id="chartOfobjChartSPBC"></canvas>
+        <button class="btn btn-outline-primary btn-sm form-control" id="refresh">Refresh dữ liệu</button>
+    </div>
+
     <h4 style="text-align: center;">TỔNG DOANH THU THEO THÁNG TRONG NĂM</h4>
     <div class="row">
         <div class="col-md-12">
@@ -303,5 +310,91 @@
             });
         });
     });
+
+
+
+    $(document).ready(function() {
+        var objChart;
+        var $chartOfobjChartSPBC = document.getElementById("chartOfobjChartSPBC").getContext("2d");
+
+        $("#refresh").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '{{ route('backend.baocao.donhang.spbanchay') }}',
+                type: "GET",
+                
+                success: function(response) {
+                    var myLabels = [];
+                    var myData = [];
+                    $(response.data).each(function() {
+                        myLabels.push((this.Tensanpham));
+                        myData.push(this.SoLuong);
+                    });
+                    myData.push(0); // creates a '0' index on the graph
+
+                    if (typeof $objChart !== "undefined") {
+                        $objChart.destroy();
+                    }
+
+                    $objChart = new Chart($chartOfobjChart, {
+                        // The type of chart we want to create
+                        type: "bar",
+
+                        data: {
+                            labels: myLabels,
+                            datasets: [{
+                                data: myData,
+                                borderColor: "#9ad0f5",
+                                backgroundColor: "#00c0ef",
+                                borderWidth: 1
+                            }]
+                        },
+
+                        // Configuration options go here
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                // text: "Báo cáo đơn hàng"
+                                text: "Thống kê sản phẩm bán chạy"
+                            },
+                            // scales: {
+                            //     xAxes: [{
+                            //         scaleLabel: {
+                            //             display: true,
+                            //             // labelString: 'Ngày nhận đơn hàng'
+                            //             labelString: 'Tháng'
+                            //         }
+                            //     }],
+                            //     yAxes: [{
+                            //         ticks: {
+                            //             callback: function(value) {
+                            //                 return numeral(value).format('0,0 $')
+                            //             }
+                            //         },
+                            //         scaleLabel: {
+                            //             display: true,
+                            //             labelString: 'Tổng thành tiền'
+                            //         }
+                            //     }]
+                            // },
+                            // tooltips: {
+                            //     callbacks: {
+                            //         label: function(tooltipItem, data) {
+                            //             return numeral(tooltipItem.value).format('0,0 $')
+                            //         }
+                            //     }
+                            // },
+                            responsive: true,
+                            maintainAspectRatio: false,
+                        }
+                    });
+                }
+            });
+        });
+    });
 </script>
+
 @endsection

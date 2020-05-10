@@ -59,6 +59,7 @@ Route::resource('/admin/danhsachdondathang', 'DonDatHangController');
 // Tạo route Thống kê, Báo cáo Đơn hàng
 Route::get('/admin/baocao/donhang', 'BaoCaoController@donhang')->name('backend.baocao.donhang');
 Route::get('/admin/baocao/donhang/data', 'BaoCaoController@donhangData')->name('backend.baocao.donhang.data');
+Route::get('/admin/baocao/donhang/spbanchay', 'BaoCaoController@donhangSpbanchay')->name('backend.baocao.donhang.spbanchay');
 
 
 // Route::get('/', function (){
