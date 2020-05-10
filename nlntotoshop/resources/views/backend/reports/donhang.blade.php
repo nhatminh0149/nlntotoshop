@@ -311,8 +311,9 @@
         });
     });
 
+</script>
 
-
+<script>
     $(document).ready(function() {
         var objChart;
         var $chartOfobjChartSPBC = document.getElementById("chartOfobjChartSPBC").getContext("2d");
@@ -320,7 +321,7 @@
         $("#refresh").click(function(e) {
             e.preventDefault();
             $.ajax({
-                url: '{{ route('backend.baocao.donhang.spbanchay') }}',
+                url: '{{ route('backend.baocao.donhang.data') }}',
                 type: "GET",
                 
                 success: function(response) {
@@ -336,7 +337,7 @@
                         $objChart.destroy();
                     }
 
-                    $objChart = new Chart($chartOfobjChart, {
+                    $objChart = new Chart($chartOfobjChartSPBC, {
                         // The type of chart we want to create
                         type: "bar",
 
@@ -360,41 +361,16 @@
                                 // text: "Báo cáo đơn hàng"
                                 text: "Thống kê sản phẩm bán chạy"
                             },
-                            // scales: {
-                            //     xAxes: [{
-                            //         scaleLabel: {
-                            //             display: true,
-                            //             // labelString: 'Ngày nhận đơn hàng'
-                            //             labelString: 'Tháng'
-                            //         }
-                            //     }],
-                            //     yAxes: [{
-                            //         ticks: {
-                            //             callback: function(value) {
-                            //                 return numeral(value).format('0,0 $')
-                            //             }
-                            //         },
-                            //         scaleLabel: {
-                            //             display: true,
-                            //             labelString: 'Tổng thành tiền'
-                            //         }
-                            //     }]
-                            // },
-                            // tooltips: {
-                            //     callbacks: {
-                            //         label: function(tooltipItem, data) {
-                            //             return numeral(tooltipItem.value).format('0,0 $')
-                            //         }
-                            //     }
-                            // },
                             responsive: true,
-                            maintainAspectRatio: false,
                         }
                     });
-                }
+                },
+                error:function(res) {
+                alert('Lỗi khi vẽ biểu đồ')
             });
         });
     });
+
 </script>
 
 @endsection
