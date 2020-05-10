@@ -14,6 +14,7 @@
 
 @section('custom-css')
     <style>
+        @import url("https://fonts.googleapis.com/css?family=Baloo|Nunito Sans|Muli|Roboto|Gugi|Roboto+Mono|Roboto+Mono:wght@100;300;40|Quicksand:wght@500");
         .small-box{
             margin-bottom: 10px;
             -webkit-transition: transform 0.9s ease;
@@ -45,6 +46,15 @@
         }
         h3, p{
             color: white;
+            font-family: 'Muli', sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+
+        }
+        h4{
+            font-family: 'Muli', sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
     </style>
 @endsection
@@ -120,7 +130,7 @@
             <div class="inner">
               <h3>{{ $hinhthucvanchuyen_count }}</h3>
 
-              <p>Hình thức vận chuyển</p>
+              <p>Vận chuyển</p>
             </div>
             <div class="icon">
                 <i class="fa fa-truck" aria-hidden="true"></i>
@@ -170,9 +180,9 @@
     </div> -->
 
     <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM BÁN CHẠY NHẤT</h4>
-    <div class="col-sm-12 mb-5">
+    <div class="col-md-12 mb-5">
         <canvas id="chartOfobjChartSPBC"></canvas>
-        <button class="btn btn-outline-primary btn-sm form-control" id="refresh">Refresh dữ liệu</button>
+        <button class="btn btn-outline-primary" id="refresh">Refresh dữ liệu</button>
     </div>
 
     <h4 style="text-align: center;">TỔNG DOANH THU THEO THÁNG TRONG NĂM</h4>
@@ -321,7 +331,7 @@
         $("#refresh").click(function(e) {
             e.preventDefault();
             $.ajax({
-                url: '{{ route('backend.baocao.donhang.data') }}',
+                url: '{{ route('backend.baocao.donhang.spbanchay') }}',
                 type: "GET",
                 
                 success: function(response) {
@@ -358,15 +368,30 @@
                             },
                             title: {
                                 display: true,
-                                // text: "Báo cáo đơn hàng"
                                 text: "Thống kê sản phẩm bán chạy"
                             },
+                            scales: {
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Sản phẩm'
+                                    }
+                                }],
+                                yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Số lượng'
+                                    }
+                                }]
+                            },
+                            
                             responsive: true,
                         }
                     });
                 },
                 error:function(res) {
-                alert('Lỗi khi vẽ biểu đồ')
+                    alert('Lỗi khi vẽ biểu đồ')
+                }
             });
         });
     });

@@ -76,8 +76,8 @@ class BaoCaoController extends Controller
     public function donhangSpbanchay(Request $request)
     {
         $parameter = [
-            'Tensanpham' => $request->sp_ma,
-            'SoLuong' => $request->sp_ten,
+            'Tensanpham' => $request->Tensanpham,
+            'SoLuong' => $request->SoLuong,
         ];
          //dd($parameter);
         $data = DB::select('
