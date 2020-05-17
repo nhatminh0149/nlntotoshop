@@ -215,6 +215,7 @@ class FrontendController extends Controller
                 $dataMail['dondathang']['chitiet'][] = $chitietdonhang->toArray();
                 $dataMail['dondathang']['giohang'][] = $sp;
             }
+            
             // Gởi mail khách hàng
             // dd($dataMail);
             

@@ -96,4 +96,14 @@ return [
     'dn_kh_taikhoan' => 'Customer account',
     'dn_kh_matKhau' => 'Password',
     'dn_button' => 'Log in',
+
+    //trang hoàn tất đơn hàng - order-finish.blade.php
+    'h3_dathanghoantat' => 'ORDER  FINISH',
+    'h3_dathanghoantat1' => ' Order Finish',
+    'p1_dathanghoantat' => ' We have sent an order confirmation email to you. Please check the mailbox. Thank you for trusting our products.',
+    'p2_dathanghoantat' => ' If assistance is needed, please call our hotline for assistance when needed.',
+    'p2_dathanghoantat_tel' => 'TEL: 0915-659-223',
+
+    //trang sanpham - product-list.blade.php 
+    'xemchitiet' => 'Detail',
 ];

@@ -287,6 +287,7 @@
                             },
                             scales: {
                                 xAxes: [{
+                                    barPercentage: 0.6,
                                     scaleLabel: {
                                         display: true,
                                         // labelString: 'Ngày nhận đơn hàng'
@@ -356,7 +357,7 @@
                             datasets: [{
                                 data: myData,
                                 borderColor: "#9ad0f5",
-                                backgroundColor: "#00c0ef",
+                                backgroundColor: "#3c8dbc",
                                 borderWidth: 1
                             }]
                         },
@@ -372,6 +373,7 @@
                             },
                             scales: {
                                 xAxes: [{
+                                    barPercentage: 0.6,
                                     scaleLabel: {
                                         display: true,
                                         labelString: 'Sản phẩm'

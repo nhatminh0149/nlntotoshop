@@ -105,4 +105,14 @@ return [
     'dn_kh_taikhoan' => 'Tài khoản khách hàng',
     'dn_kh_matKhau' => 'Mật khẩu',
     'dn_button' => 'Đăng nhập',
+
+    //trang hoàn tất đơn hàng - order-finish.blade.php
+    'h3_dathanghoantat' => ' ĐẶT  HÀNG  HOÀN  TẤT',
+    'h3_dathanghoantat1' => ' Đặt hàng hoàn tất',
+    'p1_dathanghoantat' => ' Chúng tôi đã gởi email xác nhận đơn hàng cho Quý khách. Quý khách vui vòng kiểm tra hộp thư. Xin cám ơn Quý khách đã tin tưởng sản phẩm của chúng tôi.',
+    'p2_dathanghoantat' => ' Nếu cần hỗ trợ, vui lòng gọi đến đường dây nóng của chúng tôi để được hỗ trợ khi cần thiết.',
+    'p2_dathanghoantat_tel' => 'Điện thoại: 0915-659-223',
+
+    //trang sanpham - product-list.blade.php 
+    'xemchitiet' => 'Xem chi tiết',
 ];

@@ -37,7 +37,8 @@
     </tr>
     
     <tr>
-        <td colspan="4">
+        <th style="border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; text-align: right; padding: 5px;">SP: Số lượng x Đơn giá</th>
+        <td style="border-bottom: 1px solid black; border-right: 1px solid black; padding: 5px; text-align: left;"> 
             <ul>
                 @foreach($data['dondathang']['giohang'] as $item)
                 <li>{{ $item['_name'] }}: {{ $item['_quantity'] }} x {{ $item['_price'] }}</li>

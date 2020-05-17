@@ -67,18 +67,9 @@
                         <p class="stext-102 cl3 p-t-23">
                             {{ $sp->sp_thongTin }}
                         </p>
-
-                        <!--  -->
-                        <div class="p-t-33">
-
-                            
-                            
-                            <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-204 flex-w flex-m respon6-next">
-                                    <ngcart-addtocart template-url="{{ asset('vendor/ngCart/template/ngCart/addtocart.html') }}" id="{{ $sp->sp_ma }}" name="{{ $sp->sp_ten }}" price="{{ $sp->sp_gia }}" quantity="1" quantity-max="30" data="{ sp_hinh_url: '{{ asset('storage/photos/' . $sp->sp_hinh) }}' }">Thêm vào giỏ hàng</ngcart-addtocart>
-                                </div>
-                            </div>
-                        </div>
+                        
+                        <h6>Số lượng:</h6>
+                        <ngcart-addtocart template-url="{{ asset('vendor/ngCart/template/ngCart/addtocart.html') }}" id="{{ $sp->sp_ma }}" name="{{ $sp->sp_ten }}" price="{{ $sp->sp_gia }}" quantity="1" quantity-max="30" data="{ sp_hinh_url: '{{ asset('storage/photos/' . $sp->sp_hinh) }}' }">Thêm vào giỏ hàng</ngcart-addtocart>
                     </div>
                 </div>
             </div>

@@ -36,7 +36,7 @@ class KhachHangTableSeeder extends Seeder
             'kh_matKhau'   =>  md5('dididi'),
             'kh_hoTen'     => 'Nguyễn Phước Duy',
             'kh_gioiTinh'  => '1',
-            'kh_email'     => 'tranlenhatminh97@gmail.com',
+            'kh_email'     => 'nguyenduy171298@gmail.com',
             'kh_trangThai' => 0 // User 
             ],     
         ];
