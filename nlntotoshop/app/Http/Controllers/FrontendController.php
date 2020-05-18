@@ -214,7 +214,13 @@ class FrontendController extends Controller
                 $chitietdonhang->save();
                 $dataMail['dondathang']['chitiet'][] = $chitietdonhang->toArray();
                 $dataMail['dondathang']['giohang'][] = $sp;
+                $total=0;
+                foreach($dataMail['dondathang']['giohang'] as $item)
+                {
+                    $total+=$item['_quantity']*$item['_price'];
+                }
             }
+            
             
             // Gởi mail khách hàng
             // dd($dataMail);

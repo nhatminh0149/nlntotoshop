@@ -59,7 +59,7 @@ class SanPhamController extends Controller
     {
         $validation = $request->validate([
             'sp_hinh' => 'required|file|image|mimes:jpeg,png,gif,webp|max:2048',
-            // Cú pháp dùng upload nhiều file
+            // Cú pháp dùng upload nhiều file 
             'sp_hinhanhlienquan.*' => 'file|image|mimes:jpeg,png,gif,webp|max:2048',
             'sp_ten' => 'required|unique:sanpham,sp_ten',
             'sp_gia' => 'required|digits:6',
