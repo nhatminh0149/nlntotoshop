@@ -157,7 +157,7 @@
         </div>
 
     </div>
-
+ 
     <!-- <h4 style="text-align: center;">TỔNG DOANH THU THEO NGÀY</h4>
     <div class="row">
         <div class="col-md-12">
@@ -184,6 +184,25 @@
         <canvas id="chartOfobjChartSPBC"></canvas>
         <button class="btn btn-outline-primary" id="refresh">Refresh dữ liệu</button>
     </div>
+    
+    <!-- <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM BÁN CHẠY NHẤT THEO THỜI GIAN</h4>
+    <div class="col-md-12 mb-5">
+        <form method="get" action="#" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <div class="form-group">
+                <label for="tungay">Từ ngày</label>
+                <input type="text" class="form-control" id="tungay" name="tungay">
+            </div>
+            <div class="form-group">
+                <label for="denngay">Đến ngày</label>
+                <input type="text" class="form-control" id="denngay" name="denngay">
+            </div>
+            <button type="submit" class="btn btn-outline-primary" id="refresh">Refresh dữ liệu</button>
+        </form>
+        <div class="col-md-12">
+            <canvas id="chartOfobjChartSPBC" style="width: 100%;height: 400px;"></canvas>
+        </div>
+    </div> -->
 
     <h4 style="text-align: center;">TỔNG DOANH THU THEO THÁNG TRONG NĂM</h4>
     <div class="row">
@@ -399,5 +418,79 @@
     });
 
 </script>
+
+
+<!-- <script>
+    $(document).ready(function() {
+        var objChart;
+        var $chartOfobjChartSPBC = document.getElementById("chartOfobjChartSPBC").getContext("2d");
+        $("#refresh").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '{{ route('backend.baocao.donhang.spbanchay') }}',
+                type: "GET",
+                data: {
+                    tungay: $('#tungay').val(),
+                    denngay: $('#denngay').val(),
+                },
+                success: function(response) {
+                    var myLabels = [];
+                    var myData = [];
+                    $(response.data).each(function() {
+                        myLabels.push((this.Tensanpham));
+                        myData.push(this.SoLuong);
+                    });
+                    myData.push(0); // creates a '0' index on the graph
+                    if (typeof $objChart !== "undefined") {
+                        $objChart.destroy();
+                    }
+                    $objChart = new Chart($chartOfobjChartSPBC, {
+                        // The type of chart we want to create
+                        type: "bar",
+                        data: {
+                            labels: myLabels,
+                            datasets: [{
+                                data: myData,
+                                borderColor: "#9ad0f5",
+                                backgroundColor: "#9ad0f5",
+                                borderWidth: 1
+                            }]
+                        },
+                        // Configuration options go here
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: "Thống kê sản phẩm bán chạy theo thời gian"
+                            },
+                            scales: {
+                                xAxes: [{
+                                    barPercentage: 0.6,
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Sản phẩm'
+                                    }
+                                }],
+                                yAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Số lượng'
+                                    }
+                                }]
+                            },
+                            responsive: true,
+                        }
+                    });
+                },
+                error:function(res) {
+                    alert('Lỗi khi vẽ biểu đồ')
+                }
+            });
+        });
+    });
+
+</script> -->
 
 @endsection

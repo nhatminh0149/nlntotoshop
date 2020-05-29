@@ -39,16 +39,14 @@
     <tr>
         <th style="border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; text-align: right; padding: 5px;">SP: Số lượng x Đơn giá:</th>
         <td style="border-bottom: 1px solid black; border-right: 1px solid black; padding: 5px; text-align: left;"> 
-            <ul>
-                @foreach($data['dondathang']['giohang'] as $item)
-                <li>{{ $item['_name'] }}: {{ $item['_quantity'] }} x {{ $item['_price'] }}</li>
-                @endforeach
-            </ul>
+            @foreach($data['dondathang']['giohang'] as $item)
+                {{ $item['_name'] }}: {{ $item['_quantity'] }} x {{ $item['_price'] }}<br>
+            @endforeach
         </td>
     </tr>
 
     <tr>
-        <th style="border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; text-align: right; padding: 5px;">Tổng tiền sản phẩm:</th>
+        <th style="border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; text-align: right; padding: 5px;">Tổng tiền hàng:</th>
         <td style="border-bottom: 1px solid black; border-right: 1px solid black; padding: 5px; text-align: left;"> 
             <?php 
             $total=0;
@@ -62,7 +60,7 @@
         </td>
     </tr>
     <tr>
-        <th style="border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; text-align: right; padding: 5px;">Tiền vận chuyển:</th>
+        <th style="border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; text-align: right; padding: 5px;">Phí vận chuyển:</th>
         <td style="border-bottom: 1px solid black; border-right: 1px solid black; padding: 5px; text-align: left;"> 
             @if ($data['dondathang']['htvc_ma'] == 1)
                 {{ '0 VNĐ (Nhận hàng trực tiếp tại cửa hàng)' }}
@@ -78,7 +76,7 @@
         </td>
     </tr>
     <tr>
-        <th style="border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; text-align: right; padding: 5px;">Tổng hóa đơn:</th>
+        <th style="border-bottom: 1px solid black; border-right: 1px solid black; border-left: 1px solid black; text-align: right; padding: 5px;">Tổng thanh toán:</th>
         <td style="border-bottom: 1px solid black; border-right: 1px solid black; padding: 5px; text-align: left;"> 
             <?php
                 if($data['dondathang']['htvc_ma'] == 1){
@@ -99,6 +97,12 @@
             ?>
             {{ number_format($total, 0, ',' , ',') }} VNĐ
         </td>
+    </tr>
+    <tr>
+        <th colspan="4" style="border-bottom: 1px solid black;border-right: 1px solid black;border-left: 1px solid black; padding: 5px;">
+            Cảm ơn quý khách đã lựa chọn và tin dùng sản phẩm ở cửa hàng chúng tôi. Chúc quý khách có một trải nghiệm thật thú vị tại Totoshop.<br>
+            Xin chào và hẹn gặp lại ^^
+        </th>
     </tr>
 
 </table>

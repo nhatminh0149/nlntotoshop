@@ -78,6 +78,8 @@ class BaoCaoController extends Controller
         $parameter = [
             'Tensanpham' => $request->Tensanpham,
             'SoLuong' => $request->SoLuong,
+            // 'tungay' => $request->tungay,
+            // 'denngay' => $request->denngay,
         ];
          //dd($parameter);
         $data = DB::select('
@@ -86,11 +88,25 @@ class BaoCaoController extends Controller
                 select sp.sp_ten as Tensanpham, sum(ctdh.ctdh_soLuong) as SoLuong
                 from sanpham sp
                 join chitietdonhang ctdh on sp.sp_ma = ctdh.sp_ma
-                group by ctdh.sp_ma, sp.sp_ten
+                group by ctdh.sp_ma, sp.sp_ten    
             ) AS tmp
             order by tmp.SoLuong DESC
             LIMIT 5
         ', $parameter);
+
+        // $data = DB::select('
+        //     SELECT *
+        //     FROM (
+        //         select sp.sp_ten as Tensanpham, sum(ctdh.ctdh_soLuong) as SoLuong
+        //         from sanpham sp
+        //         join chitietdonhang ctdh on sp.sp_ma = ctdh.sp_ma
+        //         JOIN dondathang ddh ON ctdh.ddh_ma = ddh.ddh_ma
+        //         WHERE ddh.ddh_thoiGianDatHang BETWEEN :tungay AND :denngay
+        //         group by ctdh.sp_ma, sp.sp_ten
+        //     ) AS tmp
+        //     order by tmp.SoLuong DESC
+        //     LIMIT 5
+        // ', $parameter);
 
         //dd($data);
 
