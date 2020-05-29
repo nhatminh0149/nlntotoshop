@@ -157,52 +157,34 @@
         </div>
 
     </div>
- 
-    <!-- <h4 style="text-align: center;">TỔNG DOANH THU THEO NGÀY</h4>
-    <div class="row">
+
+    <!-- <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM BÁN CHẠY NHẤT</h4>
+    <div class="col-md-12 mb-5">
+        <canvas id="chartOfobjChartSPBC"></canvas>
+        <button class="btn btn-outline-primary" id="refresh">Refresh dữ liệu</button>
+    </div> -->
+
+    <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM BÁN CHẠY NHẤT THEO THỜI GIAN</h4>
+    <div class="row mb-5">
         <div class="col-md-12">
             <form method="get" action="#" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="tuNgay">Từ ngày</label>
-                    <input type="text" class="form-control" id="tuNgay" name="tuNgay">
+                    <label for="tungay">Từ ngày</label>
+                    <input type="date" class="form-control" id="tungay" name="tungay">
                 </div>
                 <div class="form-group">
-                    <label for="denNgay">Đến ngày</label>
-                    <input type="text" class="form-control" id="denNgay" name="denNgay">
+                    <label for="denngay">Đến ngày</label>
+                    <input type="date" class="form-control" id="denngay" name="denngay">
                 </div>
-                <button type="submit" class="btn btn-primary" id="btnLapBaoCao">Lập báo cáo</button>
+                <button type="submit" class="btn btn-primary" id="thongke">Thống kê dữ liệu</button>
             </form>
         </div>
         <div class="col-md-12">
-            <canvas id="chartOfobjChart" style="width: 100%;height: 400px;"></canvas>
+            <canvas id="chartOfobjChartSPBC_TG" style="width: 100%;height: 400px;"></canvas>
         </div>
-    </div> -->
-
-    <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM BÁN CHẠY NHẤT</h4>
-    <div class="col-md-12 mb-5">
-        <canvas id="chartOfobjChartSPBC"></canvas>
-        <button class="btn btn-outline-primary" id="refresh">Refresh dữ liệu</button>
     </div>
-    
-    <!-- <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM BÁN CHẠY NHẤT THEO THỜI GIAN</h4>
-    <div class="col-md-12 mb-5">
-        <form method="get" action="#" enctype="multipart/form-data">
-            {{ csrf_field() }}
-            <div class="form-group">
-                <label for="tungay">Từ ngày</label>
-                <input type="text" class="form-control" id="tungay" name="tungay">
-            </div>
-            <div class="form-group">
-                <label for="denngay">Đến ngày</label>
-                <input type="text" class="form-control" id="denngay" name="denngay">
-            </div>
-            <button type="submit" class="btn btn-outline-primary" id="refresh">Refresh dữ liệu</button>
-        </form>
-        <div class="col-md-12">
-            <canvas id="chartOfobjChartSPBC" style="width: 100%;height: 400px;"></canvas>
-        </div>
-    </div> -->
+
 
     <h4 style="text-align: center;">TỔNG DOANH THU THEO THÁNG TRONG NĂM</h4>
     <div class="row">
@@ -220,6 +202,7 @@
             <canvas id="chartOfobjChart" style="width: 100%;height: 400px;"></canvas>
         </div>
     </div>
+
 @endsection
 
 @section('custom-scripts')
@@ -252,6 +235,8 @@
 
 <!-- Các script dành cho thư viện ChartJS -->
 <script src="{{ asset('vendor/Chart.js/Chart.min.js') }}"></script>
+
+<!-- Biểu đồ cho tổng doanh thu -->
 <script>
     $(document).ready(function() {
         var objChart;
@@ -343,7 +328,9 @@
 
 </script>
 
-<script>
+
+<!-- Biểu đồ cho sản phẩm bán chạy trong csdl -->
+<!-- <script>
     $(document).ready(function() {
         var objChart;
         var $chartOfobjChartSPBC = document.getElementById("chartOfobjChartSPBC").getContext("2d");
@@ -417,22 +404,24 @@
         });
     });
 
-</script>
+</script> -->
 
 
-<!-- <script>
+<!-- Biểu đồ cho sp bán chạy theo thời gian -->
+<script>
     $(document).ready(function() {
         var objChart;
-        var $chartOfobjChartSPBC = document.getElementById("chartOfobjChartSPBC").getContext("2d");
-        $("#refresh").click(function(e) {
+        var $chartOfobjChartSPBC_TG = document.getElementById("chartOfobjChartSPBC_TG").getContext("2d");
+
+        $("#thongke").click(function(e) {
             e.preventDefault();
             $.ajax({
-                url: '{{ route('backend.baocao.donhang.spbanchay') }}',
+                url: '{{ route('backend.baocao.donhang.spbanchaytheotg') }}',
                 type: "GET",
                 data: {
                     tungay: $('#tungay').val(),
                     denngay: $('#denngay').val(),
-                },
+                },        
                 success: function(response) {
                     var myLabels = [];
                     var myData = [];
@@ -441,21 +430,25 @@
                         myData.push(this.SoLuong);
                     });
                     myData.push(0); // creates a '0' index on the graph
+
                     if (typeof $objChart !== "undefined") {
                         $objChart.destroy();
                     }
-                    $objChart = new Chart($chartOfobjChartSPBC, {
+
+                    $objChart = new Chart($chartOfobjChartSPBC_TG, {
                         // The type of chart we want to create
                         type: "bar",
+
                         data: {
                             labels: myLabels,
                             datasets: [{
                                 data: myData,
                                 borderColor: "#9ad0f5",
-                                backgroundColor: "#9ad0f5",
+                                backgroundColor: "#3c8dbc",
                                 borderWidth: 1
                             }]
                         },
+
                         // Configuration options go here
                         options: {
                             legend: {
@@ -463,7 +456,7 @@
                             },
                             title: {
                                 display: true,
-                                text: "Thống kê sản phẩm bán chạy theo thời gian"
+                                text: "Thống kê sản phẩm bán chạy"
                             },
                             scales: {
                                 xAxes: [{
@@ -481,6 +474,7 @@
                                 }]
                             },
                             responsive: true,
+                            maintainAspectRatio: false,
                         }
                     });
                 },
@@ -491,6 +485,6 @@
         });
     });
 
-</script> -->
+</script>
 
 @endsection

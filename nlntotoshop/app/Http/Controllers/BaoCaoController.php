@@ -31,27 +31,6 @@ class BaoCaoController extends Controller
     /**
      * Action AJAX get data cho báo cáo Đơn hàng
      */
-    // public function donhangData(Request $request)
-    // {
-    //     $parameter = [
-    //         'tuNgay' => $request->tuNgay,
-    //         'denNgay' => $request->denNgay
-    //     ];
-    //     // dd($parameter);
-    //     $data = DB::select('
-    //         SELECT ddh.ddh_thoiGianDatHang as thoiGian
-    //             , SUM(ctdh.ctdh_soLuong * ctdh.ctdh_donGia) as tongThanhTien
-    //         FROM dondathang ddh
-    //         JOIN chitietdonhang ctdh ON ddh.ddh_ma = ctdh.ddh_ma
-    //         WHERE ddh.ddh_thoiGianDatHang BETWEEN :tuNgay AND :denNgay
-    //         GROUP BY ddh.ddh_thoiGianDatHang
-    //     ', $parameter);
-
-    //     return response()->json(array(
-    //         'code'  => 200,
-    //         'data' => $data,
-    //     ));
-    // }
     public function donhangData(Request $request)
     {
         $parameter = [
@@ -73,13 +52,38 @@ class BaoCaoController extends Controller
         ));
     }
 
-    public function donhangSpbanchay(Request $request)
+    // public function donhangSpbanchay(Request $request)
+    // {
+    //     $parameter = [
+    //         'Tensanpham' => $request->Tensanpham,
+    //         'SoLuong' => $request->SoLuong,
+    //     ];
+    //      //dd($parameter);
+    //     $data = DB::select('
+    //         SELECT *
+    //         FROM (
+    //             select sp.sp_ten as Tensanpham, sum(ctdh.ctdh_soLuong) as SoLuong
+    //             from sanpham sp
+    //             join chitietdonhang ctdh on sp.sp_ma = ctdh.sp_ma
+    //             group by ctdh.sp_ma, sp.sp_ten    
+    //         ) AS tmp
+    //         order by tmp.SoLuong DESC
+    //         LIMIT 5
+    //     ', $parameter);
+
+    //     //dd($data);
+
+    //     return response()->json(array(
+    //         'code'  => 200,
+    //         'data' => $data,
+    //     ));
+    // }
+
+    public function donhangSpbanchayTheoTG(Request $request)
     {
         $parameter = [
-            'Tensanpham' => $request->Tensanpham,
-            'SoLuong' => $request->SoLuong,
-            // 'tungay' => $request->tungay,
-            // 'denngay' => $request->denngay,
+            'tungay' => $request->tungay,
+            'denngay' => $request->denngay,
         ];
          //dd($parameter);
         $data = DB::select('
@@ -88,25 +92,13 @@ class BaoCaoController extends Controller
                 select sp.sp_ten as Tensanpham, sum(ctdh.ctdh_soLuong) as SoLuong
                 from sanpham sp
                 join chitietdonhang ctdh on sp.sp_ma = ctdh.sp_ma
-                group by ctdh.sp_ma, sp.sp_ten    
+                JOIN dondathang ddh ON ctdh.ddh_ma = ddh.ddh_ma
+                WHERE ddh.ddh_thoiGianDatHang BETWEEN :tungay AND :denngay
+                group by ctdh.sp_ma, sp.sp_ten
             ) AS tmp
             order by tmp.SoLuong DESC
             LIMIT 5
         ', $parameter);
-
-        // $data = DB::select('
-        //     SELECT *
-        //     FROM (
-        //         select sp.sp_ten as Tensanpham, sum(ctdh.ctdh_soLuong) as SoLuong
-        //         from sanpham sp
-        //         join chitietdonhang ctdh on sp.sp_ma = ctdh.sp_ma
-        //         JOIN dondathang ddh ON ctdh.ddh_ma = ddh.ddh_ma
-        //         WHERE ddh.ddh_thoiGianDatHang BETWEEN :tungay AND :denngay
-        //         group by ctdh.sp_ma, sp.sp_ten
-        //     ) AS tmp
-        //     order by tmp.SoLuong DESC
-        //     LIMIT 5
-        // ', $parameter);
 
         //dd($data);
 
