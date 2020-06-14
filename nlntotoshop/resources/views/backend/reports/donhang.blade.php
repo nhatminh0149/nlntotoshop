@@ -164,7 +164,7 @@
         <button class="btn btn-outline-primary" id="refresh">Refresh dữ liệu</button>
     </div> -->
 
-    <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM BÁN CHẠY NHẤT THEO THỜI GIAN</h4>
+    <h4 style="text-align: center;">THỐNG KÊ SẢN PHẨM BÁN CHẠY</h4>
     <div class="row mb-5">
         <div class="col-md-12">
             <form method="get" action="#" enctype="multipart/form-data">
@@ -195,7 +195,7 @@
                     <label for="thang">Chọn năm</label>
                     <input type="number" class="form-control" id="thang" name="thang" min="2020">
                 </div>
-                <button type="submit" class="btn btn-primary" id="btnLapBaoCao">Lập báo cáo</button>
+                <button type="submit" class="btn btn-primary" id="btnLapBaoCao">Thống kê dữ liệu</button>
             </form>
         </div>
         <div class="col-md-12">
@@ -273,8 +273,8 @@
                             labels: myLabels,
                             datasets: [{
                                 data: myData,
-                                borderColor: "#9ad0f5",
-                                backgroundColor: "#00c0ef",
+                                borderColor: "#007BFF",
+                                backgroundColor: "#007BFF",
                                 borderWidth: 1
                             }]
                         },
@@ -443,8 +443,8 @@
                             labels: myLabels,
                             datasets: [{
                                 data: myData,
-                                borderColor: "#9ad0f5",
-                                backgroundColor: "#3c8dbc",
+                                borderColor: "#007BFF",
+                                backgroundColor: "#007BFF",
                                 borderWidth: 1
                             }]
                         },

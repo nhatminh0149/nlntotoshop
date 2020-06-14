@@ -32,7 +32,7 @@
         Shipping: <% ngCart.getShipping() | currency %>
     </div>
     <div class="header-cart-total w-full p-tb-40">
-        Tổng tiền hàng: <% ngCart.totalCost()  %> VND
+        Tổng tiền hàng: <% (ngCart.totalCost()).toLocaleString("en-US")  %> VND
     </div>
 
     <div class="header-cart-buttons flex-w w-full">

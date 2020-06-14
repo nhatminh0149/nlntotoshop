@@ -155,8 +155,8 @@ Giỏ hàng
                     <label for="htvc_ma">Hình thức vận chuyển:</label>
                     <select name="htvc_ma" id="htvc_ma" class="form-control" ng-model="htvc_ma" ng-required=true>
                         @foreach($danhsachvanchuyen as $htvc)
-                        <option value="{{ $htvc->htvc_ma }}">{{ $htvc->htvc_ten }} ({{ $htvc->htvc_chiPhi }} vnđ)</option>
-                        @endforeach
+                        <option value="{{ $htvc->htvc_ma }}">{{ $htvc->htvc_ten }} ({{ number_format($htvc->htvc_chiPhi, 0, ',' , ',') }} vnđ)</option>
+                        @endforeach                              
                     </select>
                 </div>
                
